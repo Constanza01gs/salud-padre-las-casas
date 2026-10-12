@@ -1,0 +1,644 @@
+
+/*
+============================================================
+NOTICIAS Y ACTIVIDADES
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+Este archivo contiene los estilos exclusivos de:
+
+1. Encabezado de la página.
+2. Buscador y filtros de publicaciones.
+3. Tarjetas de noticias y actividades.
+4. Ficha individual de publicación.
+5. Sección complementaria OIRS.
+6. Diseño adaptable a dispositivos móviles.
+
+Los estilos generales del encabezado institucional,
+navegación, buscador superior y footer permanecen
+en style.css.
+
+============================================================
+*/
+
+
+/* =========================================================
+   1. ENCABEZADO DE LA PÁGINA
+   ========================================================= */
+
+.pagina-encabezado {
+    padding: 43px 0;
+    background: linear-gradient(
+        110deg,
+        #edf7fd,
+        #ffffff 65%,
+        #eef8f3
+    );
+    border-bottom: 1px solid var(--borde);
+}
+
+.migas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    font-size: 0.82rem;
+}
+
+.migas a {
+    color: var(--azul);
+}
+
+.pagina-encabezado h1 {
+    margin: 4px 0 10px;
+    color: #083e70;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.pagina-encabezado p {
+    max-width: 800px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   2. SECCIÓN PRINCIPAL DE PUBLICACIONES
+   ========================================================= */
+
+.noticias-seccion {
+    padding: 55px 0 70px;
+}
+
+.noticias-titulo {
+    margin: 12px 0 15px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.noticias-introduccion {
+    max-width: 850px;
+    margin-bottom: 28px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   3. BUSCADOR DE NOTICIAS Y ACTIVIDADES
+   ========================================================= */
+
+.noticias-busqueda {
+    margin-bottom: 20px;
+}
+
+.noticias-busqueda label {
+    display: block;
+    margin-bottom: 8px;
+    color: #264c65;
+    font-weight: 700;
+}
+
+.noticias-busqueda input {
+    width: 100%;
+    max-width: 550px;
+    padding: 13px 16px;
+    border: 1px solid #cbd8e5;
+    border-radius: 10px;
+    background: #ffffff;
+    color: var(--texto);
+    font: inherit;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.noticias-busqueda input:focus {
+    outline: 3px solid #b9e1f8;
+    border-color: var(--azul);
+}
+
+
+/* =========================================================
+   4. FILTROS DE PUBLICACIONES
+   ========================================================= */
+
+.noticias-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-bottom: 22px;
+}
+
+.noticia-filtro {
+    padding: 10px 17px;
+    border: 1px solid #d4e1ea;
+    border-radius: 25px;
+    background: #ffffff;
+    color: #31556e;
+    font: inherit;
+    font-size: 0.88rem;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.noticia-filtro:hover {
+    background: #eef7fd;
+}
+
+.noticia-filtro.activo {
+    border-color: #0b609d;
+    background: #0b609d;
+    color: #ffffff;
+}
+
+.noticia-filtro:focus-visible {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   5. CONTADOR DE RESULTADOS
+   ========================================================= */
+
+.noticias-contador {
+    margin-bottom: 20px;
+    color: var(--texto-secundario);
+    font-size: 0.87rem;
+}
+
+
+/* =========================================================
+   6. CUADRÍCULA DE PUBLICACIONES
+   ========================================================= */
+
+.noticias-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* =========================================================
+   7. TARJETAS DE NOTICIAS Y ACTIVIDADES
+   ========================================================= */
+
+.noticia-tarjeta {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: var(--sombra);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.noticia-tarjeta:hover {
+    transform: translateY(-3px);
+}
+
+
+/* Área visual superior de las tarjetas */
+
+.noticia-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 165px;
+    background: linear-gradient(
+        135deg,
+        #e4f2fc,
+        #f7fbfe,
+        #e8f6ed
+    );
+}
+
+/* Fondo de las actividades comunitarias */
+
+.noticia-tarjeta[data-tipo="actividad"] .noticia-imagen {
+    background: linear-gradient(
+        135deg,
+        #e7f5ec,
+        #f7fcf9,
+        #fff4e8
+    );
+}
+
+.noticia-imagen .icono {
+    width: 62px;
+    height: 62px;
+    color: #2878a7;
+}
+
+
+/* Contenido de las tarjetas */
+
+.noticia-cuerpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 23px;
+}
+
+
+/* =========================================================
+   8. CATEGORÍAS CON COLORES PASTEL
+   ========================================================= */
+
+/*
+Las categorías se diferencian mediante el atributo
+data-tipo de cada tarjeta.
+
+noticia   = azul pastel
+actividad = verde pastel
+
+Esto permite mantener los colores incluso cuando las
+publicaciones se generan dinámicamente con JavaScript.
+*/
+
+.noticia-categoria {
+    display: inline-block;
+    align-self: flex-start;
+    padding: 5px 11px;
+    margin-bottom: 12px;
+    border-radius: 20px;
+    background: #e7f2ff;
+    color: #1e5e9e;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Noticias institucionales */
+
+.noticia-tarjeta[data-tipo="noticia"] .noticia-categoria {
+    background: #e7f2ff;
+    color: #1e5e9e;
+}
+
+/* Actividades comunitarias */
+
+.noticia-tarjeta[data-tipo="actividad"] .noticia-categoria {
+    background: #e4f5e9;
+    color: #237548;
+}
+
+
+/* =========================================================
+   9. FECHA, TÍTULO Y DESCRIPCIÓN
+   ========================================================= */
+
+.noticia-fecha {
+    margin-bottom: 10px;
+    color: #687e8d;
+    font-size: 0.82rem;
+}
+
+.noticia-tarjeta h3 {
+    margin-bottom: 13px;
+    color: #083e70;
+    font-size: 1.1rem;
+}
+
+.noticia-tarjeta p {
+    flex: 1;
+    margin-bottom: 18px;
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   10. BOTÓN LEER PUBLICACIÓN
+   ========================================================= */
+
+.noticia-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 16px;
+    border: 0;
+    border-radius: 9px;
+    background: #0b609d;
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.89rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.noticia-boton:hover {
+    background: #084b7a;
+}
+
+.noticia-boton:focus-visible {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   11. MENSAJE SIN RESULTADOS
+   ========================================================= */
+
+.noticias-vacio {
+    padding: 35px;
+    border: 1px dashed #cbd8e5;
+    border-radius: 12px;
+    color: var(--texto-secundario);
+    text-align: center;
+}
+
+
+/* =========================================================
+   12. FICHA INDIVIDUAL DE PUBLICACIÓN
+   ========================================================= */
+
+.noticia-ficha-seccion {
+    padding: 45px 0 70px;
+}
+
+
+/* Botón para volver al listado */
+
+.noticia-volver {
+    display: inline-flex;
+    margin-bottom: 24px;
+    padding: 10px 0;
+    border: 0;
+    background: transparent;
+    color: var(--azul);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.noticia-volver:hover {
+    text-decoration: underline;
+}
+
+.noticia-volver:focus-visible {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   13. ENCABEZADO DE LA FICHA
+   ========================================================= */
+
+.noticia-ficha-cabecera {
+    padding: 32px;
+    margin-bottom: 25px;
+    border: 1px solid #d9e8f1;
+    border-radius: 16px;
+    background: linear-gradient(
+        110deg,
+        #eaf6fd,
+        #ffffff 65%,
+        #edf8f2
+    );
+}
+
+.noticia-ficha-cabecera h2 {
+    margin: 12px 0;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.noticia-ficha-cabecera p {
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   14. CATEGORÍA EN LA FICHA INDIVIDUAL
+   ========================================================= */
+
+/*
+Se reutiliza la clase .etiqueta existente en style.css.
+
+JavaScript agregará una clase adicional dependiendo
+del tipo de publicación.
+*/
+
+#ficha-noticia-categoria {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    padding: 6px 13px;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* Ocultar la línea decorativa de la etiqueta general
+   únicamente en la categoría de la ficha */
+
+#ficha-noticia-categoria::before {
+    display: none;
+}
+
+/* Ficha de noticia institucional */
+
+#ficha-noticia-categoria.categoria-noticia {
+    background: #e7f2ff;
+    color: #1e5e9e;
+}
+
+/* Ficha de actividad comunitaria */
+
+#ficha-noticia-categoria.categoria-actividad {
+    background: #e4f5e9;
+    color: #237548;
+}
+
+
+/* =========================================================
+   15. DISTRIBUCIÓN DE LA FICHA
+   ========================================================= */
+
+.noticia-ficha-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 0.7fr;
+    gap: 22px;
+}
+
+.noticia-panel {
+    padding: 28px;
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.noticia-panel h3 {
+    margin-bottom: 18px;
+    color: #083e70;
+    font-size: 1.2rem;
+}
+
+.noticia-panel p {
+    margin-bottom: 16px;
+    color: var(--texto-secundario);
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   16. AVISO INFORMATIVO
+   ========================================================= */
+
+.noticia-aviso {
+    margin-top: 22px;
+    padding: 16px;
+    border-radius: 10px;
+    background: #f2f7fa;
+    color: #506778;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   17. NOTA INFERIOR DEL DIRECTORIO
+   ========================================================= */
+
+.noticias-nota {
+    margin-top: 25px;
+    color: var(--texto-secundario);
+    font-size: 0.83rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   18. SECCIÓN COMPLEMENTARIA OIRS
+   ========================================================= */
+
+.noticias-complemento {
+    padding: 55px 0;
+    background: linear-gradient(
+        110deg,
+        #edf8fd,
+        #f9fcff,
+        #edf8f3
+    );
+}
+
+.noticias-complemento h2 {
+    margin: 12px 0 15px;
+    color: #083e70;
+}
+
+.noticias-complemento p {
+    max-width: 800px;
+    margin-bottom: 20px;
+    color: var(--texto-secundario);
+}
+
+
+/* Botón de acceso a OIRS */
+
+.noticias-enlace {
+    display: inline-flex;
+    padding: 12px 20px;
+    border-radius: 9px;
+    background: #0b609d;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.noticias-enlace:hover {
+    background: #084b7a;
+}
+
+.noticias-enlace:focus-visible {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   19. ELEMENTOS OCULTOS
+   ========================================================= */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   20. DISEÑO RESPONSIVO
+   ========================================================= */
+
+/* Tablets y pantallas medianas */
+
+@media (max-width: 950px) {
+
+    .noticias-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* Ficha individual en una sola columna */
+
+@media (max-width: 750px) {
+
+    .noticia-ficha-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* Teléfonos móviles */
+
+@media (max-width: 600px) {
+
+    .pagina-encabezado,
+    .noticias-seccion,
+    .noticia-ficha-seccion,
+    .noticias-complemento {
+        padding: 35px 0;
+    }
+
+    .noticias-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .noticia-ficha-cabecera,
+    .noticia-panel {
+        padding: 22px;
+    }
+
+    .noticias-busqueda input {
+        max-width: 100%;
+    }
+
+    .noticias-filtros {
+        gap: 8px;
+    }
+
+    .noticia-filtro {
+        padding: 9px 15px;
+    }
+
+    .noticia-ficha-cabecera h2 {
+        overflow-wrap: anywhere;
+    }
+
+}

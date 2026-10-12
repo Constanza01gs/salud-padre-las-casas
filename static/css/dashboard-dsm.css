@@ -1,0 +1,1147 @@
+
+/* ============================================================
+   DASHBOARD OIRS DSM
+   Departamento de Salud Municipal de Padre Las Casas
+
+   Diseño institucional unificado con OIRS
+   Prototipo académico
+============================================================ */
+
+
+/* ============================================================
+   1. VARIABLES GENERALES
+============================================================ */
+
+:root {
+    --dsm-azul: #0b609d;
+    --dsm-azul-oscuro: #083e70;
+    --dsm-azul-hover: #084b7a;
+    --dsm-azul-claro: #e3f1fb;
+
+    --dsm-fondo: #f3f7fa;
+    --dsm-blanco: #ffffff;
+    --dsm-borde: #dfe8ee;
+
+    --dsm-texto: #29475b;
+    --dsm-texto-secundario: #657d8d;
+
+    --dsm-gris: #64748b;
+    --dsm-gris-fondo: #edf1f5;
+
+    --dsm-verde: #287548;
+    --dsm-verde-fondo: #e5f4e9;
+
+    --dsm-amarillo: #98610d;
+    --dsm-amarillo-fondo: #fff3d9;
+
+    --dsm-rojo: #a63c32;
+    --dsm-rojo-fondo: #fae9e6;
+
+    --dsm-radio: 13px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--dsm-fondo);
+    color: var(--dsm-texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   2. ENCABEZADO
+============================================================ */
+
+.dsm-topbar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 94px;
+    padding: 14px 28px;
+    background: var(--dsm-blanco);
+    border-bottom: 1px solid var(--dsm-borde);
+}
+
+.dsm-topbar img {
+    display: block;
+    width: auto;
+    max-width: 210px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+.dsm-usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dsm-usuario-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.dsm-usuario-info strong {
+    color: var(--dsm-azul-oscuro);
+    font-size: 0.91rem;
+}
+
+.dsm-usuario-info span {
+    color: var(--dsm-texto-secundario);
+    font-size: 0.79rem;
+}
+
+.dsm-salir {
+    padding: 11px 16px;
+    border: 1px solid #d1dfe9;
+    border-radius: 8px;
+    background: var(--dsm-blanco);
+    color: var(--dsm-azul);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.dsm-salir:hover {
+    background: #edf7fd;
+}
+
+
+/* ============================================================
+   3. ESTRUCTURA PRINCIPAL
+============================================================ */
+
+.dsm-layout {
+    display: grid;
+    grid-template-columns: 255px minmax(0, 1fr);
+    min-height: calc(100vh - 94px);
+}
+
+.dsm-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 94px);
+    padding: 28px 15px;
+    background: var(--dsm-azul-oscuro);
+    color: var(--dsm-blanco);
+}
+
+.dsm-sidebar-titulo {
+    margin: 0 13px 25px;
+    color: #bdd8e9;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.dsm-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.dsm-menu button {
+    width: 100%;
+    padding: 13px 15px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #e2eef7;
+    font-size: 0.88rem;
+    text-align: left;
+}
+
+.dsm-menu button:hover,
+.dsm-menu button.activo {
+    background: #155c8d;
+    color: var(--dsm-blanco);
+}
+
+.dsm-menu button.activo {
+    font-weight: 700;
+}
+
+.dsm-main {
+    width: 100%;
+    min-width: 0;
+    max-width: 1700px;
+    padding: 35px;
+}
+
+.dsm-main > section {
+    width: 100%;
+}
+
+
+/* ============================================================
+   4. TÍTULOS
+============================================================ */
+
+.dsm-titulo {
+    margin-bottom: 26px;
+}
+
+.dsm-etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--dsm-azul-claro);
+    color: var(--dsm-azul);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.dsm-titulo h1 {
+    margin: 0 0 9px;
+    color: var(--dsm-azul-oscuro);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    line-height: 1.25;
+}
+
+.dsm-titulo p {
+    margin: 0;
+    color: var(--dsm-texto-secundario);
+    font-size: 0.91rem;
+}
+
+
+/* ============================================================
+   5. TARJETAS GENERALES
+============================================================ */
+
+.dsm-card {
+    min-width: 0;
+    margin-bottom: 23px;
+    padding: 25px;
+    border: 1px solid var(--dsm-borde);
+    border-radius: var(--dsm-radio);
+    background: var(--dsm-blanco);
+}
+
+.dsm-card h2 {
+    margin: 0 0 10px;
+    color: var(--dsm-azul-oscuro);
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.dsm-card > p {
+    margin: 0 0 20px;
+    color: var(--dsm-texto-secundario);
+    font-size: 0.89rem;
+}
+
+.dsm-card h3 {
+    color: var(--dsm-azul-oscuro);
+    font-size: 1.05rem;
+}
+
+
+/* ============================================================
+   6. INDICADORES
+============================================================ */
+
+.dsm-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin-bottom: 25px;
+}
+
+.dsm-indicador {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 135px;
+    padding: 23px;
+    border: 1px solid var(--dsm-borde);
+    border-radius: 13px;
+    background: var(--dsm-blanco);
+}
+
+/* Título e icono en una misma fila */
+
+.dsm-indicador-encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 13px;
+}
+
+.dsm-indicador-encabezado > span:first-child {
+    color: var(--dsm-texto-secundario);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Contenedor de iconos */
+
+.dsm-indicador-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: var(--dsm-azul-claro);
+    color: var(--dsm-azul);
+}
+
+.dsm-indicador-icono svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+}
+
+/* Valor numérico */
+
+.dsm-indicador > strong {
+    display: block;
+    margin-top: 0;
+    color: var(--dsm-azul-oscuro);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   7. COLORES DE LOS INDICADORES
+============================================================ */
+
+/* Azul: información general */
+
+.dsm-indicador-azul .dsm-indicador-icono {
+    background: var(--dsm-azul-claro);
+    color: var(--dsm-azul);
+}
+
+/* Gris: solicitudes pendientes */
+
+.dsm-indicador-gris .dsm-indicador-icono {
+    background: var(--dsm-gris-fondo);
+    color: var(--dsm-gris);
+}
+
+/* Amarillo: atención y seguimiento */
+
+.dsm-indicador-amarillo .dsm-indicador-icono {
+    background: var(--dsm-amarillo-fondo);
+    color: var(--dsm-amarillo);
+}
+
+/* Verde: respondidas o dentro de plazo */
+
+.dsm-indicador-verde .dsm-indicador-icono {
+    background: var(--dsm-verde-fondo);
+    color: var(--dsm-verde);
+}
+
+/* Rojo: reclamos vencidos */
+
+.dsm-indicador-rojo .dsm-indicador-icono {
+    background: var(--dsm-rojo-fondo);
+    color: var(--dsm-rojo);
+}
+
+
+/* ============================================================
+   8. INDICADORES DE PLAZOS
+============================================================ */
+
+.dsm-indicadores-plazos {
+    margin-top: 18px;
+    margin-bottom: 18px;
+}
+
+.dsm-indicadores-plazos .dsm-indicador {
+    min-height: 115px;
+    padding: 20px;
+    background: var(--dsm-blanco);
+}
+
+.dsm-indicadores-plazos .dsm-indicador > strong {
+    font-size: 2rem;
+}
+
+
+/* ============================================================
+   9. TABLAS
+============================================================ */
+
+.dsm-tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--dsm-borde);
+    border-radius: 9px;
+}
+
+.dsm-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--dsm-blanco);
+    font-size: 0.84rem;
+    text-align: left;
+}
+
+.dsm-tabla th {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--dsm-borde);
+    background: #f5f9fc;
+    color: #49677a;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.dsm-tabla td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e8eef2;
+    color: var(--dsm-texto);
+    font-size: 0.84rem;
+    vertical-align: middle;
+}
+
+.dsm-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.dsm-tabla tbody tr:hover {
+    background: #f9fbfe;
+}
+
+.dsm-tabla td:first-child {
+    color: var(--dsm-azul);
+    font-weight: 700;
+}
+
+.dsm-tabla td[colspan] {
+    color: var(--dsm-texto-secundario);
+    font-weight: 400;
+    text-align: center;
+}
+
+.dsm-tabla .dsm-boton {
+    padding: 8px 12px;
+    font-size: 0.79rem;
+}
+
+
+/* ============================================================
+   10. ESTADOS DE SOLICITUDES
+============================================================ */
+
+.dsm-estado,
+.dsm-plazo {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+.dsm-estado {
+    background: var(--dsm-azul-claro);
+    color: var(--dsm-azul);
+}
+
+.dsm-estado.proceso,
+.dsm-estado.derivada {
+    background: var(--dsm-amarillo-fondo);
+    color: var(--dsm-amarillo);
+}
+
+.dsm-estado.respondida {
+    background: var(--dsm-verde-fondo);
+    color: var(--dsm-verde);
+}
+
+.dsm-estado.cerrada {
+    background: var(--dsm-gris-fondo);
+    color: var(--dsm-gris);
+}
+
+
+/* ============================================================
+   11. ESTADOS DE PLAZOS
+============================================================ */
+
+.dsm-plazo.en-plazo {
+    background: var(--dsm-verde-fondo);
+    color: var(--dsm-verde);
+}
+
+.dsm-plazo.proxima {
+    background: var(--dsm-amarillo-fondo);
+    color: var(--dsm-amarillo);
+}
+
+.dsm-plazo.vencida {
+    background: var(--dsm-rojo-fondo);
+    color: var(--dsm-rojo);
+}
+
+.dsm-plazo.finalizada,
+.dsm-plazo.no-aplica {
+    background: var(--dsm-gris-fondo);
+    color: var(--dsm-gris);
+}
+
+
+/* ============================================================
+   12. BOTONES Y ACCIONES
+============================================================ */
+
+.dsm-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 11px;
+    margin-top: 20px;
+}
+
+.dsm-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 17px;
+    border: 1px solid var(--dsm-azul);
+    border-radius: 8px;
+    background: var(--dsm-azul);
+    color: var(--dsm-blanco);
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.dsm-boton:hover {
+    background: var(--dsm-azul-hover);
+    border-color: var(--dsm-azul-hover);
+}
+
+.dsm-boton.secundario {
+    border-color: #ccdce7;
+    background: var(--dsm-blanco);
+    color: var(--dsm-azul);
+}
+
+.dsm-boton.secundario:hover {
+    background: #edf7fd;
+}
+
+.dsm-boton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.dsm-boton:focus-visible,
+.dsm-salir:focus-visible,
+.dsm-menu button:focus-visible {
+    outline: 3px solid #80b9f0;
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   13. FILTROS
+============================================================ */
+
+.dsm-filtros {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.dsm-filtros > input,
+.dsm-filtros > select,
+.dsm-campo input,
+.dsm-campo select,
+.dsm-campo textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #cbd8e5;
+    border-radius: 8px;
+    outline: none;
+    background: var(--dsm-blanco);
+    color: var(--dsm-texto);
+    font-size: 0.89rem;
+}
+
+.dsm-filtros > input:focus,
+.dsm-filtros > select:focus,
+.dsm-campo input:focus,
+.dsm-campo select:focus,
+.dsm-campo textarea:focus {
+    border-color: var(--dsm-azul);
+    box-shadow: 0 0 0 3px rgba(11, 96, 157, 0.12);
+}
+
+.dsm-filtros input::placeholder,
+.dsm-campo textarea::placeholder {
+    color: #8a9bab;
+}
+
+.dsm-campo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.dsm-campo label {
+    color: var(--dsm-texto);
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.dsm-campo textarea {
+    min-height: 125px;
+    resize: vertical;
+}
+
+.dsm-formulario-gestion {
+    margin-top: 24px;
+}
+
+.dsm-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.dsm-form-grid .completo {
+    grid-column: 1 / -1;
+}
+
+.dsm-ayuda {
+    margin: 15px 0 0;
+    color: var(--dsm-texto-secundario);
+    font-size: 0.82rem;
+}
+
+
+/* ============================================================
+   14. DETALLE DE SOLICITUDES
+============================================================ */
+
+.dsm-detalle {
+    margin-top: 24px;
+    padding: 23px;
+    border: 1px solid var(--dsm-borde);
+    border-radius: 12px;
+    background: #f8fbfd;
+}
+
+.dsm-detalle h3 {
+    margin: 0 0 19px;
+    color: var(--dsm-azul-oscuro);
+}
+
+.dsm-detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.dsm-dato {
+    min-width: 0;
+}
+
+.dsm-dato strong,
+.dsm-dato span {
+    display: block;
+}
+
+.dsm-dato strong {
+    margin-bottom: 6px;
+    color: #456579;
+    font-size: 0.8rem;
+}
+
+.dsm-dato span {
+    color: var(--dsm-texto);
+    font-size: 0.88rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.dsm-dato.completo {
+    grid-column: 1 / -1;
+}
+
+.dsm-subtitulo-historial {
+    margin-top: 25px !important;
+}
+
+
+/* ============================================================
+   15. HISTORIAL DE MOVIMIENTOS
+============================================================ */
+
+.dsm-historial {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.dsm-historial li {
+    padding: 0 0 20px 8px;
+    color: var(--dsm-texto);
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+.dsm-historial li:last-child {
+    padding-bottom: 0;
+}
+
+.dsm-historial strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--dsm-azul-oscuro);
+}
+
+.dsm-historial p {
+    margin: 0 0 5px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.dsm-historial small {
+    color: var(--dsm-texto-secundario);
+    font-size: 0.76rem;
+}
+
+
+/* ============================================================
+   16. PANEL DE PLAZOS
+============================================================ */
+
+.dsm-panel-plazo {
+    margin-top: 23px;
+    padding: 17px 19px;
+    border: 1px solid #cfe6d4;
+    border-radius: 10px;
+    background: #edf6ee;
+}
+
+.dsm-panel-plazo strong {
+    display: block;
+    color: var(--dsm-verde);
+    font-size: 0.86rem;
+}
+
+.dsm-panel-plazo p {
+    margin: 5px 0 0;
+    font-size: 0.86rem;
+}
+
+.dsm-panel-plazo.alerta {
+    border-color: #f1d9a4;
+    background: #fff8e9;
+}
+
+.dsm-panel-plazo.alerta strong {
+    color: var(--dsm-amarillo);
+}
+
+.dsm-panel-plazo.vencido {
+    border-color: #edc7c2;
+    background: #fff1ef;
+}
+
+.dsm-panel-plazo.vencido strong {
+    color: var(--dsm-rojo);
+}
+
+
+/* ============================================================
+   17. MENSAJES Y AVISOS
+============================================================ */
+
+.dsm-mensaje {
+    margin-top: 19px;
+    padding: 14px 17px;
+    border: 1px solid #cce6d4;
+    border-radius: 9px;
+    background: var(--dsm-verde-fondo);
+    color: var(--dsm-verde);
+    font-size: 0.86rem;
+    font-weight: 600;
+}
+
+.dsm-mensaje.error {
+    border-color: #ebc8c3;
+    background: var(--dsm-rojo-fondo);
+    color: var(--dsm-rojo);
+}
+
+.dsm-aviso {
+    margin-top: 25px;
+    padding: 17px 20px;
+    border: 1px solid #efd39d;
+    border-radius: 10px;
+    background: #fff9ed;
+    color: #80591d;
+    font-size: 0.86rem;
+}
+
+
+/* ============================================================
+   18. REPORTES - TARJETAS COMPACTAS
+============================================================ */
+
+.dsm-desglose {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.dsm-desglose-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 90px;
+    padding: 15px 12px;
+    border: 1px solid var(--dsm-borde);
+    border-radius: 10px;
+    background: #f8fbfd;
+    text-align: center;
+}
+
+.dsm-desglose-item strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--dsm-azul-oscuro);
+    font-size: 1.45rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.dsm-desglose-item span {
+    color: var(--dsm-texto-secundario);
+    font-size: 0.78rem;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   19. ESTADÍSTICAS Y BARRAS
+============================================================ */
+
+.dsm-estadistica-item {
+    min-width: 0;
+    margin-bottom: 18px;
+}
+
+.dsm-estadistica-item:last-child {
+    margin-bottom: 0;
+}
+
+.dsm-estadistica-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 0.86rem;
+}
+
+.dsm-estadistica-encabezado strong {
+    color: var(--dsm-azul-oscuro);
+}
+
+.dsm-barra {
+    width: 100%;
+    height: 10px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: #e8eef5;
+}
+
+.dsm-barra-relleno {
+    height: 100%;
+    border-radius: inherit;
+    background: var(--dsm-azul);
+    transition: width 0.25s ease;
+}
+
+
+/* ============================================================
+   20. FILTROS DE REPORTES
+============================================================ */
+
+#seccion-reportes .dsm-filtros {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 10px;
+}
+
+#seccion-reportes .dsm-indicadores {
+    margin-bottom: 25px;
+}
+
+
+/* ============================================================
+   21. RESPONSIVE - COMPUTADORES MEDIANOS
+============================================================ */
+
+@media (max-width: 1250px) {
+
+    .dsm-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dsm-main {
+        padding: 28px;
+    }
+
+    .dsm-desglose {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .dsm-filtros {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+
+/* ============================================================
+   22. RESPONSIVE - TABLETS
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .dsm-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .dsm-sidebar {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .dsm-sidebar-titulo {
+        margin-bottom: 12px;
+    }
+
+    .dsm-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .dsm-menu button {
+        width: auto;
+        padding: 11px 13px;
+    }
+
+    .dsm-main {
+        max-width: none;
+        padding: 24px 20px;
+    }
+
+    .dsm-filtros,
+    #seccion-reportes .dsm-filtros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dsm-desglose {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ============================================================
+   23. RESPONSIVE - CELULARES
+============================================================ */
+
+@media (max-width: 650px) {
+
+    .dsm-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        min-height: 76px;
+        padding: 13px 15px;
+    }
+
+    .dsm-topbar img {
+        max-width: 155px;
+        max-height: 52px;
+    }
+
+    .dsm-usuario {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .dsm-usuario-info {
+        align-items: flex-start;
+    }
+
+    .dsm-usuario-info strong {
+        font-size: 0.8rem;
+    }
+
+    .dsm-usuario-info span {
+        font-size: 0.75rem;
+    }
+
+    .dsm-salir {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+    }
+
+    .dsm-main {
+        padding: 20px 14px;
+    }
+
+    .dsm-titulo h1 {
+        font-size: 1.7rem;
+    }
+
+    .dsm-titulo p {
+        font-size: 0.86rem;
+    }
+
+    .dsm-indicadores,
+    .dsm-form-grid,
+    .dsm-detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .dsm-indicador {
+        min-height: 115px;
+        padding: 19px;
+    }
+
+    .dsm-indicador-icono {
+        width: 38px;
+        height: 38px;
+    }
+
+    .dsm-indicador-icono svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dsm-card {
+        padding: 19px;
+    }
+
+    .dsm-desglose {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .dsm-desglose-item {
+        min-height: 82px;
+        padding: 12px 9px;
+    }
+
+    .dsm-desglose-item strong {
+        font-size: 1.3rem;
+    }
+
+    .dsm-filtros,
+    #seccion-reportes .dsm-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .dsm-form-grid .completo,
+    .dsm-dato.completo {
+        grid-column: auto;
+    }
+
+    .dsm-detalle {
+        padding: 17px;
+    }
+
+    .dsm-acciones {
+        align-items: stretch;
+    }
+
+    .dsm-acciones .dsm-boton {
+        width: 100%;
+    }
+
+    .dsm-tabla {
+        min-width: 680px;
+    }
+}
+
+
+/* ============================================================
+   ICONOS DEL MENÚ LATERAL - OIRS DSM
+============================================================ */
+
+/* Alinear iconos y textos */
+.dsm-menu button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Tamaño y apariencia de los iconos */
+.dsm-menu button svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+}
+
+/* Alinear el texto */
+.dsm-menu button span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Mantener el color al seleccionar una sección */
+.dsm-menu button:hover svg,
+.dsm-menu button.activo svg {
+    color: #ffffff;
+}

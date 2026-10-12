@@ -1,0 +1,980 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel Director | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dashboard-director.css">
+</head>
+
+<body>
+
+    <!-- ==================================================
+         ENCABEZADO
+    ================================================== -->
+
+    <header class="director-topbar">
+
+        <img
+            src="../static/img/logo-salud-encabezado.png"
+            alt="Salud Municipal Padre Las Casas"
+        >
+
+        <div class="director-usuario">
+
+            <div class="director-usuario-info">
+                <strong id="nombre-director">
+                    Director de establecimiento
+                </strong>
+
+                <span id="establecimiento-director">
+                    Establecimiento
+                </span>
+            </div>
+
+            <button
+                type="button"
+                class="director-cerrar-sesion"
+                id="cerrar-sesion"
+            >
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         ESTRUCTURA GENERAL
+    ================================================== -->
+
+    <div class="director-layout">
+
+        <!-- MENÚ LATERAL -->
+
+        <aside class="director-sidebar">
+
+            <p class="director-sidebar-titulo">
+                Supervisión de establecimiento
+            </p>
+            
+            <nav class="director-menu" aria-label="Menú de director">
+
+                <!-- PANEL PRINCIPAL -->
+                <button
+                    type="button"
+                    class="activo"
+                    data-seccion="inicio"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+
+                    <span>Panel principal</span>
+                </button>
+
+
+                <!-- SOLICITUDES DEL ESTABLECIMIENTO -->
+                <button
+                    type="button"
+                    data-seccion="solicitudes"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-4-4H8z"/>
+                        <path d="M14 3v5h6"/>
+                        <path d="M8 13h8"/>
+                        <path d="M8 17h8"/>
+                    </svg>
+
+                    <span>Solicitudes del establecimiento</span>
+                </button>
+
+
+                <!-- REPORTES DE GESTIÓN -->
+                <button
+                    type="button"
+                    data-seccion="reportes"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 20V12"/>
+                        <path d="M10 20V5"/>
+                        <path d="M16 20v-9"/>
+                        <path d="M22 20v-6"/>
+                        <path d="M2 20h20"/>
+                    </svg>
+
+                    <span>Reportes de gestión</span>
+                </button>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main class="director-main">
+
+
+            <!-- ==================================================
+                 1. PANEL PRINCIPAL
+            ================================================== -->
+
+            <section id="seccion-inicio">
+
+                <div class="director-titulo">
+
+                    <span class="director-etiqueta">
+                        Dirección de establecimiento
+                    </span>
+
+                    <h1>Panel principal</h1>
+
+                    <p id="bienvenida-director">
+                        Indicadores y supervisión de solicitudes.
+                    </p>
+
+                </div>
+
+
+                <!-- INDICADORES PRINCIPALES -->
+
+                <div class="director-indicadores">
+
+                    <!-- TOTAL -->
+
+                    <article class="director-indicador director-indicador-azul">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Total de solicitudes</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <rect x="5" y="4" width="14" height="17" rx="2"/>
+                                    <path d="M9 4.5h6M9 9h6M9 13h6M9 17h4"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-total">0</strong>
+
+                    </article>
+
+
+                    <!-- INGRESADAS -->
+
+                    <article class="director-indicador director-indicador-gris">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Ingresadas</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M4 13V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8"/>
+                                    <path d="M3 13h5l2 3h4l2-3h5v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-ingresadas">0</strong>
+
+                    </article>
+
+
+                    <!-- EN PROCESO -->
+
+                    <article class="director-indicador director-indicador-amarillo">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>En proceso / derivadas</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="M12 7v5l3 2"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-proceso">0</strong>
+
+                    </article>
+
+
+                    <!-- FINALIZADAS -->
+
+                    <article class="director-indicador director-indicador-verde">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Respondidas / cerradas</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="m8 12 3 3 5-6"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-finalizadas">0</strong>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ==================================================
+                     SEGUIMIENTO DE PLAZOS
+                ================================================== -->
+
+                <div class="director-card">
+
+                    <h2>Seguimiento de plazos de reclamos</h2>
+
+                    <p>
+                        Supervisión de los reclamos registrados
+                        en el establecimiento. Se utiliza una
+                        referencia académica de 15 días hábiles
+                        desde el día siguiente al ingreso.
+                        Se excluyen fines de semana, pero no
+                        feriados oficiales.
+                    </p>
+
+
+                    <!-- INDICADORES DE PLAZOS -->
+
+                    <div class="director-indicadores director-indicadores-plazos">
+
+                        <!-- PENDIENTES -->
+
+                        <article class="director-indicador director-indicador-gris">
+
+                            <div class="director-indicador-encabezado">
+
+                                <span>Reclamos pendientes</span>
+
+                                <div class="director-indicador-icono">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <rect x="5" y="3" width="14" height="18" rx="2"/>
+                                        <path d="M9 8h6M9 12h4"/>
+                                        <circle cx="16" cy="17" r="4"/>
+                                        <path d="M16 15v2l1 1"/>
+                                    </svg>
+
+                                </div>
+
+                            </div>
+
+                            <strong id="indicador-reclamos-pendientes">0</strong>
+
+                        </article>
+
+
+                        <!-- EN PLAZO -->
+
+                        <article class="director-indicador director-indicador-verde">
+
+                            <div class="director-indicador-encabezado">
+
+                                <span>En plazo</span>
+
+                                <div class="director-indicador-icono">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M12 2 4 6v6c0 5 3.5 8 8 10 4.5-2 8-5 8-10V6z"/>
+                                        <path d="m9 12 2 2 4-4"/>
+                                    </svg>
+
+                                </div>
+
+                            </div>
+
+                            <strong id="indicador-en-plazo">0</strong>
+
+                        </article>
+
+
+                        <!-- PRÓXIMOS A VENCER -->
+
+                        <article class="director-indicador director-indicador-amarillo">
+
+                            <div class="director-indicador-encabezado">
+
+                                <span>Próximos a vencer</span>
+
+                                <div class="director-indicador-icono">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <circle cx="12" cy="12" r="9"/>
+                                        <path d="M12 7v5l3 2"/>
+                                        <path d="M18.5 18.5 21 21"/>
+                                    </svg>
+
+                                </div>
+
+                            </div>
+
+                            <strong id="indicador-proximas-vencer">0</strong>
+
+                        </article>
+
+
+                        <!-- VENCIDOS -->
+
+                        <article class="director-indicador director-indicador-rojo">
+
+                            <div class="director-indicador-encabezado">
+
+                                <span>Vencidos</span>
+
+                                <div class="director-indicador-icono">
+
+                                    <svg
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.8"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M12 3 2 21h20z"/>
+                                        <path d="M12 9v5"/>
+                                        <path d="M12 17h.01"/>
+                                    </svg>
+
+                                </div>
+
+                            </div>
+
+                            <strong id="indicador-vencidas">0</strong>
+
+                        </article>
+
+                    </div>
+
+
+                    <!-- TABLA DE RECLAMOS PRIORITARIOS -->
+
+                    <h3>Reclamos que requieren seguimiento</h3>
+
+                    <p class="director-ayuda">
+                        Se muestran los reclamos pendientes
+                        que están próximos a vencer o vencidos.
+                        La información es únicamente de consulta.
+                    </p>
+
+                    <div class="director-tabla-contenedor">
+
+                        <table class="director-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Asunto</th>
+                                    <th>Fecha límite</th>
+                                    <th>Situación</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-prioritarias"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SOLICITUDES RECIENTES -->
+
+                <div class="director-card">
+
+                    <h2>Solicitudes recientes</h2>
+
+                    <p>
+                        Últimas solicitudes del establecimiento
+                        para seguimiento directivo.
+                    </p>
+
+                    <div class="director-tabla-contenedor">
+
+                        <table class="director-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Tipo</th>
+                                    <th>Asunto</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-recientes"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HERRAMIENTAS DE SUPERVISIÓN -->
+
+                <div class="director-card">
+
+                    <h2>Herramientas de supervisión</h2>
+
+                    <p>
+                        Consulta solicitudes y reportes
+                        del establecimiento asignado.
+                    </p>
+
+                    <div class="director-acciones">
+
+                        <button
+                            type="button"
+                            class="director-boton"
+                            data-ir="solicitudes"
+                        >
+                            Consultar solicitudes
+                        </button>
+
+                        <button
+                            type="button"
+                            class="director-boton secundario"
+                            data-ir="reportes"
+                        >
+                            Ver reportes de gestión
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 2. SOLICITUDES DEL ESTABLECIMIENTO
+            ================================================== -->
+
+            <section id="seccion-solicitudes" hidden>
+
+                <div class="director-titulo">
+
+                    <span class="director-etiqueta">
+                        Consulta y seguimiento
+                    </span>
+
+                    <h1>Solicitudes del establecimiento</h1>
+
+                    <p>
+                        Consulta las solicitudes, sus plazos
+                        y su historial de movimientos.
+                        Este perfil dispone de acceso de solo lectura.
+                    </p>
+
+                </div>
+
+
+                <div class="director-card">
+
+                    <h2>Listado de solicitudes</h2>
+
+                    <!-- FILTROS -->
+
+                    <div class="director-filtros">
+
+                        <input
+                            type="search"
+                            id="buscar-solicitudes"
+                            placeholder="Buscar folio, asunto o tipo..."
+                            aria-label="Buscar solicitudes"
+                        >
+
+                        <select
+                            id="filtro-tipo"
+                            aria-label="Filtrar por tipo"
+                        >
+                            <option value="">Todos los tipos</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Solicitud">Solicitud</option>
+                            <option value="Felicitación">Felicitación</option>
+                        </select>
+
+                        <select
+                            id="filtro-estado"
+                            aria-label="Filtrar por estado"
+                        >
+                            <option value="">Todos los estados</option>
+                            <option value="Ingresada">Ingresada</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Derivada">Derivada</option>
+                            <option value="Respondida">Respondida</option>
+                            <option value="Cerrada">Cerrada</option>
+                        </select>
+
+                        <select
+                            id="filtro-plazo"
+                            aria-label="Filtrar por plazo"
+                        >
+                            <option value="">Todos los plazos</option>
+                            <option value="En plazo">En plazo</option>
+                            <option value="Próxima a vencer">
+                                Próxima a vencer
+                            </option>
+                            <option value="Vencida">Vencida</option>
+                            <option value="Finalizada">Finalizada</option>
+                            <option value="No aplica">No aplica</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- TABLA DE SOLICITUDES -->
+
+                    <div class="director-tabla-contenedor">
+
+                        <table class="director-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Tipo</th>
+                                    <th>Asunto</th>
+                                    <th>Estado</th>
+                                    <th>Plazo</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-solicitudes"></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- DETALLE DE SOLICITUD -->
+
+                    <div
+                        class="director-detalle"
+                        id="detalle-solicitud"
+                        hidden
+                    >
+
+                        <h3>Detalle de solicitud</h3>
+
+                        <div
+                            class="director-detalle-grid"
+                            id="detalle-contenido"
+                        ></div>
+
+                        <!-- PANEL DE PLAZO -->
+
+                        <div
+                            class="director-panel-plazo"
+                            id="detalle-panel-plazo"
+                            hidden
+                        >
+
+                            <strong>Seguimiento de plazo</strong>
+
+                            <p id="detalle-informacion-plazo"></p>
+
+                        </div>
+
+
+                        <!-- HISTORIAL -->
+
+                        <h3 class="director-subtitulo-historial">
+                            Historial de movimientos
+                        </h3>
+
+                        <ol
+                            class="director-historial"
+                            id="detalle-historial"
+                        ></ol>
+
+
+                        <!-- CERRAR DETALLE -->
+
+                        <div class="director-acciones">
+
+                            <button
+                                type="button"
+                                class="director-boton secundario"
+                                id="cerrar-detalle"
+                            >
+                                Cerrar detalle
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 3. REPORTES DE GESTIÓN
+            ================================================== -->
+
+            <section id="seccion-reportes" hidden>
+
+                <div class="director-titulo">
+
+                    <span class="director-etiqueta">
+                        Indicadores del establecimiento
+                    </span>
+
+                    <h1>Reportes de gestión</h1>
+
+                    <p>
+                        Indicadores de solicitudes, plazos
+                        y satisfacción correspondientes
+                        al establecimiento asignado.
+                    </p>
+
+                </div>
+
+
+                <!-- INDICADORES DE REPORTES -->
+
+                <div class="director-indicadores">
+
+                    <!-- SOLICITUDES -->
+
+                    <article class="director-indicador director-indicador-azul">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Solicitudes registradas</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <rect x="5" y="4" width="14" height="17" rx="2"/>
+                                    <path d="M9 4.5h6M9 9h6M9 13h6M9 17h4"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="reporte-total">0</strong>
+
+                    </article>
+
+
+                    <!-- RECLAMOS -->
+
+                    <article class="director-indicador director-indicador-amarillo">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Reclamos</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="M12 3 2.5 20h19z"/>
+                                    <path d="M12 9v5M12 17h.01"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="reporte-reclamos">0</strong>
+
+                    </article>
+
+
+                    <!-- ENCUESTAS -->
+
+                    <article class="director-indicador director-indicador-gris">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Encuestas</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <rect x="5" y="3" width="14" height="18" rx="2"/>
+                                    <path d="M9 8h6M9 12h6M9 16h3"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="reporte-encuestas">0</strong>
+
+                    </article>
+
+
+                    <!-- SATISFACCIÓN -->
+
+                    <article class="director-indicador director-indicador-verde">
+
+                        <div class="director-indicador-encabezado">
+
+                            <span>Satisfacción promedio</span>
+
+                            <div class="director-indicador-icono">
+
+                                <svg
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+                                    <path d="m12 2 3.1 6.3 7 1-5 4.9 1.2 6.9-6.3-3.3-6.3 3.3 1.2-6.9-5-4.9 7-1z"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="reporte-promedio">—</strong>
+
+                    </article>
+
+                </div>
+
+
+                <!-- SOLICITUDES POR TIPO -->
+
+                <div class="director-card">
+
+                    <h2>Solicitudes por tipo</h2>
+
+                    <p>
+                        Distribución de las solicitudes
+                        según su clasificación.
+                    </p>
+
+                    <div
+                        class="director-desglose"
+                        id="desglose-tipos"
+                    ></div>
+
+                </div>
+
+
+                <!-- SOLICITUDES POR ESTADO -->
+
+                <div class="director-card">
+
+                    <h2>Solicitudes por estado</h2>
+
+                    <p>
+                        Distribución de las etapas
+                        de gestión de las solicitudes.
+                    </p>
+
+                    <div
+                        class="director-desglose"
+                        id="desglose-estados"
+                    ></div>
+
+                </div>
+
+
+                <!-- SEGUIMIENTO DE PLAZOS -->
+
+                <div class="director-card">
+
+                    <h2>Seguimiento de plazos</h2>
+
+                    <p>
+                        Resumen de la situación de los reclamos
+                        del establecimiento.
+
+                        Los plazos son referenciales para
+                        este prototipo académico y no constituyen
+                        un cálculo administrativo oficial.
+                    </p>
+
+                    <div
+                        class="director-desglose"
+                        id="desglose-plazos"
+                    ></div>
+
+                </div>
+
+
+                <!-- AVISO ACADÉMICO -->
+
+                <div class="director-aviso">
+
+                    Los indicadores corresponden únicamente
+                    a registros de prueba almacenados
+                    en este navegador.
+
+                    No representan estadísticas oficiales
+                    de la institución.
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script
+        src="../static/js/dashboard-director.js"
+        defer
+    ></script>
+
+</body>
+
+</html>

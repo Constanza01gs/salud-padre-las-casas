@@ -1,0 +1,849 @@
+
+/* ==========================================================
+   PORTAL DE SALUD MUNICIPAL - PADRE LAS CASAS
+
+   ARCHIVO: establecimientos.css
+
+   ESTILOS EXCLUSIVOS DEL DIRECTORIO DE ESTABLECIMIENTOS
+
+   1. Encabezado
+   2. Directorio
+   3. Buscador y filtros
+   4. Tarjetas de establecimientos
+   5. Categorías por color
+   6. Ficha individual
+   7. Diseño responsive
+
+   Los estilos generales se encuentran en style.css.
+   ========================================================== */
+
+
+/* ==========================================================
+   1. ENCABEZADO DE LA PÁGINA
+   ========================================================== */
+
+.pagina-encabezado {
+    padding: 43px 0;
+    background: linear-gradient(
+        110deg,
+        #edf7fd,
+        #ffffff 65%,
+        #eef8f3
+    );
+    border-bottom: 1px solid var(--borde);
+}
+
+.migas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    font-size: .82rem;
+}
+
+.migas a {
+    color: var(--azul);
+}
+
+.migas a:hover {
+    text-decoration: underline;
+}
+
+.pagina-encabezado h1 {
+    margin: 12px 0;
+    color: #083e70;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.pagina-encabezado p {
+    max-width: 800px;
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   2. DIRECTORIO DE ESTABLECIMIENTOS
+   ========================================================== */
+
+.directorio-seccion {
+    padding: 55px 0 70px;
+    background: #ffffff;
+}
+
+.directorio-titulo {
+    margin-bottom: 14px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    line-height: 1.25;
+}
+
+.directorio-introduccion {
+    max-width: 850px;
+    margin-bottom: 28px;
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   3. BUSCADOR Y FILTROS
+   ========================================================== */
+
+/*
+   En computadores:
+   - Buscador a la izquierda.
+   - Filtros a la derecha.
+
+   En pantallas pequeñas:
+   - Buscador arriba.
+   - Filtros debajo.
+*/
+
+.directorio-controles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+
+/* ----------------------------------------------------------
+   BUSCADOR COMPACTO
+   ---------------------------------------------------------- */
+
+.directorio-buscador {
+    flex: 0 1 355px;
+    min-width: 260px;
+}
+
+.directorio-buscador label {
+    display: block;
+    margin-bottom: 8px;
+    color: #31556e;
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.directorio-campo-busqueda {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-height: 45px;
+    padding: 0 13px;
+
+    border: 1px solid #cbd8e5;
+    border-radius: 10px;
+    background: #ffffff;
+
+    transition:
+        border-color .2s,
+        box-shadow .2s;
+}
+
+.directorio-campo-busqueda:focus-within {
+    border-color: var(--azul);
+    box-shadow: 0 0 0 3px #b9e1f8;
+}
+
+.directorio-campo-busqueda .icono {
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+    color: #6a8295;
+}
+
+.directorio-campo-busqueda input {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    padding: 11px 0;
+
+    border: 0;
+    outline: none;
+    background: transparent;
+
+    color: var(--texto);
+    font: inherit;
+    font-size: .88rem;
+}
+
+.directorio-campo-busqueda input::placeholder {
+    color: #7c8f9e;
+}
+
+
+/* ----------------------------------------------------------
+   FILTROS POR CATEGORÍA
+   ---------------------------------------------------------- */
+
+.directorio-filtros {
+    display: flex;
+    flex: 1 1 auto;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.filtro-boton {
+    padding: 10px 15px;
+
+    border: 1px solid #d4e1ea;
+    border-radius: 30px;
+    background: #ffffff;
+
+    color: #31556e;
+    font: inherit;
+    font-size: .85rem;
+
+    cursor: pointer;
+
+    transition:
+        background .2s,
+        border-color .2s,
+        color .2s;
+}
+
+.filtro-boton:hover {
+    background: #eef7fd;
+    border-color: #b6d5e8;
+}
+
+.filtro-boton.activo {
+    background: #0b609d;
+    border-color: #0b609d;
+    color: #ffffff;
+}
+
+.filtro-boton:focus-visible {
+    outline: 3px solid #9bd5f4;
+    outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------
+   CONTADOR DE RESULTADOS
+   ---------------------------------------------------------- */
+
+.directorio-resultado {
+    margin-bottom: 20px;
+    color: var(--texto-secundario);
+    font-size: .87rem;
+}
+
+
+/* ==========================================================
+   4. TARJETAS DE ESTABLECIMIENTOS
+   ========================================================== */
+
+.establecimientos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.establecimiento-tarjeta {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+
+    overflow: hidden;
+
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    background: #ffffff;
+
+    box-shadow: var(--sombra);
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.establecimiento-tarjeta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(12, 50, 81, .12);
+}
+
+
+/* ----------------------------------------------------------
+   ESPACIO DE IMAGEN / ICONO PROVISIONAL
+   ---------------------------------------------------------- */
+
+/*
+   Por ahora mostramos el icono de edificio.
+
+   Más adelante, el JavaScript podrá incorporar
+   una imagen dentro de este mismo contenedor:
+
+   <img src="..." alt="...">
+
+   Así no será necesario modificar las tarjetas.
+*/
+
+.establecimiento-imagen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 155px;
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #e5f3fc,
+        #f5fbff 55%,
+        #e6f5ee
+    );
+}
+
+.establecimiento-imagen .icono {
+    width: 65px;
+    height: 65px;
+    color: #2379ae;
+}
+
+/* Estilo para fotografías futuras */
+
+.establecimiento-imagen img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* ----------------------------------------------------------
+   FONDOS SUAVES SEGÚN CATEGORÍA
+   ---------------------------------------------------------- */
+
+.establecimiento-tarjeta[data-tipo="rural"]
+.establecimiento-imagen {
+    background: linear-gradient(
+        135deg,
+        #e4f5eb,
+        #f7fcf8
+    );
+}
+
+.establecimiento-tarjeta[data-tipo="urgencia"]
+.establecimiento-imagen {
+    background: linear-gradient(
+        135deg,
+        #fff0e9,
+        #fffaf7
+    );
+}
+
+.establecimiento-tarjeta[data-tipo="rehabilitacion"]
+.establecimiento-imagen {
+    background: linear-gradient(
+        135deg,
+        #eeeafd,
+        #faf9ff
+    );
+}
+
+
+/* ----------------------------------------------------------
+   CONTENIDO DE LAS TARJETAS
+   ---------------------------------------------------------- */
+
+.establecimiento-cuerpo {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    padding: 22px;
+}
+
+.establecimiento-tarjeta h3 {
+    margin-bottom: 12px;
+    color: #083e70;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.establecimiento-dato {
+    margin-bottom: 9px;
+    color: var(--texto-secundario);
+    font-size: .87rem;
+    line-height: 1.6;
+}
+
+.establecimiento-dato strong {
+    color: #264c65;
+}
+
+.establecimiento-acciones {
+    margin-top: auto;
+    padding-top: 15px;
+}
+
+
+/* ==========================================================
+   5. ETIQUETAS DE CATEGORÍAS CON COLORES
+   ========================================================== */
+
+.establecimiento-categoria {
+    display: inline-block;
+    align-self: flex-start;
+
+    padding: 5px 10px;
+    margin-bottom: 13px;
+
+    border-radius: 20px;
+
+    font-size: .75rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+
+/* CESFAM - AZUL */
+
+.establecimiento-tarjeta[data-tipo="cesfam"]
+.establecimiento-categoria {
+    background: #e7f2ff;
+    color: #1e5e9e;
+}
+
+
+/* SALUD RURAL - VERDE */
+
+.establecimiento-tarjeta[data-tipo="rural"]
+.establecimiento-categoria {
+    background: #e4f5e9;
+    color: #237548;
+}
+
+
+/* URGENCIA - NARANJA */
+
+.establecimiento-tarjeta[data-tipo="urgencia"]
+.establecimiento-categoria {
+    background: #fff0df;
+    color: #a85a17;
+}
+
+
+/* REHABILITACIÓN - MORADO */
+
+.establecimiento-tarjeta[data-tipo="rehabilitacion"]
+.establecimiento-categoria {
+    background: #f0e9ff;
+    color: #7043a8;
+}
+
+
+/* ==========================================================
+   6. BOTÓN DE FICHA
+   ========================================================== */
+
+.boton-ficha {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    padding: 11px 16px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #0b609d;
+    color: #ffffff;
+
+    font: inherit;
+    font-size: .9rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: background .2s;
+}
+
+.boton-ficha:hover {
+    background: #084b7a;
+    color: #ffffff;
+}
+
+.boton-ficha:focus-visible {
+    outline: 3px solid #9bd5f4;
+    outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------
+   MENSAJE SIN RESULTADOS
+   ---------------------------------------------------------- */
+
+.directorio-vacio {
+    padding: 35px;
+
+    border: 1px dashed #c8d8e5;
+    border-radius: 12px;
+
+    color: var(--texto-secundario);
+    text-align: center;
+    line-height: 1.6;
+}
+
+
+/* ----------------------------------------------------------
+   AVISO DE VALIDACIÓN DE DATOS
+   ---------------------------------------------------------- */
+
+.directorio-nota {
+    margin-top: 28px;
+    color: var(--texto-secundario);
+    font-size: .82rem;
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   7. FICHA INDIVIDUAL
+   ========================================================== */
+
+.ficha-seccion {
+    padding: 45px 0 70px;
+    background: #ffffff;
+}
+
+
+/* ----------------------------------------------------------
+   VOLVER AL DIRECTORIO
+   ---------------------------------------------------------- */
+
+.volver-directorio {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 24px;
+    padding: 10px 0;
+
+    border: 0;
+    background: transparent;
+
+    color: var(--azul);
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.volver-directorio:hover {
+    text-decoration: underline;
+}
+
+.volver-directorio:focus-visible {
+    outline: 3px solid #9bd5f4;
+    outline-offset: 3px;
+}
+
+
+/* ----------------------------------------------------------
+   ENCABEZADO DE LA FICHA
+   ---------------------------------------------------------- */
+
+.ficha-cabecera {
+    padding: 32px;
+    margin-bottom: 25px;
+
+    border: 1px solid #d9e8f1;
+    border-radius: 16px;
+
+    background: linear-gradient(
+        110deg,
+        #eaf6fd,
+        #ffffff 65%,
+        #edf8f2
+    );
+}
+
+.ficha-cabecera h2 {
+    margin: 12px 0;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1.3;
+}
+
+.ficha-cabecera p {
+    max-width: 850px;
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+
+/* ----------------------------------------------------------
+   COLOR DE LA CATEGORÍA EN LA FICHA
+   ---------------------------------------------------------- */
+
+.ficha-categoria {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    font-size: .78rem;
+    font-weight: 700;
+}
+
+.ficha-categoria[data-tipo="cesfam"] {
+    background: #e7f2ff;
+    color: #1e5e9e;
+}
+
+.ficha-categoria[data-tipo="rural"] {
+    background: #e4f5e9;
+    color: #237548;
+}
+
+.ficha-categoria[data-tipo="urgencia"] {
+    background: #fff0df;
+    color: #a85a17;
+}
+
+.ficha-categoria[data-tipo="rehabilitacion"] {
+    background: #f0e9ff;
+    color: #7043a8;
+}
+
+
+/* ----------------------------------------------------------
+   DISTRIBUCIÓN DE LOS PANELES
+   ---------------------------------------------------------- */
+
+.ficha-grid {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 22px;
+}
+
+.ficha-panel {
+    min-width: 0;
+    padding: 28px;
+
+    border: 1px solid var(--borde);
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.ficha-panel h3 {
+    margin-bottom: 19px;
+    color: #083e70;
+    font-size: 1.2rem;
+}
+
+
+/* ----------------------------------------------------------
+   DATOS DEL ESTABLECIMIENTO
+   ---------------------------------------------------------- */
+
+.ficha-dato {
+    padding: 13px 0;
+    border-bottom: 1px solid #edf1f5;
+}
+
+.ficha-dato:last-child {
+    border-bottom: 0;
+}
+
+.ficha-dato dt {
+    margin-bottom: 6px;
+    color: #536d80;
+    font-size: .83rem;
+    font-weight: 700;
+}
+
+.ficha-dato dd {
+    margin: 0;
+    color: #243e51;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.ficha-dato a {
+    color: var(--azul);
+    text-decoration: underline;
+}
+
+.ficha-dato a:hover {
+    color: #084b7a;
+}
+
+
+/* ----------------------------------------------------------
+   AVISO ACADÉMICO
+   ---------------------------------------------------------- */
+
+.ficha-aviso {
+    margin-top: 20px;
+    padding: 15px;
+
+    border-radius: 10px;
+    background: #f2f7fa;
+
+    color: #506778;
+    font-size: .85rem;
+    line-height: 1.7;
+}
+
+
+/* ----------------------------------------------------------
+   ATENCIÓN CIUDADANA
+   ---------------------------------------------------------- */
+
+.ficha-panel-secundario p {
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+.ficha-panel-secundario .boton-ficha {
+    margin-top: 14px;
+}
+
+
+/* ==========================================================
+   8. VISIBILIDAD DE LAS SECCIONES
+   ========================================================== */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   9. DISEÑO RESPONSIVE
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   COMPUTADORES MEDIANOS Y TABLETS
+   ---------------------------------------------------------- */
+
+@media (max-width: 1100px) {
+
+    .directorio-controles {
+        align-items: flex-start;
+    }
+
+    .directorio-buscador {
+        flex: 1 1 100%;
+        max-width: 480px;
+    }
+
+    .directorio-filtros {
+        flex: 1 1 100%;
+        justify-content: flex-start;
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   TABLETS
+   ---------------------------------------------------------- */
+
+@media (max-width: 1000px) {
+
+    .establecimientos-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   TABLETS PEQUEÑAS
+   ---------------------------------------------------------- */
+
+@media (max-width: 750px) {
+
+    .ficha-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   CELULARES
+   ---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .pagina-encabezado {
+        padding: 30px 0;
+    }
+
+    .directorio-seccion,
+    .ficha-seccion {
+        padding: 35px 0;
+    }
+
+    .directorio-controles {
+        gap: 15px;
+    }
+
+    .directorio-buscador {
+        flex: 1 1 100%;
+        min-width: 0;
+        max-width: none;
+    }
+
+    .directorio-filtros {
+        justify-content: flex-start;
+        gap: 7px;
+    }
+
+    .filtro-boton {
+        padding: 9px 13px;
+        font-size: .82rem;
+    }
+
+    .establecimientos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ficha-cabecera,
+    .ficha-panel {
+        padding: 22px;
+    }
+
+    .establecimiento-imagen {
+        height: 165px;
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   CELULARES PEQUEÑOS
+   ---------------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+    .filtro-boton {
+        padding: 8px 11px;
+        font-size: .78rem;
+    }
+
+    .establecimiento-cuerpo {
+        padding: 19px;
+    }
+
+    .ficha-cabecera,
+    .ficha-panel {
+        padding: 18px;
+    }
+
+}

@@ -1,0 +1,546 @@
+
+/*
+============================================================
+PARTICIPACIÓN CIUDADANA
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+Estilos exclusivos de:
+
+1. Encabezado de la página.
+2. Canales de participación.
+3. Botones de acceso.
+4. Proceso de atención OIRS.
+5. Tipos de solicitud con iconos.
+6. Llamado a la participación.
+7. Diseño responsivo.
+
+Los estilos generales de navegación, buscador superior,
+encabezado institucional y footer se mantienen en style.css.
+
+============================================================
+*/
+
+
+/* =========================================================
+   1. ENCABEZADO DE LA PÁGINA
+   ========================================================= */
+
+.pagina-encabezado {
+    padding: 43px 0;
+    background: linear-gradient(
+        110deg,
+        #edf7fd,
+        #ffffff 65%,
+        #eef8f3
+    );
+    border-bottom: 1px solid var(--borde);
+}
+
+.migas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    font-size: 0.82rem;
+}
+
+.migas a {
+    color: var(--azul);
+}
+
+.pagina-encabezado h1 {
+    margin: 4px 0 10px;
+    color: #083e70;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+}
+
+.pagina-encabezado p {
+    max-width: 850px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   2. SECCIÓN DE CANALES DE PARTICIPACIÓN
+   ========================================================= */
+
+.participacion-seccion {
+    padding: 55px 0 65px;
+}
+
+.participacion-titulo {
+    margin: 12px 0 16px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+}
+
+.participacion-introduccion {
+    max-width: 900px;
+    margin-bottom: 30px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   3. CUADRÍCULA DE CANALES
+   ========================================================= */
+
+.participacion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.participacion-tarjeta {
+    display: flex;
+    flex-direction: column;
+    padding: 28px;
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: var(--sombra);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.participacion-tarjeta:hover {
+    transform: translateY(-3px);
+}
+
+
+/* =========================================================
+   4. ICONOS DE LOS CANALES
+   ========================================================= */
+
+.participacion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background: #e5f2fc;
+    color: #0b609d;
+}
+
+/* Encuesta: verde pastel */
+
+.participacion-tarjeta:nth-child(2) .participacion-icono {
+    background: #e3f5eb;
+    color: #008455;
+}
+
+/* Establecimientos: naranja pastel */
+
+.participacion-tarjeta:nth-child(3) .participacion-icono {
+    background: #fff0e2;
+    color: #b96608;
+}
+
+.participacion-icono .icono {
+    width: 32px;
+    height: 32px;
+}
+
+
+/* =========================================================
+   5. CONTENIDO DE LAS TARJETAS
+   ========================================================= */
+
+.participacion-tarjeta h3 {
+    margin-bottom: 12px;
+    color: #083e70;
+    font-size: 1.17rem;
+}
+
+.participacion-tarjeta p {
+    flex: 1;
+    margin-bottom: 20px;
+    color: var(--texto-secundario);
+    font-size: 0.91rem;
+}
+
+
+/* =========================================================
+   6. BOTONES DE PARTICIPACIÓN
+   ========================================================= */
+
+/*
+Se utiliza una regla específica para los enlaces con clase
+.participacion-boton, evitando que los estilos generales
+de los enlaces del portal oscurezcan el texto.
+*/
+
+a.participacion-boton,
+a.participacion-boton:link,
+a.participacion-boton:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 18px;
+    border: 1px solid #0b609d;
+    border-radius: 9px;
+    background: #0b609d;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+/* Mantener el texto blanco al pasar el cursor */
+
+a.participacion-boton:hover,
+a.participacion-boton:focus-visible {
+    border-color: #084b7a;
+    background: #084b7a;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+/* Botones secundarios */
+
+a.participacion-boton.secundario,
+a.participacion-boton.secundario:link,
+a.participacion-boton.secundario:visited {
+    border-color: #bdd6e6;
+    background: #ffffff;
+    color: #0b609d;
+    text-decoration: none;
+}
+
+a.participacion-boton.secundario:hover,
+a.participacion-boton.secundario:focus-visible {
+    border-color: #0b609d;
+    background: #eef7fd;
+    color: #084b7a;
+    text-decoration: none;
+}
+
+/* Accesibilidad al navegar con teclado */
+
+a.participacion-boton:focus-visible {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   7. SECCIÓN PROCESO DE ATENCIÓN OIRS
+   ========================================================= */
+
+.participacion-info {
+    padding: 55px 0;
+    background: #f5f9fc;
+}
+
+.participacion-info h2 {
+    margin: 12px 0 17px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.participacion-info > .contenedor > p {
+    max-width: 850px;
+    margin-bottom: 28px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   8. TARJETAS DEL PROCESO
+   ========================================================= */
+
+.participacion-pasos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.participacion-paso {
+    padding: 25px;
+    border: 1px solid #e0e9f0;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   9. CÍRCULOS NUMERADOS CON COLORES PASTEL
+   ========================================================= */
+
+.participacion-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    margin-bottom: 16px;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 1.15rem;
+}
+
+/* Paso 1: azul pastel */
+
+.participacion-paso:nth-child(1) .participacion-numero {
+    background: #e7f2ff;
+    color: #3265a2;
+}
+
+/* Paso 2: verde pastel */
+
+.participacion-paso:nth-child(2) .participacion-numero {
+    background: #e5f4ea;
+    color: #327a50;
+}
+
+/* Paso 3: lila pastel */
+
+.participacion-paso:nth-child(3) .participacion-numero {
+    background: #f2eafb;
+    color: #7953a2;
+}
+
+
+/* =========================================================
+   10. TEXTOS DEL PROCESO
+   ========================================================= */
+
+.participacion-paso h3 {
+    margin-bottom: 10px;
+    color: #083e70;
+    font-size: 1.05rem;
+}
+
+.participacion-paso p {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   11. AVISO DEL PROTOTIPO
+   ========================================================= */
+
+.participacion-aviso {
+    margin-top: 25px;
+    padding: 16px 19px;
+    border: 1px solid #dce8f0;
+    border-radius: 10px;
+    background: #f6fafc;
+    color: #536c7e;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   12. SECCIÓN TIPOS DE SOLICITUD
+   ========================================================= */
+
+.participacion-tipos {
+    padding: 55px 0;
+}
+
+.participacion-tipos h2 {
+    margin: 12px 0 17px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.participacion-tipos > .contenedor > p {
+    max-width: 850px;
+    margin-bottom: 27px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   13. TARJETAS DE TIPOS DE SOLICITUD
+   ========================================================= */
+
+.tipos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.tipo-tarjeta {
+    padding: 23px;
+    border: 1px solid var(--borde);
+    border-radius: 13px;
+    background: #ffffff;
+}
+/* Fondos pastel para los tipos de solicitud */
+.tipo-consulta {
+    background: linear-gradient(135deg, #f5f9ff, #edf5ff);
+    border-color: #dce8f5;
+}
+
+.tipo-reclamo {
+    background: linear-gradient(135deg, #fff8f6, #fdf0ed);
+    border-color: #f2dfda;
+}
+
+.tipo-sugerencia {
+    background: linear-gradient(135deg, #fffcf5, #fff6e5);
+    border-color: #f3e8d0;
+}
+
+.tipo-felicitacion {
+    background: linear-gradient(135deg, #f5fcf7, #eaf7ee);
+    border-color: #dcede1;
+}
+
+.tipo-tarjeta h3 {
+    margin-bottom: 10px;
+    color: #083e70;
+    font-size: 1.06rem;
+}
+
+.tipo-tarjeta p {
+    color: var(--texto-secundario);
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   14. ICONOS DE LOS TIPOS DE SOLICITUD
+   ========================================================= */
+
+.tipo-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    border-radius: 13px;
+}
+
+.tipo-icono .icono {
+    width: 27px;
+    height: 27px;
+}
+
+/* Consulta: azul pastel */
+
+.tipo-consulta .tipo-icono {
+    background: #e7f2ff;
+    color: #3265a2;
+}
+
+/* Reclamo: coral pastel */
+
+.tipo-reclamo .tipo-icono {
+    background: #fcebe8;
+    color: #b85a48;
+}
+
+/* Sugerencia: amarillo pastel */
+
+.tipo-sugerencia .tipo-icono {
+    background: #fff2da;
+    color: #a87220;
+}
+
+/* Felicitación: verde pastel */
+
+.tipo-felicitacion .tipo-icono {
+    background: #e5f4ea;
+    color: #327a50;
+}
+
+
+/* =========================================================
+   15. SECCIÓN FINAL DE PARTICIPACIÓN
+   ========================================================= */
+
+.participacion-destacado {
+    padding: 55px 0;
+    background: linear-gradient(
+        110deg,
+        #edf8fd,
+        #f9fcff 55%,
+        #edf8f3
+    );
+}
+
+.participacion-destacado h2 {
+    margin: 12px 0 15px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 3vw, 2rem);
+}
+
+.participacion-destacado p {
+    max-width: 850px;
+    margin-bottom: 22px;
+    color: var(--texto-secundario);
+}
+
+
+/* =========================================================
+   16. BOTONES DE LA SECCIÓN FINAL
+   ========================================================= */
+
+.participacion-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* =========================================================
+   17. DISEÑO RESPONSIVO
+   ========================================================= */
+
+/* Tablets */
+
+@media (max-width: 950px) {
+
+    .participacion-grid,
+    .participacion-pasos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* Teléfonos móviles */
+
+@media (max-width: 600px) {
+
+    .pagina-encabezado,
+    .participacion-seccion,
+    .participacion-info,
+    .participacion-tipos,
+    .participacion-destacado {
+        padding: 35px 0;
+    }
+
+    .participacion-grid,
+    .participacion-pasos,
+    .tipos-grid {
+        grid-template-columns: 1fr;
+    }
+
+    a.participacion-boton {
+        width: 100%;
+    }
+
+    .participacion-acciones {
+        flex-direction: column;
+    }
+
+}

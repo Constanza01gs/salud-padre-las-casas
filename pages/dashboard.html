@@ -1,0 +1,1536 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel OIRS | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- ESTILOS TEMPORALES: SE UNIFICARÁN AL FINAL -->
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f3f7fa;
+        }
+
+        .panel-superior {
+            background: #fff;
+            border-bottom: 1px solid #dce6ed;
+        }
+
+        .panel-superior-contenido {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 1450px;
+            margin: auto;
+            padding: 15px 25px;
+        }
+
+        .panel-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #083e70;
+            text-decoration: none;
+        }
+
+        .panel-logo img {
+            max-width: 210px;
+            max-height: 62px;
+            object-fit: contain;
+        }
+
+        .panel-superior-acciones {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .panel-usuario {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 3px;
+        }
+
+        .panel-usuario strong {
+            color: #083e70;
+            font-size: .91rem;
+        }
+
+        .panel-usuario span {
+            color: #64798a;
+            font-size: .79rem;
+        }
+
+        .panel-salir {
+            padding: 10px 15px;
+            border: 1px solid #d1dfe9;
+            border-radius: 8px;
+            background: #fff;
+            color: #0b609d;
+            font: inherit;
+            font-size: .86rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .panel-salir:hover {
+            background: #eef7fd;
+        }
+
+        .panel-distribucion {
+            display: grid;
+            grid-template-columns: 245px minmax(0, 1fr);
+            min-height: calc(100vh - 95px);
+        }
+
+        .panel-lateral {
+            padding: 27px 15px;
+            background: #083e70;
+            color: #fff;
+        }
+
+        .panel-lateral-titulo {
+            margin: 0 12px 23px;
+            color: #c1d9e9;
+            font-size: .72rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .panel-navegacion {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .panel-enlace {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            width: 100%;
+            padding: 13px 15px;
+            border: 0;
+            border-radius: 9px;
+            background: transparent;
+            color: #dcebf5;
+            font: inherit;
+            font-size: .89rem;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .panel-enlace:hover,
+        .panel-enlace.activo {
+            background: #155c8d;
+            color: #fff;
+        }
+
+        .panel-enlace svg {
+            width: 19px;
+            height: 19px;
+            flex-shrink: 0;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .panel-contenido {
+            min-width: 0;
+            padding: 35px;
+        }
+
+        .panel-encabezado {
+            margin-bottom: 27px;
+        }
+
+        .panel-encabezado h1 {
+            margin-bottom: 9px;
+            color: #083e70;
+            font-size: clamp(1.7rem, 3vw, 2.25rem);
+        }
+
+        .panel-encabezado p {
+            color: #64798a;
+            font-size: .92rem;
+        }
+
+        .panel-etiqueta {
+            display: inline-block;
+            margin-bottom: 11px;
+            padding: 6px 11px;
+            border-radius: 20px;
+            background: #e4f2fb;
+            color: #0b609d;
+            font-size: .75rem;
+            font-weight: 700;
+        }
+
+        .panel-indicadores {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 18px;
+            margin-bottom: 27px;
+        }
+
+        .panel-indicador {
+            padding: 23px;
+            border: 1px solid #dfe8ee;
+            border-radius: 13px;
+            background: #fff;
+        }
+
+        .panel-indicador span {
+            display: block;
+            margin-bottom: 12px;
+            color: #64798a;
+            font-size: .85rem;
+        }
+
+        .panel-indicador strong {
+            color: #083e70;
+            font-size: 2rem;
+        }
+
+        .panel-tarjeta {
+            margin-bottom: 23px;
+            padding: 25px;
+            border: 1px solid #dfe8ee;
+            border-radius: 13px;
+            background: #fff;
+        }
+
+        .panel-tarjeta h2 {
+            margin-bottom: 9px;
+            color: #083e70;
+            font-size: 1.3rem;
+        }
+
+        .panel-tarjeta > p {
+            margin-bottom: 19px;
+            color: #64798a;
+            font-size: .89rem;
+        }
+
+        .panel-herramientas {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 19px;
+        }
+
+        .panel-herramientas input,
+        .panel-herramientas select {
+            min-width: 170px;
+            padding: 11px 13px;
+            border: 1px solid #d1dfe9;
+            border-radius: 8px;
+            background: #fff;
+            color: #264c65;
+            font: inherit;
+            font-size: .87rem;
+        }
+
+        .panel-herramientas input {
+            flex: 1;
+        }
+
+        .panel-tabla-contenedor {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        .panel-tabla {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        .panel-tabla th {
+            padding: 14px 12px;
+            border-bottom: 2px solid #e1e9ef;
+            background: #f5f9fc;
+            color: #49677a;
+            font-size: .8rem;
+            white-space: nowrap;
+        }
+
+        .panel-tabla td {
+            padding: 15px 12px;
+            border-bottom: 1px solid #e8eef2;
+            color: #405d70;
+            font-size: .84rem;
+            vertical-align: middle;
+        }
+
+        .panel-tabla td:first-child {
+            color: #0b609d;
+            font-weight: 700;
+        }
+
+        .panel-estado {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 20px;
+            background: #e7f2fc;
+            color: #0b609d;
+            font-size: .75rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .panel-estado.en-proceso {
+            background: #fff3db;
+            color: #926006;
+        }
+
+        .panel-estado.respondida {
+            background: #e8f6ed;
+            color: #21754a;
+        }
+
+        .panel-estado.cerrada {
+            background: #e9edf1;
+            color: #546575;
+        }
+
+        .panel-boton {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 15px;
+            border: 1px solid #0b609d;
+            border-radius: 8px;
+            background: #0b609d;
+            color: #fff;
+            font: inherit;
+            font-size: .83rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .panel-boton:hover {
+            background: #084b7a;
+        }
+
+        .panel-boton.secundario {
+            border-color: #cbd8e5;
+            background: #fff;
+            color: #0b609d;
+        }
+
+        .panel-vacio {
+            padding: 30px;
+            color: #64798a;
+            text-align: center;
+            font-size: .91rem;
+        }
+
+        .panel-detalle {
+            margin-top: 22px;
+            padding: 23px;
+            border: 1px solid #dce8f0;
+            border-radius: 12px;
+            background: #f7fbfd;
+        }
+
+        .panel-detalle h3 {
+            margin-bottom: 17px;
+            color: #083e70;
+        }
+
+        .panel-detalle-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 15px;
+        }
+
+        .panel-detalle-campo strong {
+            display: block;
+            margin-bottom: 5px;
+            color: #456579;
+            font-size: .8rem;
+        }
+
+        .panel-detalle-campo p {
+            color: #28485d;
+            font-size: .88rem;
+            overflow-wrap: anywhere;
+            white-space: pre-wrap;
+        }
+
+        .panel-detalle-campo.completo {
+            grid-column: 1 / -1;
+        }
+
+        .panel-aviso {
+            padding: 17px;
+            border: 1px solid #f1d4aa;
+            border-radius: 10px;
+            background: #fff9ed;
+            color: #79551c;
+            font-size: .85rem;
+        }
+
+        .panel-accesos {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        .panel-acceso {
+            padding: 21px;
+            border: 1px solid #dfe8ee;
+            border-radius: 11px;
+            background: #f9fcfe;
+        }
+
+        .panel-acceso h3 {
+            margin-bottom: 9px;
+            color: #083e70;
+            font-size: 1rem;
+        }
+
+        .panel-acceso p {
+            margin-bottom: 16px;
+            color: #64798a;
+            font-size: .84rem;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        @media (max-width: 1100px) {
+            .panel-indicadores {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .panel-accesos {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 780px) {
+            .panel-distribucion {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-lateral {
+                padding: 15px;
+            }
+
+            .panel-navegacion {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+
+            .panel-enlace {
+                width: auto;
+            }
+
+            .panel-contenido {
+                padding: 23px 15px;
+            }
+
+            .panel-superior-contenido {
+                padding: 13px 15px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .panel-indicadores,
+            .panel-accesos,
+            .panel-detalle-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .panel-tarjeta {
+                padding: 18px;
+            }
+
+            .panel-usuario {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ENCABEZADO INTERNO -->
+<header class="panel-superior">
+
+    <div class="panel-superior-contenido">
+
+        <a href="../index.html"
+           class="panel-logo"
+           aria-label="Ir al portal ciudadano">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Salud Municipal Padre Las Casas">
+
+        </a>
+
+        <div class="panel-superior-acciones">
+
+            <div class="panel-usuario">
+                <strong id="nombre-usuario">Funcionario</strong>
+                <span id="rol-usuario">Sistema OIRS</span>
+            </div>
+
+            <button type="button"
+                    class="panel-salir"
+                    id="boton-cerrar-sesion">
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </div>
+
+</header>
+
+<div class="panel-distribucion">
+
+    <!-- MENÚ LATERAL -->
+    <aside class="panel-lateral">
+
+        <p class="panel-lateral-titulo">
+            Gestión interna
+        </p>
+
+        <nav class="panel-navegacion"
+             id="panel-navegacion"
+             aria-label="Menú interno">
+
+            <button type="button"
+                    class="panel-enlace activo"
+                    data-seccion="inicio">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="3" y="3" width="7" height="7" rx="1"/>
+                    <rect x="14" y="3" width="7" height="7" rx="1"/>
+                    <rect x="3" y="14" width="7" height="7" rx="1"/>
+                    <rect x="14" y="14" width="7" height="7" rx="1"/>
+                </svg>
+
+                Panel principal
+            </button>
+
+            <button type="button"
+                    class="panel-enlace"
+                    data-seccion="solicitudes">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 3h9l4 4v14H8z"/>
+                    <path d="M17 3v5h4M11 12h7M11 16h7"/>
+                </svg>
+
+                Solicitudes OIRS
+            </button>
+
+            <button type="button"
+                    class="panel-enlace"
+                    data-seccion="reportes">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 20V10M10 20V5M16 20v-8M22 20V3"/>
+                </svg>
+
+                Reportes
+            </button>
+
+            <button type="button"
+                    class="panel-enlace"
+                    id="enlace-administracion"
+                    data-seccion="administracion"
+                    hidden>
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="12" cy="12" r="3"/>
+                    <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/>
+                </svg>
+
+                Administración
+            </button>
+
+            <a href="../index.html"
+               class="panel-enlace">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m3 10 9-7 9 7M5 9v12h14V9M9 21v-8h6v8"/>
+                </svg>
+
+                Portal ciudadano
+            </a>
+
+        </nav>
+
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="panel-contenido">
+
+        <!-- INICIO -->
+        <section id="seccion-inicio">
+
+            <div class="panel-encabezado">
+
+                <span class="panel-etiqueta">
+                    Sistema interno OIRS · Prototipo
+                </span>
+
+                <h1 id="titulo-panel">
+                    Panel de gestión
+                </h1>
+
+                <p id="descripcion-panel">
+                    Consulta las solicitudes y los indicadores disponibles.
+                </p>
+
+            </div>
+
+            <div class="panel-indicadores">
+
+                <article class="panel-indicador">
+                    <span>Total de solicitudes</span>
+                    <strong id="indicador-total">0</strong>
+                </article>
+
+                <article class="panel-indicador">
+                    <span>Ingresadas</span>
+                    <strong id="indicador-ingresadas">0</strong>
+                </article>
+
+                <article class="panel-indicador">
+                    <span>En proceso</span>
+                    <strong id="indicador-proceso">0</strong>
+                </article>
+
+                <article class="panel-indicador">
+                    <span>Respondidas o cerradas</span>
+                    <strong id="indicador-finalizadas">0</strong>
+                </article>
+
+            </div>
+
+            <div class="panel-tarjeta">
+
+                <h2>Resumen de solicitudes recientes</h2>
+
+                <p>
+                    Se muestran las solicitudes registradas
+                    en este navegador que corresponden
+                    al alcance del perfil seleccionado.
+                </p>
+
+                <div class="panel-tabla-contenedor">
+                    <table class="panel-tabla">
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Tipo</th>
+                                <th>Establecimiento</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabla-recientes"></tbody>
+                    </table>
+                </div>
+
+            </div>
+
+            <div class="panel-tarjeta">
+
+                <h2>Accesos rápidos</h2>
+
+                <p>
+                    Funciones disponibles para continuar
+                    con la demostración.
+                </p>
+
+                <div class="panel-accesos">
+
+                    <div class="panel-acceso">
+                        <h3>Solicitudes OIRS</h3>
+                        <p>
+                            Consulta los registros,
+                            filtra solicitudes y revisa sus detalles.
+                        </p>
+
+                        <button type="button"
+                                class="panel-boton"
+                                data-ir="solicitudes">
+                            Ver solicitudes
+                        </button>
+                    </div>
+
+                    <div class="panel-acceso">
+                        <h3>Reportes</h3>
+                        <p>
+                            Revisa los indicadores
+                            de solicitudes y encuestas.
+                        </p>
+
+                        <button type="button"
+                                class="panel-boton"
+                                data-ir="reportes">
+                            Ver reportes
+                        </button>
+                    </div>
+
+                    <div class="panel-acceso">
+                        <h3>Portal ciudadano</h3>
+                        <p>
+                            Regresa al portal público
+                            para ingresar solicitudes de prueba.
+                        </p>
+
+                        <a href="oirs.html"
+                           class="panel-boton">
+                            Ir a OIRS
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SOLICITUDES -->
+        <section id="seccion-solicitudes" hidden>
+
+            <div class="panel-encabezado">
+                <span class="panel-etiqueta">
+                    Gestión de solicitudes
+                </span>
+
+                <h1>Solicitudes OIRS</h1>
+
+                <p>
+                    Consulta y filtra los registros
+                    disponibles para tu perfil.
+                </p>
+            </div>
+
+            <div class="panel-tarjeta">
+
+                <h2>Listado de solicitudes</h2>
+
+                <p>
+                    Selecciona una solicitud para visualizar
+                    sus antecedentes e historial.
+                </p>
+
+                <div class="panel-herramientas">
+
+                    <input type="search"
+                           id="filtro-busqueda"
+                           placeholder="Buscar por folio, asunto o establecimiento..."
+                           aria-label="Buscar solicitudes">
+
+                    <select id="filtro-tipo"
+                            aria-label="Filtrar por tipo">
+                        <option value="">Todos los tipos</option>
+                        <option value="Consulta">Consulta</option>
+                        <option value="Reclamo">Reclamo</option>
+                        <option value="Sugerencia">Sugerencia</option>
+                        <option value="Felicitación">Felicitación</option>
+                    </select>
+
+                    <select id="filtro-estado"
+                            aria-label="Filtrar por estado">
+                        <option value="">Todos los estados</option>
+                        <option value="Ingresada">Ingresada</option>
+                        <option value="En proceso">En proceso</option>
+                        <option value="Derivada">Derivada</option>
+                        <option value="Respondida">Respondida</option>
+                        <option value="Cerrada">Cerrada</option>
+                    </select>
+
+                </div>
+
+                <div class="panel-tabla-contenedor">
+
+                    <table class="panel-tabla">
+
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Tipo</th>
+                                <th>Establecimiento</th>
+                                <th>Asunto</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabla-solicitudes"></tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- DETALLE -->
+                <div class="panel-detalle"
+                     id="detalle-solicitud"
+                     hidden>
+
+                    <h3>Detalle de solicitud</h3>
+
+                    <div class="panel-detalle-grid"
+                         id="detalle-solicitud-contenido"></div>
+
+                    <div class="panel-acciones-detalle"
+                         style="margin-top: 22px;">
+
+                        <button type="button"
+                                class="panel-boton secundario"
+                                id="boton-cerrar-detalle">
+                            Cerrar detalle
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- REPORTES -->
+        <section id="seccion-reportes" hidden>
+
+            <div class="panel-encabezado">
+
+                <span class="panel-etiqueta">
+                    Indicadores de gestión
+                </span>
+
+                <h1>Reportes y estadísticas</h1>
+
+                <p>
+                    Resumen demostrativo de solicitudes OIRS
+                    y encuestas de satisfacción.
+                </p>
+
+            </div>
+
+            <div class="panel-indicadores">
+
+                <article class="panel-indicador">
+                    <span>Solicitudes visibles</span>
+                    <strong id="reporte-solicitudes">0</strong>
+                </article>
+
+                <article class="panel-indicador">
+                    <span>Reclamos</span>
+                    <strong id="reporte-reclamos">0</strong>
+                </article>
+
+                <article class="panel-indicador">
+                    <span>Encuestas recibidas</span>
+                    <strong id="reporte-encuestas">0</strong>
+                </article>
+
+                <article class="panel-indicador">
+                    <span>Satisfacción promedio (1 a 5)</span>
+                    <strong id="reporte-promedio">—</strong>
+                </article>
+
+            </div>
+
+            <div class="panel-tarjeta">
+
+                <h2>Alcance de los indicadores</h2>
+
+                <p id="texto-alcance-reportes"></p>
+
+                <div class="panel-aviso">
+                    Estos indicadores corresponden únicamente
+                    a registros de prueba almacenados
+                    en el navegador. No representan
+                    estadísticas oficiales.
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ADMINISTRACIÓN -->
+        <section id="seccion-administracion" hidden>
+
+            <div class="panel-encabezado">
+
+                <span class="panel-etiqueta">
+                    Configuración del sistema
+                </span>
+
+                <h1>Administración</h1>
+
+                <p>
+                    Área destinada al perfil administrador
+                    del sistema OIRS.
+                </p>
+
+            </div>
+
+            <div class="panel-tarjeta">
+
+                <h2>Funciones administrativas</h2>
+
+                <p>
+                    En las siguientes etapas del prototipo
+                    implementaremos las pantallas de gestión
+                    de usuarios, perfiles, establecimientos
+                    y parámetros del sistema.
+                </p>
+
+                <div class="panel-aviso">
+                    Esta sección es una vista preliminar.
+                    La administración real de usuarios
+                    requiere autenticación, autorización
+                    y almacenamiento seguro en un backend.
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- JAVASCRIPT DEL DASHBOARD -->
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    // ====================================================
+    // CLAVES DE ALMACENAMIENTO
+    // ====================================================
+
+    const CLAVE_SESION = "plc_oirs_sesion_demo_v1";
+    const CLAVE_SOLICITUDES = "plc_oirs_solicitudes_demo_v1";
+    const CLAVE_ENCUESTAS = "plc_encuestas_demo_v1";
+
+    // ====================================================
+    // RECUPERAR SESIÓN
+    // ====================================================
+
+    let sesion = null;
+
+    try {
+        sesion = JSON.parse(
+            sessionStorage.getItem(CLAVE_SESION) || "null"
+        );
+    } catch (error) {
+        sesion = null;
+    }
+
+    const rolesPermitidos = [
+        "OIRS_ESTABLECIMIENTO",
+        "OIRS_DSM",
+        "DIRECTOR",
+        "ADMINISTRADOR"
+    ];
+
+    if (!sesion || !rolesPermitidos.includes(sesion.rol)) {
+        window.location.replace("login.html");
+        return;
+    }
+
+    // ====================================================
+    // ELEMENTOS
+    // ====================================================
+
+    const nombreUsuario = document.getElementById("nombre-usuario");
+    const rolUsuario = document.getElementById("rol-usuario");
+    const tituloPanel = document.getElementById("titulo-panel");
+    const descripcionPanel = document.getElementById("descripcion-panel");
+
+    const tablaRecientes = document.getElementById("tabla-recientes");
+    const tablaSolicitudes = document.getElementById("tabla-solicitudes");
+
+    const filtroBusqueda = document.getElementById("filtro-busqueda");
+    const filtroTipo = document.getElementById("filtro-tipo");
+    const filtroEstado = document.getElementById("filtro-estado");
+
+    const detalleSolicitud = document.getElementById("detalle-solicitud");
+    const detalleContenido = document.getElementById("detalle-solicitud-contenido");
+
+    const enlaceAdministracion = document.getElementById(
+        "enlace-administracion"
+    );
+
+    // ====================================================
+    // CONFIGURAR PERFIL
+    // ====================================================
+
+    nombreUsuario.textContent = sesion.nombre;
+    rolUsuario.textContent = sesion.rolNombre;
+
+    const titulos = {
+        OIRS_ESTABLECIMIENTO: "Panel OIRS de establecimiento",
+        OIRS_DSM: "Panel OIRS del Departamento de Salud",
+        DIRECTOR: "Panel de dirección",
+        ADMINISTRADOR: "Panel de administración"
+    };
+
+    const descripciones = {
+        OIRS_ESTABLECIMIENTO:
+            "Solicitudes correspondientes a " + sesion.establecimiento + ".",
+
+        OIRS_DSM:
+            "Visión general de las solicitudes de la red de salud municipal.",
+
+        DIRECTOR:
+            "Seguimiento de solicitudes e indicadores de " +
+            sesion.establecimiento + ".",
+
+        ADMINISTRADOR:
+            "Vista general y configuración del prototipo OIRS."
+    };
+
+    tituloPanel.textContent = titulos[sesion.rol];
+    descripcionPanel.textContent = descripciones[sesion.rol];
+
+    enlaceAdministracion.hidden = sesion.rol !== "ADMINISTRADOR";
+
+    // ====================================================
+    // LECTURA DE REGISTROS
+    // ====================================================
+
+    function leerArreglo(clave) {
+
+        try {
+
+            const datos = JSON.parse(
+                localStorage.getItem(clave) || "[]"
+            );
+
+            return Array.isArray(datos) ? datos : [];
+
+        } catch (error) {
+            return [];
+        }
+    }
+
+    function solicitudesVisibles() {
+
+        const todas = leerArreglo(CLAVE_SOLICITUDES);
+
+        if (
+            sesion.rol === "OIRS_ESTABLECIMIENTO" ||
+            sesion.rol === "DIRECTOR"
+        ) {
+
+            return todas.filter(function (solicitud) {
+                return solicitud.establecimiento === sesion.establecimiento;
+            });
+        }
+
+        return todas;
+    }
+
+    function encuestasVisibles() {
+
+        const todas = leerArreglo(CLAVE_ENCUESTAS);
+
+        if (
+            sesion.rol === "OIRS_ESTABLECIMIENTO" ||
+            sesion.rol === "DIRECTOR"
+        ) {
+
+            return todas.filter(function (encuesta) {
+                return encuesta.establecimiento === sesion.establecimiento;
+            });
+        }
+
+        return todas;
+    }
+
+    function formatearFecha(fecha) {
+
+        if (!fecha) return "Sin fecha";
+
+        const objeto = new Date(fecha);
+
+        return Number.isNaN(objeto.getTime())
+            ? "Sin fecha"
+            : objeto.toLocaleDateString("es-CL");
+    }
+
+    function crearCelda(fila, texto) {
+
+        const celda = document.createElement("td");
+        celda.textContent = texto ?? "—";
+        fila.appendChild(celda);
+
+        return celda;
+    }
+
+    function crearEstado(estado) {
+
+        const etiqueta = document.createElement("span");
+
+        etiqueta.className = "panel-estado";
+
+        etiqueta.textContent = estado || "Ingresada";
+
+        if (estado === "En proceso" || estado === "Derivada") {
+            etiqueta.classList.add("en-proceso");
+        }
+
+        if (estado === "Respondida") {
+            etiqueta.classList.add("respondida");
+        }
+
+        if (estado === "Cerrada") {
+            etiqueta.classList.add("cerrada");
+        }
+
+        return etiqueta;
+    }
+
+    // ====================================================
+    // INDICADORES
+    // ====================================================
+
+    function actualizarIndicadores() {
+
+        const solicitudes = solicitudesVisibles();
+
+        document.getElementById("indicador-total").textContent =
+            solicitudes.length;
+
+        document.getElementById("indicador-ingresadas").textContent =
+            solicitudes.filter(function (s) {
+                return s.estado === "Ingresada";
+            }).length;
+
+        document.getElementById("indicador-proceso").textContent =
+            solicitudes.filter(function (s) {
+                return s.estado === "En proceso" ||
+                       s.estado === "Derivada";
+            }).length;
+
+        document.getElementById("indicador-finalizadas").textContent =
+            solicitudes.filter(function (s) {
+                return s.estado === "Respondida" ||
+                       s.estado === "Cerrada";
+            }).length;
+    }
+
+    // ====================================================
+    // TABLA DE SOLICITUDES RECIENTES
+    // ====================================================
+
+    function renderizarRecientes() {
+
+        tablaRecientes.innerHTML = "";
+
+        const solicitudes = solicitudesVisibles()
+            .slice()
+            .sort(function (a, b) {
+                return new Date(b.fechaRegistro) -
+                       new Date(a.fechaRegistro);
+            })
+            .slice(0, 5);
+
+        if (solicitudes.length === 0) {
+
+            const fila = document.createElement("tr");
+            const celda = document.createElement("td");
+
+            celda.colSpan = 5;
+            celda.className = "panel-vacio";
+            celda.textContent =
+                "No hay solicitudes registradas para este perfil.";
+
+            fila.appendChild(celda);
+            tablaRecientes.appendChild(fila);
+            return;
+        }
+
+        solicitudes.forEach(function (solicitud) {
+
+            const fila = document.createElement("tr");
+
+            crearCelda(fila, solicitud.folio);
+            crearCelda(fila, solicitud.tipo);
+            crearCelda(fila, solicitud.establecimiento);
+
+            const celdaEstado = document.createElement("td");
+            celdaEstado.appendChild(crearEstado(solicitud.estado));
+            fila.appendChild(celdaEstado);
+
+            crearCelda(fila, formatearFecha(solicitud.fechaRegistro));
+
+            tablaRecientes.appendChild(fila);
+        });
+    }
+
+    // ====================================================
+    // TABLA GENERAL Y FILTROS
+    // ====================================================
+
+    function renderizarSolicitudes() {
+
+        tablaSolicitudes.innerHTML = "";
+
+        const busqueda = filtroBusqueda.value.trim().toLowerCase();
+        const tipo = filtroTipo.value;
+        const estado = filtroEstado.value;
+
+        const solicitudes = solicitudesVisibles()
+            .filter(function (solicitud) {
+
+                const texto = [
+                    solicitud.folio,
+                    solicitud.asunto,
+                    solicitud.establecimiento
+                ].join(" ").toLowerCase();
+
+                return (
+                    texto.includes(busqueda) &&
+                    (!tipo || solicitud.tipo === tipo) &&
+                    (!estado || solicitud.estado === estado)
+                );
+
+            })
+            .sort(function (a, b) {
+                return new Date(b.fechaRegistro) -
+                       new Date(a.fechaRegistro);
+            });
+
+        if (solicitudes.length === 0) {
+
+            const fila = document.createElement("tr");
+            const celda = document.createElement("td");
+
+            celda.colSpan = 6;
+            celda.className = "panel-vacio";
+            celda.textContent =
+                "No se encontraron solicitudes con los filtros seleccionados.";
+
+            fila.appendChild(celda);
+            tablaSolicitudes.appendChild(fila);
+
+            detalleSolicitud.hidden = true;
+
+            return;
+        }
+
+        solicitudes.forEach(function (solicitud) {
+
+            const fila = document.createElement("tr");
+
+            crearCelda(fila, solicitud.folio);
+            crearCelda(fila, solicitud.tipo);
+            crearCelda(fila, solicitud.establecimiento);
+            crearCelda(fila, solicitud.asunto);
+
+            const celdaEstado = document.createElement("td");
+            celdaEstado.appendChild(crearEstado(solicitud.estado));
+            fila.appendChild(celdaEstado);
+
+            const celdaAccion = document.createElement("td");
+
+            const boton = document.createElement("button");
+            boton.type = "button";
+            boton.className = "panel-boton";
+            boton.textContent = "Ver detalle";
+
+            boton.addEventListener("click", function () {
+                mostrarDetalle(solicitud.folio);
+            });
+
+            celdaAccion.appendChild(boton);
+            fila.appendChild(celdaAccion);
+
+            tablaSolicitudes.appendChild(fila);
+
+        });
+    }
+
+    // ====================================================
+    // DETALLE DE SOLICITUD
+    // ====================================================
+
+    function agregarCampoDetalle(etiqueta, valor, completo = false) {
+
+        const contenedor = document.createElement("div");
+        contenedor.className = "panel-detalle-campo";
+
+        if (completo) {
+            contenedor.classList.add("completo");
+        }
+
+        const titulo = document.createElement("strong");
+        titulo.textContent = etiqueta;
+
+        const texto = document.createElement("p");
+        texto.textContent = valor || "—";
+
+        contenedor.appendChild(titulo);
+        contenedor.appendChild(texto);
+
+        detalleContenido.appendChild(contenedor);
+    }
+
+    function mostrarDetalle(folio) {
+
+        const solicitud = solicitudesVisibles().find(function (s) {
+            return s.folio === folio;
+        });
+
+        if (!solicitud) {
+            detalleSolicitud.hidden = true;
+            return;
+        }
+
+        detalleContenido.innerHTML = "";
+
+        agregarCampoDetalle("Folio", solicitud.folio);
+        agregarCampoDetalle("Tipo", solicitud.tipo);
+        agregarCampoDetalle("Establecimiento", solicitud.establecimiento);
+        agregarCampoDetalle("Estado", solicitud.estado);
+        agregarCampoDetalle("Fecha de ingreso", formatearFecha(solicitud.fechaRegistro));
+        agregarCampoDetalle("Origen", solicitud.origen);
+        agregarCampoDetalle("Asunto", solicitud.asunto, true);
+        agregarCampoDetalle("Descripción", solicitud.descripcion, true);
+
+        if (sesion.rol !== "DIRECTOR") {
+
+            agregarCampoDetalle(
+                "Solicitante",
+                [solicitud.nombre, solicitud.apellido].join(" ")
+            );
+
+            agregarCampoDetalle("Correo", solicitud.correo);
+            agregarCampoDetalle("Teléfono", solicitud.telefono);
+        }
+
+        agregarCampoDetalle(
+            "Respuesta registrada",
+            solicitud.respuesta || "Pendiente",
+            true
+        );
+
+        const historial = Array.isArray(solicitud.historial)
+            ? solicitud.historial
+            : [];
+
+        const textoHistorial = historial.map(function (evento) {
+
+            return (
+                formatearFecha(evento.fecha) +
+                " · " +
+                (evento.accion || "Evento") +
+                " · " +
+                (evento.detalle || "")
+            );
+
+        }).join("\n");
+
+        agregarCampoDetalle(
+            "Historial",
+            textoHistorial || "Sin movimientos",
+            true
+        );
+
+        detalleSolicitud.hidden = false;
+
+        detalleSolicitud.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    }
+
+    document.getElementById(
+        "boton-cerrar-detalle"
+    ).addEventListener("click", function () {
+        detalleSolicitud.hidden = true;
+    });
+
+    filtroBusqueda.addEventListener("input", renderizarSolicitudes);
+    filtroTipo.addEventListener("change", renderizarSolicitudes);
+    filtroEstado.addEventListener("change", renderizarSolicitudes);
+
+    // ====================================================
+    // REPORTES
+    // ====================================================
+
+    function actualizarReportes() {
+
+        const solicitudes = solicitudesVisibles();
+        const encuestas = encuestasVisibles();
+
+        const reclamos = solicitudes.filter(function (s) {
+            return s.tipo === "Reclamo";
+        }).length;
+
+        const valores = encuestas
+            .map(function (encuesta) {
+                return Number(encuesta.satisfaccionGeneral);
+            })
+            .filter(function (valor) {
+                return Number.isFinite(valor) &&
+                       valor >= 1 &&
+                       valor <= 5;
+            });
+
+        const promedio = valores.length
+            ? valores.reduce(function (total, valor) {
+                return total + valor;
+            }, 0) / valores.length
+            : null;
+
+        document.getElementById("reporte-solicitudes").textContent =
+            solicitudes.length;
+
+        document.getElementById("reporte-reclamos").textContent =
+            reclamos;
+
+        document.getElementById("reporte-encuestas").textContent =
+            encuestas.length;
+
+        document.getElementById("reporte-promedio").textContent =
+            promedio === null ? "—" : promedio.toFixed(1);
+
+        const alcance = (
+            sesion.rol === "OIRS_ESTABLECIMIENTO" ||
+            sesion.rol === "DIRECTOR"
+        )
+            ? "Los indicadores corresponden a " +
+              sesion.establecimiento + "."
+            : "Los indicadores incluyen los establecimientos " +
+              "registrados en el prototipo.";
+
+        document.getElementById(
+            "texto-alcance-reportes"
+        ).textContent = alcance;
+    }
+
+    // ====================================================
+    // NAVEGACIÓN INTERNA
+    // ====================================================
+
+    const secciones = [
+        "inicio",
+        "solicitudes",
+        "reportes",
+        "administracion"
+    ];
+
+    function mostrarSeccion(nombre) {
+
+        if (!secciones.includes(nombre)) {
+            return;
+        }
+
+        if (
+            nombre === "administracion" &&
+            sesion.rol !== "ADMINISTRADOR"
+        ) {
+            return;
+        }
+
+        secciones.forEach(function (seccion) {
+
+            document.getElementById(
+                "seccion-" + seccion
+            ).hidden = seccion !== nombre;
+
+        });
+
+        document.querySelectorAll(
+            ".panel-enlace[data-seccion]"
+        ).forEach(function (boton) {
+
+            boton.classList.toggle(
+                "activo",
+                boton.dataset.seccion === nombre
+            );
+
+        });
+
+        if (nombre === "inicio") {
+            actualizarIndicadores();
+            renderizarRecientes();
+        }
+
+        if (nombre === "solicitudes") {
+            renderizarSolicitudes();
+        }
+
+        if (nombre === "reportes") {
+            actualizarReportes();
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
+
+    document.querySelectorAll(
+        "[data-seccion], [data-ir]"
+    ).forEach(function (elemento) {
+
+        elemento.addEventListener("click", function () {
+
+            const destino =
+                elemento.dataset.seccion ||
+                elemento.dataset.ir;
+
+            mostrarSeccion(destino);
+
+        });
+
+    });
+
+    // ====================================================
+    // CERRAR SESIÓN
+    // ====================================================
+
+    document.getElementById(
+        "boton-cerrar-sesion"
+    ).addEventListener("click", function () {
+
+        sessionStorage.removeItem(CLAVE_SESION);
+
+        window.location.replace("login.html");
+
+    });
+
+    // ====================================================
+    // CARGA INICIAL
+    // ====================================================
+
+    mostrarSeccion("inicio");
+
+});
+</script>
+
+</body>
+</html>

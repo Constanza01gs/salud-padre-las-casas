@@ -1,0 +1,1042 @@
+
+/*
+============================================================
+DASHBOARD - ADMINISTRADOR DEL SISTEMA
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+Estilos específicos del panel administrativo.
+
+Incluye:
+1. Encabezado institucional.
+2. Menú lateral.
+3. Contenido principal.
+4. Indicadores con iconos.
+5. Tarjetas.
+6. Formularios.
+7. Tablas.
+8. Botones de acciones horizontales.
+9. Mensajes y estados.
+10. Detalle e historial de solicitudes.
+11. Diseño responsive.
+
+============================================================
+*/
+
+
+/* ==========================================================
+   1. VARIABLES DEL PANEL
+========================================================== */
+
+:root {
+    --admin-azul: #0b609d;
+    --admin-azul-oscuro: #083e70;
+    --admin-azul-lateral: #103e67;
+    --admin-fondo: #f3f7fb;
+    --admin-borde: #dce6ee;
+    --admin-texto: #243e52;
+    --admin-secundario: #617789;
+    --admin-sombra: 0 5px 22px rgba(17, 59, 91, 0.055);
+}
+
+
+/* ==========================================================
+   2. BASE DEL PANEL
+========================================================== */
+
+body {
+    margin: 0;
+    background: var(--admin-fondo);
+    color: var(--admin-texto);
+    font-family: inherit;
+}
+
+.admin-layout {
+    display: grid;
+    grid-template-columns: 265px minmax(0, 1fr);
+    min-height: calc(100vh - 90px);
+}
+
+
+/* ==========================================================
+   3. ENCABEZADO SUPERIOR
+========================================================== */
+
+.admin-topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    min-height: 90px;
+    padding: 14px 35px;
+
+    border-bottom: 1px solid var(--admin-borde);
+    background: #ffffff;
+}
+
+.admin-topbar > img {
+    display: block;
+    width: auto;
+    max-width: 360px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+.admin-usuario {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-usuario-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+}
+
+.admin-usuario-info strong {
+    color: var(--admin-azul-oscuro);
+    font-size: 0.92rem;
+}
+
+.admin-usuario-info span {
+    color: var(--admin-secundario);
+    font-size: 0.78rem;
+}
+
+.admin-salir {
+    padding: 10px 16px;
+    border: 1px solid #d2e0ea;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--admin-azul);
+    font: inherit;
+    font-size: 0.84rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.admin-salir:hover {
+    background: #eef6fc;
+}
+
+
+/* ==========================================================
+   4. MENÚ LATERAL
+========================================================== */
+
+.admin-sidebar {
+    padding: 28px 15px;
+    background: var(--admin-azul-lateral);
+    color: #ffffff;
+}
+
+.admin-sidebar-titulo {
+    margin: 0 12px 23px;
+    color: #d2e5f5;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.admin-menu button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 13px 14px;
+    border: 0;
+    border-radius: 9px;
+    background: transparent;
+    color: #e3eff8;
+    font: inherit;
+    font-size: 0.88rem;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-menu-icono {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    stroke: currentColor;
+}
+
+.admin-menu button span {
+    min-width: 0;
+    line-height: 1.35;
+}
+
+.admin-menu button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(2px);
+}
+
+.admin-menu button.activo {
+    background: #ffffff;
+    color: var(--admin-azul-oscuro);
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==========================================================
+   5. CONTENIDO PRINCIPAL
+========================================================== */
+
+.admin-main {
+    min-width: 0;
+    padding: 36px;
+    max-width: 1700px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.admin-main > section[hidden] {
+    display: none !important;
+}
+
+.admin-titulo {
+    margin-bottom: 28px;
+}
+
+.admin-etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #e5f1fb;
+    color: #175d91;
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.admin-titulo h1 {
+    margin: 0 0 10px;
+    color: var(--admin-azul-oscuro);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    line-height: 1.2;
+}
+
+.admin-titulo p {
+    color: var(--admin-secundario);
+    font-size: 0.92rem;
+}
+
+
+/* ==========================================================
+   6. INDICADORES DEL PANEL PRINCIPAL
+========================================================== */
+
+.admin-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.admin-indicador {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    min-height: 165px;
+    padding: 22px;
+    border: 1px solid var(--admin-borde);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: var(--admin-sombra);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.admin-indicador:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 9px 26px rgba(17, 59, 91, 0.10);
+}
+
+/* ICONOS EN LOS INDICADORES */
+
+.admin-indicador-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+    background: #e7f2ff;
+    color: #286ca3;
+}
+
+.admin-indicador-icono svg {
+    width: 23px;
+    height: 23px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.admin-indicador > span {
+    margin-bottom: 10px;
+    color: var(--admin-secundario);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.admin-indicador > strong {
+    margin-top: auto;
+    color: var(--admin-azul-oscuro);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+
+
+/* ==========================================================
+   7. TARJETAS DE CONTENIDO
+========================================================== */
+
+.admin-card {
+    margin-bottom: 24px;
+    padding: 28px;
+    border: 1px solid var(--admin-borde);
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: var(--admin-sombra);
+}
+
+.admin-card h2 {
+    margin: 0 0 17px;
+    color: var(--admin-azul-oscuro);
+    font-size: 1.2rem;
+}
+
+.admin-card > p {
+    margin-bottom: 18px;
+    color: var(--admin-secundario);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   8. BOTONES GENERALES
+========================================================== */
+
+.admin-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.admin-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 17px;
+    border: 1px solid var(--admin-azul);
+    border-radius: 8px;
+    background: var(--admin-azul);
+    color: #ffffff;
+    font: inherit;
+    font-size: 0.86rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-boton:hover {
+    background: #084b7a;
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(11, 96, 157, 0.15);
+}
+
+.admin-boton:active {
+    transform: translateY(0);
+}
+
+.admin-boton.secundario {
+    border-color: #ccdce8;
+    background: #ffffff;
+    color: var(--admin-azul);
+}
+
+.admin-boton.secundario:hover {
+    background: #edf6fc;
+    color: var(--admin-azul-oscuro);
+}
+
+
+/* ==========================================================
+   9. FORMULARIOS
+========================================================== */
+
+.admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.admin-campo {
+    min-width: 0;
+}
+
+.admin-campo.completo {
+    grid-column: 1 / -1;
+}
+
+.admin-campo label {
+    display: block;
+    margin-bottom: 9px;
+    color: #294c66;
+    font-size: 0.87rem;
+    font-weight: 700;
+}
+
+.admin-campo input,
+.admin-campo select,
+.admin-campo textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #cbd8e5;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--admin-texto);
+    font: inherit;
+    font-size: 0.9rem;
+    box-sizing: border-box;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.admin-campo textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+.admin-campo input:focus,
+.admin-campo select:focus,
+.admin-campo textarea:focus {
+    outline: none;
+    border-color: var(--admin-azul);
+    box-shadow: 0 0 0 3px rgba(11, 96, 157, 0.12);
+}
+
+.admin-campo input:disabled,
+.admin-campo select:disabled,
+.admin-campo textarea:disabled {
+    background: #f0f4f7;
+    color: #7a8995;
+    cursor: not-allowed;
+}
+
+.admin-ayuda {
+    margin-top: 8px;
+    color: var(--admin-secundario);
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   10. FILTROS Y BÚSQUEDAS
+========================================================== */
+
+.admin-filtros {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.admin-filtros input,
+.admin-filtros select {
+    min-width: 190px;
+    padding: 11px 13px;
+    border: 1px solid #cbd8e5;
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--admin-texto);
+    font: inherit;
+    font-size: 0.86rem;
+    box-sizing: border-box;
+}
+
+.admin-filtros input {
+    flex: 1;
+}
+
+.admin-filtros input:focus,
+.admin-filtros select:focus {
+    outline: none;
+    border-color: var(--admin-azul);
+    box-shadow: 0 0 0 3px rgba(11, 96, 157, 0.12);
+}
+
+
+/* ==========================================================
+   11. TABLAS
+========================================================== */
+
+.admin-tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid #e1eaf1;
+    border-radius: 10px;
+}
+
+.admin-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--admin-texto);
+    font-size: 0.85rem;
+}
+
+.admin-tabla th {
+    padding: 14px 13px;
+    border-bottom: 1px solid #d9e5ee;
+    background: #f2f7fb;
+    color: #31546e;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.admin-tabla td {
+    padding: 14px 13px;
+    border-bottom: 1px solid #e5edf3;
+    vertical-align: middle;
+}
+
+.admin-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-tabla tbody tr:hover {
+    background: #fafcfe;
+}
+
+.admin-tabla td[colspan] {
+    padding: 25px 15px;
+    color: var(--admin-secundario);
+    text-align: center;
+}
+
+
+/* ==========================================================
+   12. ACCIONES HORIZONTALES EN TABLAS
+========================================================== */
+
+/*
+Los botones Editar e Inactivar / Activar
+se mostrarán uno al lado del otro.
+
+Esta clase se utiliza desde dashboard-admin.js
+al construir las filas de las tablas.
+*/
+
+.admin-acciones-tabla {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.admin-acciones-tabla button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    padding: 8px 11px;
+    border: 1px solid #cbd9e5;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #31556f;
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.admin-acciones-tabla button:hover {
+    background: #eef6fc;
+}
+
+.admin-acciones-tabla .admin-accion-peligro {
+    border-color: #f0c5c2;
+    color: #a63e36;
+}
+
+.admin-acciones-tabla .admin-accion-peligro:hover {
+    background: #fff0ef;
+}
+
+.admin-acciones-tabla .admin-accion-activar {
+    border-color: #b7dcc6;
+    color: #287448;
+}
+
+.admin-acciones-tabla .admin-accion-activar:hover {
+    background: #eaf7ef;
+}
+
+
+/* ==========================================================
+   13. ESTADOS Y ETIQUETAS
+========================================================== */
+
+.admin-estado {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.admin-estado.activo {
+    background: #e5f5eb;
+    color: #267448;
+}
+
+.admin-estado.inactivo {
+    background: #f2f4f6;
+    color: #697783;
+}
+
+.admin-estado.pendiente,
+.admin-estado.ingresada {
+    background: #fff4dc;
+    color: #916317;
+}
+
+.admin-estado.proceso,
+.admin-estado.derivada {
+    background: #e7f2ff;
+    color: #1e5e9e;
+}
+
+.admin-estado.respondida,
+.admin-estado.cerrada {
+    background: #e5f5eb;
+    color: #267448;
+}
+
+
+/* ==========================================================
+   14. MENSAJES DEL SISTEMA
+========================================================== */
+
+.admin-mensaje {
+    margin-top: 17px;
+    padding: 13px 15px;
+    border: 1px solid #b9dec8;
+    border-radius: 9px;
+    background: #edf8f1;
+    color: #246d44;
+    font-size: 0.86rem;
+    line-height: 1.5;
+}
+
+.admin-mensaje.error {
+    border-color: #efc4c0;
+    background: #fff0ef;
+    color: #a13b33;
+}
+
+.admin-aviso {
+    padding: 17px 20px;
+    border: 1px solid #f0d7aa;
+    border-radius: 10px;
+    background: #fff9ed;
+    color: #79551c;
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   15. DETALLE DE SOLICITUDES
+========================================================== */
+
+.admin-detalle {
+    margin-top: 28px;
+    padding: 24px;
+    border: 1px solid #dce8f0;
+    border-radius: 12px;
+    background: #f9fcfe;
+}
+
+.admin-detalle h3 {
+    margin: 0 0 17px;
+    color: var(--admin-azul-oscuro);
+    font-size: 1.05rem;
+}
+
+.admin-detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+}
+
+.admin-detalle-grid > div {
+    min-width: 0;
+    padding: 13px;
+    border: 1px solid #e1ebf2;
+    border-radius: 8px;
+    background: #ffffff;
+    overflow-wrap: anywhere;
+}
+
+.admin-detalle-grid strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #31546e;
+    font-size: 0.8rem;
+}
+
+.admin-detalle-grid p,
+.admin-detalle-grid span {
+    margin: 0;
+    color: var(--admin-secundario);
+    font-size: 0.87rem;
+    line-height: 1.6;
+}
+
+.admin-historial {
+    padding-left: 22px;
+    color: var(--admin-secundario);
+    font-size: 0.87rem;
+    line-height: 1.8;
+}
+
+.admin-historial li {
+    margin-bottom: 9px;
+}
+
+
+/* ==========================================================
+   16. ACCESIBILIDAD Y ELEMENTOS OCULTOS
+========================================================== */
+
+.admin-menu button:focus-visible,
+.admin-boton:focus-visible,
+.admin-salir:focus-visible,
+.admin-acciones-tabla button:focus-visible {
+    outline: 3px solid #a7d7f4;
+    outline-offset: 3px;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   17. DISEÑO RESPONSIVE
+========================================================== */
+
+/* Pantallas medianas y notebooks */
+
+@media (max-width: 1200px) {
+
+    .admin-layout {
+        grid-template-columns: 235px minmax(0, 1fr);
+    }
+
+    .admin-main {
+        padding: 28px;
+    }
+
+    .admin-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .admin-card {
+        padding: 24px;
+    }
+
+}
+
+
+/* Tablets */
+
+@media (max-width: 900px) {
+
+    .admin-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-sidebar {
+        padding: 16px 20px;
+    }
+
+    .admin-sidebar-titulo {
+        margin: 0 0 14px;
+    }
+
+    .admin-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .admin-menu button {
+        width: auto;
+        flex: 0 1 auto;
+        padding: 11px 13px;
+    }
+
+    .admin-menu button:hover {
+        transform: none;
+    }
+
+    .admin-main {
+        max-width: none;
+        padding: 26px;
+    }
+
+    .admin-topbar {
+        padding: 14px 24px;
+    }
+
+    .admin-topbar > img {
+        max-width: 290px;
+    }
+
+}
+
+
+/* Celulares */
+
+@media (max-width: 600px) {
+
+    .admin-topbar {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+        padding: 17px;
+    }
+
+    .admin-topbar > img {
+        max-width: 260px;
+        max-height: 60px;
+    }
+
+    .admin-usuario {
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .admin-usuario-info {
+        text-align: left;
+    }
+
+    .admin-sidebar {
+        padding: 15px;
+    }
+
+    .admin-menu {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 5px;
+    }
+
+    .admin-menu button {
+        width: 100%;
+        padding: 12px;
+    }
+
+    .admin-main {
+        padding: 18px 14px;
+    }
+
+    .admin-titulo {
+        margin-bottom: 22px;
+    }
+
+    .admin-titulo h1 {
+        font-size: 1.65rem;
+    }
+
+    .admin-indicadores {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .admin-indicador {
+        min-height: 135px;
+        padding: 19px;
+    }
+
+    .admin-card {
+        padding: 18px;
+        margin-bottom: 18px;
+    }
+
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .admin-campo.completo {
+        grid-column: auto;
+    }
+
+    .admin-filtros {
+        flex-direction: column;
+    }
+
+    .admin-filtros input,
+    .admin-filtros select {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .admin-acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .admin-acciones .admin-boton {
+        width: 100%;
+    }
+
+    .admin-detalle {
+        padding: 17px;
+    }
+
+    .admin-detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-tabla {
+        min-width: 650px;
+    }
+
+}
+
+
+/* ==========================================================
+   18. AJUSTES FINALES
+========================================================== */
+
+/* Evitar desbordamientos en el contenido */
+
+.admin-main,
+.admin-card,
+.admin-detalle {
+    min-width: 0;
+}
+
+/* Mejorar la distribución de textos extensos */
+
+.admin-card p,
+.admin-detalle p,
+.admin-dato p {
+    overflow-wrap: anywhere;
+}
+
+/* Mantener el tamaño de los iconos del menú */
+
+.admin-menu svg {
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Respetar la preferencia de movimiento reducido */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .admin-menu button,
+    .admin-indicador,
+    .admin-boton {
+        transition: none;
+    }
+
+    .admin-menu button:hover,
+    .admin-indicador:hover,
+    .admin-boton:hover {
+        transform: none;
+    }
+
+}
+
+
+/* ==========================================
+   TIPOGRAFÍA DEL ADMINISTRADOR GENERAL
+========================================== */
+
+body,
+button,
+input,
+select,
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ==========================================
+   COLORES DE ICONOS - PANEL PRINCIPAL
+========================================== */
+
+/* 1. Usuarios activos - Azul */
+.admin-indicador:nth-child(1) .admin-indicador-icono {
+    background-color: #e8f1ff;
+    color: #2563eb;
+}
+
+/* 2. Establecimientos activos - Verde */
+.admin-indicador:nth-child(2) .admin-indicador-icono {
+    background-color: #e7f7ee;
+    color: #16834a;
+}
+
+/* 3. Solicitudes registradas - Morado */
+.admin-indicador:nth-child(3) .admin-indicador-icono {
+    background-color: #f0eaff;
+    color: #7c3aed;
+}
+
+/* 4. Solicitudes pendientes - Naranja */
+.admin-indicador:nth-child(4) .admin-indicador-icono {
+    background-color: #fff2df;
+    color: #d97706;
+}
+
+/* Los SVG utilizan el color de su contenedor */
+.admin-indicador-icono svg {
+    stroke: currentColor;
+}

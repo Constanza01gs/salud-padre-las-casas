@@ -1,0 +1,996 @@
+
+/*
+============================================================
+DASHBOARD DE GESTIÓN DE CONTENIDOS
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+Prototipo académico OIRS.
+
+Secciones:
+1. Variables y estilos generales
+2. Encabezado institucional
+3. Estructura y menú lateral
+4. Títulos
+5. Indicadores
+6. Tarjetas
+7. Formularios
+8. Botones
+9. Tablas
+10. Estados
+11. Filtros
+12. Vista previa
+13. Historial
+14. Gestión de establecimientos
+15. Mensajes
+16. Diseño adaptable
+============================================================
+*/
+
+
+/* ============================================================
+   1. VARIABLES GENERALES
+============================================================ */
+
+:root {
+    --gc-azul-oscuro: #083e70;
+    --gc-azul: #0b609d;
+    --gc-azul-hover: #084b7a;
+    --gc-azul-claro: #e3f1fb;
+
+    --gc-fondo: #f3f7fa;
+    --gc-blanco: #ffffff;
+    --gc-borde: #dfe8ee;
+
+    --gc-texto: #29475b;
+    --gc-texto-secundario: #657d8d;
+
+    --gc-gris: #64748b;
+    --gc-gris-fondo: #edf1f5;
+
+    --gc-verde: #287548;
+    --gc-verde-fondo: #e5f4e9;
+
+    --gc-amarillo: #98610d;
+    --gc-amarillo-fondo: #fff3d9;
+
+    --gc-rojo: #a63c32;
+    --gc-rojo-fondo: #fae9e6;
+
+    --gc-radio: 13px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--gc-fondo);
+    color: var(--gc-texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   2. ENCABEZADO INSTITUCIONAL
+============================================================ */
+
+.gc-topbar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 94px;
+    padding: 14px 28px;
+    background: var(--gc-blanco);
+    border-bottom: 1px solid var(--gc-borde);
+}
+
+.gc-topbar img {
+    display: block;
+    width: auto;
+    max-width: 210px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+.gc-usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.gc-usuario-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.gc-usuario-info strong {
+    color: var(--gc-azul-oscuro);
+    font-size: 0.91rem;
+}
+
+.gc-usuario-info span {
+    color: var(--gc-texto-secundario);
+    font-size: 0.79rem;
+}
+
+.gc-salir {
+    padding: 11px 16px;
+    border: 1px solid #d1dfe9;
+    border-radius: 8px;
+    background: var(--gc-blanco);
+    color: var(--gc-azul);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.gc-salir:hover {
+    background: #edf7fd;
+}
+
+
+/* ============================================================
+   3. ESTRUCTURA PRINCIPAL
+============================================================ */
+
+.gc-layout {
+    display: grid;
+    grid-template-columns: 255px minmax(0, 1fr);
+    min-height: calc(100vh - 94px);
+}
+
+.gc-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 94px);
+    padding: 28px 15px;
+    background: var(--gc-azul-oscuro);
+    color: var(--gc-blanco);
+}
+
+.gc-sidebar-titulo {
+    margin: 0 13px 25px;
+    color: #bdd8e9;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.gc-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.gc-menu button {
+    width: 100%;
+    padding: 13px 15px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #e2eef7;
+    font-size: 0.88rem;
+    text-align: left;
+}
+
+.gc-menu button:hover,
+.gc-menu button.activo {
+    background: #155c8d;
+    color: var(--gc-blanco);
+}
+
+.gc-menu button.activo {
+    font-weight: 700;
+}
+
+.gc-main {
+    width: 100%;
+    min-width: 0;
+    max-width: 1700px;
+    padding: 35px;
+}
+
+.gc-main > section {
+    width: 100%;
+}
+
+
+/* ============================================================
+   4. TÍTULOS
+============================================================ */
+
+.gc-titulo {
+    margin-bottom: 26px;
+}
+
+.gc-etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--gc-azul-claro);
+    color: var(--gc-azul);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.gc-titulo h1 {
+    margin: 0 0 9px;
+    color: var(--gc-azul-oscuro);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    line-height: 1.25;
+}
+
+.gc-titulo p {
+    margin: 0;
+    color: var(--gc-texto-secundario);
+    font-size: 0.91rem;
+}
+
+
+/* ============================================================
+   5. INDICADORES PRINCIPALES
+============================================================ */
+
+.gc-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin-bottom: 25px;
+}
+
+.gc-indicador {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 135px;
+    padding: 23px;
+    border: 1px solid var(--gc-borde);
+    border-radius: var(--gc-radio);
+    background: var(--gc-blanco);
+}
+
+.gc-indicador-encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 13px;
+}
+
+.gc-indicador-encabezado > span {
+    color: var(--gc-texto-secundario);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.gc-indicador-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    padding: 9px;
+    border-radius: 11px;
+    background: var(--gc-azul-claro);
+    color: var(--gc-azul);
+}
+
+.gc-indicador-icono svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.gc-indicador strong {
+    display: block;
+    color: var(--gc-azul-oscuro);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+
+/* ============================================================
+   6. COLORES DE INDICADORES
+============================================================ */
+
+/* Total de contenidos */
+
+.gc-indicador-azul .gc-indicador-icono {
+    background: var(--gc-azul-claro);
+    color: var(--gc-azul);
+}
+
+/* Contenidos publicados */
+
+.gc-indicador-verde .gc-indicador-icono {
+    background: var(--gc-verde-fondo);
+    color: var(--gc-verde);
+}
+
+/* Borradores */
+
+.gc-indicador-amarillo .gc-indicador-icono {
+    background: var(--gc-amarillo-fondo);
+    color: var(--gc-amarillo);
+}
+
+/* Noticias publicadas */
+
+.gc-indicador-gris .gc-indicador-icono {
+    background: var(--gc-gris-fondo);
+    color: var(--gc-gris);
+}
+
+
+/* ============================================================
+   7. TARJETAS GENERALES
+============================================================ */
+
+.gc-card {
+    min-width: 0;
+    margin-bottom: 23px;
+    padding: 25px;
+    border: 1px solid var(--gc-borde);
+    border-radius: var(--gc-radio);
+    background: var(--gc-blanco);
+}
+
+.gc-card h2 {
+    margin: 0 0 10px;
+    color: var(--gc-azul-oscuro);
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.gc-card h3 {
+    margin: 20px 0 12px;
+    color: var(--gc-azul-oscuro);
+    font-size: 1.04rem;
+}
+
+.gc-card > p {
+    margin: 0 0 20px;
+    color: var(--gc-texto-secundario);
+    font-size: 0.89rem;
+}
+
+
+/* ============================================================
+   8. FORMULARIOS
+============================================================ */
+
+.gc-formulario {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+    margin-bottom: 20px;
+}
+
+.gc-campo {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 7px;
+}
+
+.gc-campo label,
+.gc-formulario label {
+    color: #456579;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.gc-campo input,
+.gc-campo select,
+.gc-campo textarea,
+.gc-formulario input,
+.gc-formulario select,
+.gc-formulario textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #cbd8e5;
+    border-radius: 8px;
+    outline: none;
+    background: var(--gc-blanco);
+    color: var(--gc-texto);
+    font-size: 0.89rem;
+}
+
+.gc-campo textarea,
+.gc-formulario textarea {
+    min-height: 115px;
+    resize: vertical;
+}
+
+.gc-campo input:focus,
+.gc-campo select:focus,
+.gc-campo textarea:focus,
+.gc-formulario input:focus,
+.gc-formulario select:focus,
+.gc-formulario textarea:focus {
+    border-color: var(--gc-azul);
+    box-shadow: 0 0 0 3px rgba(11, 96, 157, 0.12);
+}
+
+.gc-campo input::placeholder,
+.gc-campo textarea::placeholder {
+    color: #8a9bab;
+}
+
+.gc-campo.completo,
+.gc-campo.gc-completo,
+.gc-formulario .completo {
+    grid-column: 1 / -1;
+}
+
+.gc-formulario small,
+.gc-campo small {
+    color: var(--gc-texto-secundario);
+    font-size: 0.78rem;
+}
+
+
+/* ============================================================
+   9. BOTONES
+============================================================ */
+
+.gc-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 11px;
+    margin-top: 20px;
+}
+
+.gc-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 17px;
+    border: 1px solid var(--gc-azul);
+    border-radius: 8px;
+    background: var(--gc-azul);
+    color: var(--gc-blanco);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.gc-boton:hover {
+    background: var(--gc-azul-hover);
+    border-color: var(--gc-azul-hover);
+}
+
+.gc-boton.secundario {
+    border-color: #ccdce7;
+    background: var(--gc-blanco);
+    color: var(--gc-azul);
+}
+
+.gc-boton.secundario:hover {
+    background: #edf7fd;
+}
+
+.gc-boton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.gc-acciones-tabla {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.gc-acciones-tabla .gc-boton {
+    padding: 8px 12px;
+    font-size: 0.79rem;
+}
+
+.gc-boton:focus-visible,
+.gc-salir:focus-visible,
+.gc-menu button:focus-visible {
+    outline: 3px solid #80b9f0;
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   10. TABLAS
+============================================================ */
+
+.gc-tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--gc-borde);
+    border-radius: 9px;
+}
+
+.gc-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--gc-blanco);
+    font-size: 0.84rem;
+    text-align: left;
+}
+
+.gc-tabla th {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--gc-borde);
+    background: #f5f9fc;
+    color: #49677a;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.gc-tabla td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e8eef2;
+    color: var(--gc-texto);
+    font-size: 0.84rem;
+    vertical-align: middle;
+}
+
+.gc-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.gc-tabla tbody tr:hover {
+    background: #f9fbfe;
+}
+
+.gc-tabla td:first-child {
+    color: var(--gc-azul);
+    font-weight: 700;
+}
+
+.gc-tabla td[colspan] {
+    color: var(--gc-texto-secundario);
+    font-weight: 400;
+    text-align: center;
+}
+
+
+/* ============================================================
+   11. ESTADOS DE PUBLICACIÓN
+============================================================ */
+
+.gc-estado {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: var(--gc-amarillo-fondo);
+    color: var(--gc-amarillo);
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+.gc-estado.publicado {
+    background: var(--gc-verde-fondo);
+    color: var(--gc-verde);
+}
+
+.gc-estado.borrador {
+    background: var(--gc-amarillo-fondo);
+    color: var(--gc-amarillo);
+}
+
+
+/* ============================================================
+   12. FILTROS Y BÚSQUEDA
+============================================================ */
+
+.gc-filtros {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.gc-filtros input,
+.gc-filtros select {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #cbd8e5;
+    border-radius: 8px;
+    outline: none;
+    background: var(--gc-blanco);
+    color: var(--gc-texto);
+    font-size: 0.89rem;
+}
+
+.gc-filtros input:focus,
+.gc-filtros select:focus {
+    border-color: var(--gc-azul);
+    box-shadow: 0 0 0 3px rgba(11, 96, 157, 0.12);
+}
+
+
+/* ============================================================
+   13. VISTA PREVIA
+============================================================ */
+
+.gc-vista-previa,
+.gc-detalle {
+    margin-top: 22px;
+    padding: 23px;
+    border: 1px solid var(--gc-borde);
+    border-radius: 12px;
+    background: #f8fbfd;
+}
+
+.gc-vista-previa h3,
+.gc-detalle h3 {
+    margin: 0 0 13px;
+    color: var(--gc-azul-oscuro);
+    font-size: 1.08rem;
+}
+
+.gc-vista-previa p,
+.gc-detalle p {
+    color: var(--gc-texto);
+    font-size: 0.88rem;
+    line-height: 1.75;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.gc-vista-previa small,
+.gc-detalle small {
+    display: block;
+    margin-top: 9px;
+    color: var(--gc-texto-secundario);
+    font-size: 0.77rem;
+}
+
+
+/* ============================================================
+   14. HISTORIAL DE MODIFICACIONES
+============================================================ */
+
+.gc-historial {
+    margin: 15px 0 0;
+    padding-left: 25px;
+}
+
+.gc-historial li {
+    padding: 0 0 18px 8px;
+    color: var(--gc-texto);
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+.gc-historial li:last-child {
+    padding-bottom: 0;
+}
+
+.gc-historial strong {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--gc-azul-oscuro);
+}
+
+.gc-historial small {
+    display: block;
+    color: var(--gc-texto-secundario);
+    font-size: 0.76rem;
+}
+
+
+/* ============================================================
+   15. GESTIÓN DE ESTABLECIMIENTOS
+============================================================ */
+
+.gc-establecimientos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.gc-establecimiento-item {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--gc-borde);
+    border-radius: 11px;
+    background: #f8fbfd;
+}
+
+.gc-establecimiento-item h3 {
+    margin: 0 0 12px;
+    color: var(--gc-azul-oscuro);
+    font-size: 1.02rem;
+}
+
+.gc-establecimiento-item p {
+    margin: 7px 0;
+    color: var(--gc-texto);
+    font-size: 0.85rem;
+}
+
+.gc-establecimiento-item strong {
+    color: #456579;
+}
+
+.gc-establecimiento-detalle {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid var(--gc-borde);
+    border-radius: 11px;
+    background: #f8fbfd;
+}
+
+.gc-establecimiento-detalle h3 {
+    margin: 0 0 15px;
+    color: var(--gc-azul-oscuro);
+}
+
+.gc-establecimiento-detalle p {
+    margin: 8px 0;
+    font-size: 0.88rem;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   16. MENSAJES Y AVISOS
+============================================================ */
+
+.gc-mensaje {
+    margin: 15px 0;
+    padding: 13px 16px;
+    border: 1px solid #cfe6d4;
+    border-radius: 9px;
+    background: #edf6ee;
+    color: var(--gc-verde);
+    font-size: 0.86rem;
+}
+
+.gc-mensaje.error {
+    border-color: #edc7c2;
+    background: #fff1ef;
+    color: var(--gc-rojo);
+}
+
+.gc-aviso {
+    margin: 20px 0;
+    padding: 16px 19px;
+    border: 1px solid #efd39d;
+    border-radius: 10px;
+    background: #fff9ed;
+    color: #80591d;
+    font-size: 0.86rem;
+}
+
+.gc-vacio {
+    padding: 28px;
+    color: var(--gc-texto-secundario);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   17. RESPONSIVE - COMPUTADORES MEDIANOS
+============================================================ */
+
+@media (max-width: 1250px) {
+
+    .gc-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .gc-main {
+        padding: 28px;
+    }
+}
+
+
+/* ============================================================
+   18. RESPONSIVE - TABLETS
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .gc-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .gc-sidebar {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .gc-sidebar-titulo {
+        margin-bottom: 12px;
+    }
+
+    .gc-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .gc-menu button {
+        width: auto;
+        padding: 11px 13px;
+    }
+
+    .gc-main {
+        max-width: none;
+        padding: 24px 20px;
+    }
+
+    .gc-establecimientos-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================================
+   19. RESPONSIVE - CELULARES
+============================================================ */
+
+@media (max-width: 650px) {
+
+    .gc-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        min-height: 76px;
+        padding: 13px 15px;
+    }
+
+    .gc-topbar img {
+        max-width: 155px;
+        max-height: 52px;
+    }
+
+    .gc-usuario {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .gc-usuario-info {
+        align-items: flex-start;
+    }
+
+    .gc-usuario-info strong {
+        font-size: 0.8rem;
+    }
+
+    .gc-usuario-info span {
+        font-size: 0.75rem;
+    }
+
+    .gc-salir {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+    }
+
+    .gc-main {
+        padding: 20px 14px;
+    }
+
+    .gc-titulo h1 {
+        font-size: 1.7rem;
+    }
+
+    .gc-indicadores {
+        grid-template-columns: 1fr;
+    }
+
+    .gc-indicador {
+        min-height: 115px;
+        padding: 19px;
+    }
+
+    .gc-indicador-icono {
+        width: 38px;
+        height: 38px;
+    }
+
+    .gc-card {
+        padding: 19px;
+    }
+
+    .gc-formulario,
+    .gc-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .gc-campo.completo,
+    .gc-campo.gc-completo,
+    .gc-formulario .completo {
+        grid-column: auto;
+    }
+
+    .gc-acciones {
+        align-items: stretch;
+    }
+
+    .gc-acciones .gc-boton {
+        width: 100%;
+    }
+
+    .gc-tabla {
+        min-width: 650px;
+    }
+
+    .gc-vista-previa,
+    .gc-detalle,
+    .gc-establecimiento-detalle {
+        padding: 17px;
+    }
+}
+
+
+/* ============================================================
+   ICONOS DEL MENÚ LATERAL - GESTOR DE CONTENIDOS
+============================================================ */
+
+/* Alinear iconos y textos */
+.gc-menu button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Tamaño y apariencia de los iconos */
+.gc-menu button svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+}
+
+/* Alinear el texto */
+.gc-menu button span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Mantener el color al seleccionar una sección */
+.gc-menu button:hover svg,
+.gc-menu button.activo svg {
+    color: #ffffff;
+}

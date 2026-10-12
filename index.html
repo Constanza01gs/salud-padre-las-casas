@@ -1,0 +1,753 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prototipo del portal institucional del Departamento de Salud Municipal de Padre Las Casas.">
+    <title>Inicio | Departamento de Salud Municipal</title>
+
+    <!-- Estilos generales y exclusivos del inicio -->
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <!-- Funciones generales y exclusivas del inicio -->
+    <script src="static/js/script.js" defer></script>
+    <script src="static/js/index.js" defer></script>
+</head>
+
+<body>
+
+<!-- ==========================================================
+     ICONOS SVG COMPARTIDOS EN ESTA PÁGINA
+     ========================================================== -->
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M4 12h16m-7-7 7 7-7 7"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <symbol id="icon-building" viewBox="0 0 24 24">
+        <path d="M3 21h18M5 21V7h6v14M13 21V3h6v18M7 10h2m-2 4h2m6-7h2m-2 4h2m-2 4h2"/>
+    </symbol>
+
+    <symbol id="icon-stethoscope" viewBox="0 0 24 24">
+        <path d="M6 3v7a5 5 0 0 0 10 0V3M4 3h4m6 0h4"/>
+        <path d="M11 15v1a5 5 0 0 0 10 0v-2"/>
+        <circle cx="21" cy="12" r="2"/>
+    </symbol>
+
+    <symbol id="icon-message" viewBox="0 0 24 24">
+        <path d="M4 4h16v13H9l-5 4V4zM8 9h8M8 13h6"/>
+    </symbol>
+
+    <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M20.5 5.5a5.5 5.5 0 0 0-7.8 0L12 6.2l-.7-.7a5.5 5.5 0 0 0-7.8 7.8L12 21l8.5-7.7a5.5 5.5 0 0 0 0-7.8z"/>
+    </symbol>
+
+    <symbol id="icon-people" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="3"/>
+        <circle cx="4.5" cy="10" r="2"/>
+        <circle cx="19.5" cy="10" r="2"/>
+        <path d="M6 21v-3a6 6 0 0 1 12 0v3M1 20v-3a4 4 0 0 1 4-4m18 7v-3a4 4 0 0 0-4-4"/>
+    </symbol>
+</svg>
+
+<!-- ==========================================================
+     ENCABEZADO INSTITUCIONAL
+     ========================================================== -->
+<header class="encabezado">
+    <div class="contenedor encabezado-contenido">
+
+        <a href="index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+            <img src="static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+        </a>
+
+        <a href="pages/login.html" class="boton-funcionarios">
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+            <span>Acceso funcionarios</span>
+        </a>
+
+    </div>
+</header>
+
+<!-- ==========================================================
+     NAVEGACIÓN PRINCIPAL
+     ========================================================== -->
+<nav class="navegacion" aria-label="Navegación principal">
+    <div class="contenedor navegacion-contenido">
+
+        <!-- Menú para dispositivos móviles -->
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+            <span>Menú</span>
+        </button>
+
+        <ul class="menu" id="menu-principal">
+
+            <li class="menu-item">
+                <a href="index.html"
+                   class="activo"
+                   aria-current="page">
+                    Inicio
+                </a>
+            </li>
+
+            <!-- Institución -->
+            <li class="menu-item tiene-submenu">
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+                    Institución
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+                    <li>
+                        <a href="pages/institucion.html">
+                            Quiénes somos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <!-- Establecimientos -->
+
+            <li class="menu-item">
+                <a href="pages/establecimientos.html">
+                    Establecimientos
+                </a>
+            </li>
+
+
+            <!-- Prestaciones y programas -->
+            <li class="menu-item tiene-submenu">
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+                    Prestaciones y programas
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+                    <li>
+                        <a href="pages/prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="pages/noticias.html">
+                    Noticias y actividades
+                </a>
+            </li>
+
+            <!-- Participación ciudadana -->
+            <li class="menu-item tiene-submenu">
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+                    Participación ciudadana
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+                    <li>
+                        <a href="pages/oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pages/participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <!-- ==================================================
+             BUSCADOR DIRECTO EN LA BARRA DE NAVEGACIÓN
+             ================================================== -->
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="sr-only" for="campo-busqueda">
+                Buscar una sección del portal
+            </label>
+
+            <div class="buscador-campo">
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <input id="campo-busqueda"
+                       type="search"
+                       autocomplete="off"
+                       placeholder="Buscar en el sitio..."
+                       aria-autocomplete="list"
+                       aria-controls="resultados-busqueda"
+                       aria-expanded="false">
+            </div>
+
+            <div id="resultados-busqueda"
+                 class="resultados-busqueda"
+                 role="listbox"
+                 aria-label="Resultados de búsqueda"
+                 hidden>
+            </div>
+
+        </div>
+
+    </div>
+</nav>
+
+<!-- ==========================================================
+     CONTENIDO PRINCIPAL
+     ========================================================== -->
+<main>
+
+    <!-- ======================================================
+         PORTADA
+         ====================================================== -->
+    <section class="hero">
+        <div class="contenedor hero-contenido">
+
+            <div class="hero-texto">
+
+                <span class="etiqueta">
+                    Salud municipal
+                </span>
+
+                <h1>
+                    Una salud más cercana
+                    a nuestra comunidad
+                </h1>
+
+                <p>
+                    Trabajamos por el bienestar de las personas
+                    de Padre Las Casas, con una red de
+                    establecimientos de salud, programas y
+                    servicios orientados a una atención de
+                    calidad, inclusiva y territorial.
+                </p>
+
+                <div class="hero-botones">
+
+                    <a href="pages/establecimientos.html"
+                       class="boton boton-azul">
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-building"/>
+                        </svg>
+                        Conocer establecimientos
+                        <svg class="icono icono-pequeno" aria-hidden="true">
+                            <use href="#icon-arrow"/>
+                        </svg>
+                    </a>
+
+                    <a href="pages/oirs.html"
+                       class="boton boton-verde">
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-message"/>
+                        </svg>
+                        Ingresar requerimiento OIRS
+                        <svg class="icono icono-pequeno" aria-hidden="true">
+                            <use href="#icon-arrow"/>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+
+            <div class="hero-imagen"
+                 role="img"
+                 aria-label="Imagen ilustrativa de un establecimiento de salud">
+
+                <div class="hero-mensaje">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-people"/>
+                    </svg>
+                    <p>
+                        <strong>
+                            Comprometidos con la salud
+                            y el bienestar
+                        </strong>
+                        de nuestra comunidad
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================================================
+         TARJETAS DE SERVICIOS
+         ====================================================== -->
+    <section class="servicios" aria-label="Accesos a servicios">
+        <div class="contenedor grid-servicios">
+
+            <!-- Establecimientos -->
+            <article class="tarjeta-servicio tarjeta-azul">
+                <div class="servicio-icono">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-building"/>
+                    </svg>
+                </div>
+
+                <h2>Establecimientos de salud</h2>
+
+                <p>
+                    Consulta ubicación, horarios de atención,
+                    contactos y servicios de nuestros
+                    establecimientos.
+                </p>
+
+                <a href="pages/establecimientos.html">
+                    Ver establecimientos →
+                </a>
+            </article>
+
+            <!-- Prestaciones -->
+            <article class="tarjeta-servicio tarjeta-verde">
+                <div class="servicio-icono">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-stethoscope"/>
+                    </svg>
+                </div>
+
+                <h2>Prestaciones y programas</h2>
+
+                <p>
+                    Infórmate sobre las prestaciones disponibles
+                    y los programas de salud municipal.
+                </p>
+
+                <a href="pages/prestaciones.html">
+                    Ver información →
+                </a>
+            </article>
+
+            <!-- OIRS -->
+            <article class="tarjeta-servicio tarjeta-naranja">
+                <div class="servicio-icono">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-message"/>
+                    </svg>
+                </div>
+
+                <h2>Atención ciudadana OIRS</h2>
+
+                <p>
+                    Ingresa consultas, reclamos, sugerencias
+                    o agradecimientos mediante el canal digital.
+                </p>
+
+                <a href="pages/oirs.html">
+                    Ingresar requerimiento →
+                </a>
+            </article>
+
+            <!-- Encuesta -->
+            <article class="tarjeta-servicio tarjeta-rosa">
+                <div class="servicio-icono">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-heart"/>
+                    </svg>
+                </div>
+
+                <h2>Encuesta de satisfacción</h2>
+
+                <p>
+                    Comparte tu experiencia de atención
+                    en nuestros establecimientos mediante
+                    una encuesta anónima.
+                </p>
+
+                <a href="pages/encuesta.html">
+                    Responder encuesta →
+                </a>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- ======================================================
+         COMPROMISO INSTITUCIONAL
+         ====================================================== -->
+    <section class="compromiso">
+        <div class="contenedor compromiso-contenido">
+
+            <div class="compromiso-texto">
+
+                <span class="etiqueta">
+                    Nuestro compromiso
+                </span>
+
+                <h2>
+                    Información clara y accesible
+                    para la comunidad
+                </h2>
+
+                <p>
+                    Entregamos información oportuna sobre
+                    el funcionamiento de la red de salud
+                    municipal, sus establecimientos, servicios,
+                    programas y canales de participación
+                    ciudadana.
+                </p>
+
+                <a href="pages/institucion.html"
+                   class="boton boton-azul">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-people"/>
+                    </svg>
+                    Conocer la institución
+                    <svg class="icono icono-pequeno" aria-hidden="true">
+                        <use href="#icon-arrow"/>
+                    </svg>
+                </a>
+
+            </div>
+
+            <div class="compromiso-visual">
+
+                <div class="participacion-tarjeta">
+
+                    <div class="participacion-icono">
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-people"/>
+                        </svg>
+                    </div>
+
+                    <div>
+                        <h3>Participación ciudadana</h3>
+
+                        <p>
+                            Tu opinión y tus requerimientos
+                            nos ayudan a mejorar la atención
+                            de salud en la comuna.
+                        </p>
+
+                        <a href="pages/participacion.html">
+                            Conocer los canales de participación →
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ======================================================
+         NOTICIAS Y ACTIVIDADES
+         ====================================================== -->
+    <section class="noticias">
+        <div class="contenedor">
+
+            <div class="noticias-encabezado">
+
+                <div>
+                    <span class="etiqueta">
+                        Actualidad
+                    </span>
+
+                    <h2>Noticias y actividades</h2>
+
+                    <p>
+                        Revisa noticias, actividades y comunicados
+                        del Departamento de Salud Municipal.
+                    </p>
+                </div>
+
+                <a href="pages/noticias.html"
+                   class="boton boton-contorno">
+                    Ver todas las noticias
+                    <svg class="icono icono-pequeno" aria-hidden="true">
+                        <use href="#icon-arrow"/>
+                    </svg>
+                </a>
+
+            </div>
+
+            <p class="aviso-demostracion">
+                Publicaciones destacadas del portal.
+                Las noticias del prototipo se actualizan
+                en este navegador.
+            </p>
+
+            <!-- index.js podrá actualizar estas tarjetas -->
+            <div class="grid-noticias" id="noticias-inicio">
+
+                <!-- Noticia 1 -->
+                <article class="tarjeta-noticia">
+                    <div class="noticia-imagen noticia-imagen-uno">
+                        <span>Noticia</span>
+                    </div>
+
+                    <div class="noticia-contenido">
+                        <h3>
+                            Mejoras en infraestructura
+                            de establecimientos de salud
+                        </h3>
+
+                        <p>
+                            Ejemplo de publicación sobre mejoras
+                            en espacios de atención.
+                        </p>
+
+                        <a href="pages/noticias.html">
+                            Leer más →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Noticia 2 -->
+                <article class="tarjeta-noticia">
+                    <div class="noticia-imagen noticia-imagen-dos">
+                        <span>Actividad</span>
+                    </div>
+
+                    <div class="noticia-contenido">
+                        <h3>Campaña de vacunación</h3>
+
+                        <p>
+                            Ejemplo de información sobre
+                            actividades preventivas de salud.
+                        </p>
+
+                        <a href="pages/noticias.html">
+                            Leer más →
+                        </a>
+                    </div>
+                </article>
+
+                <!-- Noticia 3 -->
+                <article class="tarjeta-noticia">
+                    <div class="noticia-imagen noticia-imagen-tres">
+                        <span>Comunicado</span>
+                    </div>
+
+                    <div class="noticia-contenido">
+                        <h3>Feria de salud en la comunidad</h3>
+
+                        <p>
+                            Ejemplo de actividad comunitaria
+                            y difusión de servicios de salud.
+                        </p>
+
+                        <a href="pages/noticias.html">
+                            Leer más →
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- ==========================================================
+     PIE DE PÁGINA
+     ========================================================== -->
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+        <!-- Identidad institucional -->
+        <div class="footer-identidad">
+            <img src="static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+        </div>
+
+        <!-- Enlaces de interés -->
+        <div class="footer-columna">
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+                <li>
+                    <a href="pages/establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/oirs.html">
+                        OIRS
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Accesos institucionales -->
+        <div class="footer-columna">
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+                <li>
+                    <a href="pages/contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+                <li>
+                    <a href="pages/login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Contacto -->
+        <div class="footer-columna">
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+            </div>
+
+            <p class="footer-nota">
+                Información oficial de contacto
+                pendiente de incorporar.
+            </p>
+        </div>
+
+        <!-- Redes sociales -->
+        <div class="footer-columna footer-redes">
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+                <!-- Facebook -->
+                <span class="red-social"
+                      aria-label="Facebook"
+                      title="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+                    </svg>
+                </span>
+
+                <!-- Instagram -->
+                <span class="red-social"
+                      aria-label="Instagram"
+                      title="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1"
+                                fill="currentColor" stroke="none"/>
+                    </svg>
+                </span>
+
+                <!-- YouTube -->
+                <span class="red-social"
+                      aria-label="YouTube"
+                      title="YouTube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="5" width="20" height="14" rx="4"/>
+                        <path d="m10 9 5 3-5 3z"/>
+                    </svg>
+                </span>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="contenedor footer-inferior">
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+    </div>
+
+</footer>
+
+</body>
+</html>

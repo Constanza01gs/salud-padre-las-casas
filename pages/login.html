@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Acceso de funcionarios al prototipo de gestión OIRS del Departamento de Salud Municipal de Padre Las Casas.">
+
+    <title>Acceso funcionarios | Salud Municipal Padre Las Casas</title>
+
+    <!-- ESTILOS GENERALES -->
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- ESTILOS DEL LOGIN -->
+    <link rel="stylesheet" href="../static/css/login.css">
+
+    <!-- JAVASCRIPT GENERAL -->
+    <script src="../static/js/script.js" defer></script>
+
+    <!-- JAVASCRIPT DEL LOGIN -->
+    <script src="../static/js/login.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========================================================
+     ICONOS SVG
+======================================================== -->
+
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+</svg>
+
+
+<!-- ========================================================
+     ENCABEZADO INSTITUCIONAL
+======================================================== -->
+
+<header class="encabezado">
+
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+        </a>
+
+        <a href="login.html" class="boton-funcionarios">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+
+            <span>Acceso funcionarios</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ========================================================
+     NAVEGACIÓN PRINCIPAL
+======================================================== -->
+
+<nav class="navegacion" aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <!-- MENÚ MÓVIL -->
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+
+        </button>
+
+
+        <!-- ENLACES PRINCIPALES -->
+        <ul class="menu" id="menu-principal">
+
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+
+            <!-- INSTITUCIÓN -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+
+                    <li>
+                        <a href="institucion.html">Quiénes somos</a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">Contacto</a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- ESTABLECIMIENTOS: ENLACE DIRECTO -->
+            <li class="menu-item">
+
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+
+            </li>
+
+
+            <!-- PRESTACIONES Y PROGRAMAS -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- NOTICIAS -->
+            <li class="menu-item">
+
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+
+            </li>
+
+
+            <!-- PARTICIPACIÓN CIUDADANA -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+
+
+        <!-- BUSCADOR GENERAL DEL PORTAL -->
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="buscador-campo" for="campo-busqueda">
+
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input id="campo-busqueda"
+                       type="search"
+                       placeholder="Buscar en el sitio..."
+                       autocomplete="off"
+                       aria-label="Buscar en el sitio"
+                       aria-expanded="false"
+                       aria-controls="resultados-busqueda">
+
+            </label>
+
+            <div id="resultados-busqueda"
+                 class="resultados-busqueda"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ========================================================
+     CONTENIDO PRINCIPAL: LOGIN DEMOSTRATIVO
+======================================================== -->
+
+<main class="login-fondo">
+
+    <div class="login-contenedor">
+
+
+        <!-- =================================================
+             COLUMNA IZQUIERDA: PRESENTACIÓN
+        ================================================= -->
+
+        <section class="login-presentacion">
+
+            <div class="login-presentacion-icono">
+
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <rect x="4" y="10" width="16" height="11" rx="2"/>
+                    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                    <circle cx="12" cy="15" r="1"/>
+                </svg>
+
+            </div>
+
+            <h1>Sistema de Gestión OIRS</h1>
+
+            <p>
+                Plataforma interna propuesta para administrar
+                solicitudes ciudadanas de la red de salud
+                municipal de Padre Las Casas.
+            </p>
+
+            <ul>
+
+                <li>
+                    Registro y gestión de solicitudes.
+                </li>
+
+                <li>
+                    Clasificación y derivación interna.
+                </li>
+
+                <li>
+                    Seguimiento de estados y plazos.
+                </li>
+
+                <li>
+                    Reportes y estadísticas de atención.
+                </li>
+
+            </ul>
+
+        </section>
+
+
+        <!-- =================================================
+             COLUMNA DERECHA: ACCESO DE FUNCIONARIOS
+        ================================================= -->
+
+        <section class="login-formulario-contenedor">
+
+            <span class="login-etiqueta">
+                Acceso de demostración
+            </span>
+
+            <h2>Acceso funcionarios</h2>
+
+            <p class="login-descripcion">
+                Selecciona un perfil de prueba para
+                ingresar a la interfaz interna correspondiente.
+            </p>
+
+
+            <!-- FORMULARIO DE ACCESO -->
+            <form id="formulario-login">
+
+                <div class="login-campo">
+
+                    <label for="usuario-demo">
+                        Usuario de demostración
+                    </label>
+
+                    <select id="usuario-demo" required>
+
+                        <option value="">
+                            Seleccionar perfil
+                        </option>
+
+                        <option value="oirs_establecimiento">
+                            Funcionario OIRS - CESFAM Padre Las Casas
+                        </option>
+
+                        <option value="oirs_dsm">
+                            Funcionario OIRS - Departamento de Salud
+                        </option>
+
+                        <option value="director">
+                            Director - CESFAM Padre Las Casas
+                        </option>
+
+                        <option value="administrador">
+                            Administrador del sistema
+                        </option>
+
+                        <option value="gestor_contenidos">
+                            Gestor de Contenidos - Participación y Comunicaciones
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- DESCRIPCIÓN DEL PERFIL SELECCIONADO -->
+                <div class="login-detalle" id="detalle-usuario">
+
+                    <h3>Selecciona un perfil</h3>
+
+                    <p>
+                        Aquí aparecerán las funciones
+                        disponibles para el usuario elegido.
+                    </p>
+
+                </div>
+
+
+                <!-- MENSAJE DE ERROR -->
+                <div class="login-error"
+                     id="mensaje-login-error"
+                     role="alert"
+                     hidden></div>
+
+
+                <!-- BOTÓN DE INGRESO -->
+                <button type="submit" class="login-boton">
+                    Ingresar al sistema
+                </button>
+
+            </form>
+
+
+            <!-- VOLVER AL PORTAL -->
+            <a href="../index.html" class="login-volver">
+                ← Volver al portal ciudadano
+            </a>
+
+
+            <!-- ACLARACIÓN ACADÉMICA -->
+            <div class="login-aviso">
+
+                <strong>Importante:</strong>
+                este acceso es exclusivamente demostrativo.
+                No valida credenciales ni implementa
+                autenticación o autorización real.
+                Los permisos se representarán visualmente
+                para la evaluación académica.
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- ========================================================
+     PIE DE PÁGINA
+======================================================== -->
+
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+
+        <!-- IDENTIDAD -->
+        <div class="footer-identidad">
+
+            <img src="../static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+
+        </div>
+
+
+        <!-- ENLACES DE INTERÉS -->
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="oirs.html">
+                        OIRS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ACCESOS INSTITUCIONALES -->
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+
+                <li>
+                    <a href="intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CONTACTO -->
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Información de contacto pendiente
+                de validación institucional.
+            </p>
+
+        </div>
+
+
+        <!-- REDES SOCIALES -->
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+                <!-- FACEBOOK -->
+                <span class="red-social" aria-label="Facebook">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+
+                    </svg>
+
+                </span>
+
+
+                <!-- INSTAGRAM -->
+                <span class="red-social" aria-label="Instagram">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1"
+                                fill="currentColor" stroke="none"/>
+
+                    </svg>
+
+                </span>
+
+
+                <!-- YOUTUBE -->
+                <span class="red-social" aria-label="YouTube">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                        <rect x="2" y="5" width="20" height="14" rx="4"/>
+                        <path d="m10 9 5 3-5 3z"/>
+
+                    </svg>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TEXTO INFERIOR -->
+    <div class="contenedor footer-inferior">
+
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

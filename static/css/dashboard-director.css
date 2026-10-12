@@ -1,0 +1,1053 @@
+
+/*
+============================================================
+DASHBOARD DIRECTOR DE ESTABLECIMIENTO
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+Prototipo académico OIRS.
+
+Incluye:
+1. Variables y estilos generales
+2. Encabezado institucional
+3. Menú lateral y estructura
+4. Títulos
+5. Indicadores y colores
+6. Seguimiento de plazos
+7. Tarjetas
+8. Tablas
+9. Estados y alertas
+10. Filtros
+11. Botones
+12. Detalle e historial
+13. Reportes
+14. Diseño adaptable
+============================================================
+*/
+
+
+/* ============================================================
+   1. VARIABLES GENERALES
+============================================================ */
+
+:root {
+    --director-azul: #0b609d;
+    --director-azul-oscuro: #083e70;
+    --director-azul-hover: #084b7a;
+    --director-azul-claro: #e3f1fb;
+
+    --director-fondo: #f3f7fa;
+    --director-blanco: #ffffff;
+    --director-borde: #dfe8ee;
+
+    --director-texto: #29475b;
+    --director-texto-secundario: #657d8d;
+
+    --director-gris: #64748b;
+    --director-gris-fondo: #edf1f5;
+
+    --director-verde: #287548;
+    --director-verde-fondo: #e5f4e9;
+
+    --director-amarillo: #98610d;
+    --director-amarillo-fondo: #fff3d9;
+
+    --director-rojo: #a63c32;
+    --director-rojo-fondo: #fae9e6;
+
+    --director-radio: 13px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--director-fondo);
+    color: var(--director-texto);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   2. ENCABEZADO INSTITUCIONAL
+============================================================ */
+
+.director-topbar {
+    position: relative;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 94px;
+    padding: 14px 28px;
+    background: var(--director-blanco);
+    border-bottom: 1px solid var(--director-borde);
+}
+
+.director-topbar img {
+    display: block;
+    width: auto;
+    max-width: 210px;
+    max-height: 65px;
+    object-fit: contain;
+}
+
+.director-usuario {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.director-usuario-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+}
+
+.director-usuario-info strong {
+    color: var(--director-azul-oscuro);
+    font-size: 0.91rem;
+}
+
+.director-usuario-info span {
+    color: var(--director-texto-secundario);
+    font-size: 0.79rem;
+}
+
+.director-cerrar-sesion {
+    padding: 11px 16px;
+    border: 1px solid #d1dfe9;
+    border-radius: 8px;
+    background: var(--director-blanco);
+    color: var(--director-azul);
+    font-size: 0.86rem;
+    font-weight: 700;
+}
+
+.director-cerrar-sesion:hover {
+    background: #edf7fd;
+}
+
+
+/* ============================================================
+   3. ESTRUCTURA PRINCIPAL
+============================================================ */
+
+.director-layout {
+    display: grid;
+    grid-template-columns: 255px minmax(0, 1fr);
+    min-height: calc(100vh - 94px);
+}
+
+.director-sidebar {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 94px);
+    padding: 28px 15px;
+    background: var(--director-azul-oscuro);
+    color: var(--director-blanco);
+}
+
+.director-sidebar-titulo {
+    margin: 0 13px 25px;
+    color: #bdd8e9;
+    font-size: 0.74rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.director-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.director-menu button {
+    width: 100%;
+    padding: 13px 15px;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    color: #e2eef7;
+    font-size: 0.88rem;
+    text-align: left;
+}
+
+.director-menu button:hover,
+.director-menu button.activo {
+    background: #155c8d;
+    color: var(--director-blanco);
+}
+
+.director-menu button.activo {
+    font-weight: 700;
+}
+
+.director-main {
+    width: 100%;
+    min-width: 0;
+    max-width: 1700px;
+    padding: 35px;
+}
+
+.director-main > section {
+    width: 100%;
+}
+
+
+/* ============================================================
+   4. TÍTULOS
+============================================================ */
+
+.director-titulo {
+    margin-bottom: 26px;
+}
+
+.director-etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--director-azul-claro);
+    color: var(--director-azul);
+    font-size: 0.76rem;
+    font-weight: 700;
+}
+
+.director-titulo h1 {
+    margin: 0 0 9px;
+    color: var(--director-azul-oscuro);
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    line-height: 1.25;
+}
+
+.director-titulo p {
+    margin: 0;
+    color: var(--director-texto-secundario);
+    font-size: 0.91rem;
+}
+
+
+/* ============================================================
+   5. INDICADORES GENERALES
+============================================================ */
+
+.director-indicadores {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 17px;
+    margin-bottom: 25px;
+}
+
+.director-indicador {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 135px;
+    padding: 23px;
+    border: 1px solid var(--director-borde);
+    border-radius: var(--director-radio);
+    background: var(--director-blanco);
+}
+
+.director-indicador-encabezado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 13px;
+}
+
+.director-indicador-encabezado > span:first-child {
+    color: var(--director-texto-secundario);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Iconos SVG integrados en el HTML */
+
+.director-indicador-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 11px;
+    background: var(--director-azul-claro);
+    color: var(--director-azul);
+}
+
+.director-indicador-icono svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+}
+
+.director-indicador > strong {
+    display: block;
+    color: var(--director-azul-oscuro);
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+
+/* ============================================================
+   6. COLORES DE LOS INDICADORES
+============================================================ */
+
+/* Azul: información general */
+
+.director-indicador-azul .director-indicador-icono {
+    background: var(--director-azul-claro);
+    color: var(--director-azul);
+}
+
+/* Gris: ingresadas y pendientes */
+
+.director-indicador-gris .director-indicador-icono {
+    background: var(--director-gris-fondo);
+    color: var(--director-gris);
+}
+
+/* Amarillo: proceso y advertencias */
+
+.director-indicador-amarillo .director-indicador-icono {
+    background: var(--director-amarillo-fondo);
+    color: var(--director-amarillo);
+}
+
+/* Verde: finalizadas y dentro de plazo */
+
+.director-indicador-verde .director-indicador-icono {
+    background: var(--director-verde-fondo);
+    color: var(--director-verde);
+}
+
+/* Rojo: vencidas */
+
+.director-indicador-rojo .director-indicador-icono {
+    background: var(--director-rojo-fondo);
+    color: var(--director-rojo);
+}
+
+
+/* ============================================================
+   7. SEGUIMIENTO DE PLAZOS
+============================================================ */
+
+.director-indicadores-plazos {
+    margin-top: 18px;
+    margin-bottom: 23px;
+}
+
+.director-indicadores-plazos .director-indicador {
+    min-height: 115px;
+    padding: 20px;
+}
+
+.director-indicadores-plazos .director-indicador > strong {
+    font-size: 2rem;
+}
+
+.director-card h3 {
+    margin: 22px 0 10px;
+    color: var(--director-azul-oscuro);
+    font-size: 1.05rem;
+}
+
+.director-ayuda {
+    margin: 0 0 18px;
+    color: var(--director-texto-secundario);
+    font-size: 0.85rem;
+}
+
+
+/* ============================================================
+   8. TARJETAS GENERALES
+============================================================ */
+
+.director-card {
+    min-width: 0;
+    margin-bottom: 23px;
+    padding: 25px;
+    border: 1px solid var(--director-borde);
+    border-radius: var(--director-radio);
+    background: var(--director-blanco);
+}
+
+.director-card h2 {
+    margin: 0 0 10px;
+    color: var(--director-azul-oscuro);
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.director-card > p {
+    margin: 0 0 20px;
+    color: var(--director-texto-secundario);
+    font-size: 0.89rem;
+}
+
+
+/* ============================================================
+   9. TABLAS
+============================================================ */
+
+.director-tabla-contenedor {
+    width: 100%;
+    overflow-x: auto;
+    border: 1px solid var(--director-borde);
+    border-radius: 9px;
+}
+
+.director-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--director-blanco);
+    font-size: 0.84rem;
+    text-align: left;
+}
+
+.director-tabla th {
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--director-borde);
+    background: #f5f9fc;
+    color: #49677a;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.director-tabla td {
+    padding: 14px 12px;
+    border-bottom: 1px solid #e8eef2;
+    color: var(--director-texto);
+    font-size: 0.84rem;
+    vertical-align: middle;
+}
+
+.director-tabla tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.director-tabla tbody tr:hover {
+    background: #f9fbfe;
+}
+
+.director-tabla td:first-child {
+    color: var(--director-azul);
+    font-weight: 700;
+}
+
+.director-tabla td[colspan] {
+    color: var(--director-texto-secundario);
+    font-weight: 400;
+    text-align: center;
+}
+
+
+/* ============================================================
+   10. ESTADOS DE SOLICITUDES
+============================================================ */
+
+.director-estado,
+.director-plazo {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.35;
+    white-space: nowrap;
+}
+
+.director-estado {
+    background: var(--director-azul-claro);
+    color: var(--director-azul);
+}
+
+.director-estado.proceso {
+    background: var(--director-amarillo-fondo);
+    color: var(--director-amarillo);
+}
+
+.director-estado.respondida {
+    background: var(--director-verde-fondo);
+    color: var(--director-verde);
+}
+
+.director-estado.cerrada {
+    background: var(--director-gris-fondo);
+    color: var(--director-gris);
+}
+
+
+/* ============================================================
+   11. ESTADOS DE PLAZOS
+============================================================ */
+
+.director-plazo.en-plazo {
+    background: var(--director-verde-fondo);
+    color: var(--director-verde);
+}
+
+.director-plazo.proxima {
+    background: var(--director-amarillo-fondo);
+    color: var(--director-amarillo);
+}
+
+.director-plazo.vencida {
+    background: var(--director-rojo-fondo);
+    color: var(--director-rojo);
+}
+
+.director-plazo.finalizada,
+.director-plazo.no-aplica {
+    background: var(--director-gris-fondo);
+    color: var(--director-gris);
+}
+
+
+/* ============================================================
+   12. FILTROS
+============================================================ */
+
+.director-filtros {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.director-filtros input,
+.director-filtros select {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #cbd8e5;
+    border-radius: 8px;
+    outline: none;
+    background: var(--director-blanco);
+    color: var(--director-texto);
+    font-size: 0.89rem;
+}
+
+.director-filtros input:focus,
+.director-filtros select:focus {
+    border-color: var(--director-azul);
+    box-shadow: 0 0 0 3px rgba(11, 96, 157, 0.12);
+}
+
+.director-filtros input::placeholder {
+    color: #8a9bab;
+}
+
+
+/* ============================================================
+   13. BOTONES Y ACCIONES
+============================================================ */
+
+.director-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 11px;
+    margin-top: 20px;
+}
+
+.director-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 17px;
+    border: 1px solid var(--director-azul);
+    border-radius: 8px;
+    background: var(--director-azul);
+    color: var(--director-blanco);
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+}
+
+.director-boton:hover {
+    background: var(--director-azul-hover);
+    border-color: var(--director-azul-hover);
+}
+
+.director-boton.secundario {
+    border-color: #ccdce7;
+    background: var(--director-blanco);
+    color: var(--director-azul);
+}
+
+.director-boton.secundario:hover {
+    background: #edf7fd;
+}
+
+.director-boton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.director-acciones-tabla {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.director-acciones-tabla .director-boton {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    font-size: 0.79rem;
+}
+
+.director-boton:focus-visible,
+.director-cerrar-sesion:focus-visible,
+.director-menu button:focus-visible {
+    outline: 3px solid #80b9f0;
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   14. DETALLE DE SOLICITUD
+============================================================ */
+
+.director-detalle {
+    margin-top: 24px;
+    padding: 23px;
+    border: 1px solid var(--director-borde);
+    border-radius: 12px;
+    background: #f8fbfd;
+}
+
+.director-detalle h3 {
+    margin: 0 0 19px;
+    color: var(--director-azul-oscuro);
+}
+
+.director-detalle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.director-dato {
+    min-width: 0;
+}
+
+.director-dato strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #456579;
+    font-size: 0.8rem;
+}
+
+.director-dato p {
+    margin: 0;
+    color: var(--director-texto);
+    font-size: 0.88rem;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.director-dato.completo {
+    grid-column: 1 / -1;
+}
+
+.director-subtitulo-historial {
+    margin-top: 25px !important;
+}
+
+
+/* ============================================================
+   15. PANEL DE INFORMACIÓN DE PLAZO
+============================================================ */
+
+.director-panel-plazo {
+    margin-top: 23px;
+    padding: 17px 19px;
+    border: 1px solid #cfe6d4;
+    border-radius: 10px;
+    background: #edf6ee;
+}
+
+.director-panel-plazo strong {
+    display: block;
+    color: var(--director-verde);
+    font-size: 0.86rem;
+}
+
+.director-panel-plazo p {
+    margin: 5px 0 0;
+    font-size: 0.86rem;
+}
+
+.director-panel-plazo.alerta {
+    border-color: #f1d9a4;
+    background: #fff8e9;
+}
+
+.director-panel-plazo.alerta strong {
+    color: var(--director-amarillo);
+}
+
+.director-panel-plazo.vencido {
+    border-color: #edc7c2;
+    background: #fff1ef;
+}
+
+.director-panel-plazo.vencido strong {
+    color: var(--director-rojo);
+}
+
+
+/* ============================================================
+   16. HISTORIAL DE MOVIMIENTOS
+============================================================ */
+
+.director-historial {
+    margin: 0;
+    padding-left: 25px;
+}
+
+.director-historial li {
+    padding: 0 0 20px 8px;
+    color: var(--director-texto);
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+.director-historial li:last-child {
+    padding-bottom: 0;
+}
+
+.director-historial strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--director-azul-oscuro);
+}
+
+.director-historial li div {
+    margin-top: 5px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.director-historial small {
+    display: block;
+    margin-top: 5px;
+    color: var(--director-texto-secundario);
+    font-size: 0.76rem;
+}
+
+
+/* ============================================================
+   17. REPORTES DE GESTIÓN
+============================================================ */
+
+.director-desglose {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.director-desglose-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 90px;
+    padding: 15px 12px;
+    border: 1px solid var(--director-borde);
+    border-radius: 10px;
+    background: #f8fbfd;
+    text-align: center;
+}
+
+.director-desglose-item strong {
+    display: block;
+    margin-bottom: 6px;
+    color: #083e70;
+    font-size: 1.8rem;
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.director-desglose-item span {
+    display: block;
+    color: #657d8d;
+    font-size: 0.82rem;
+    font-weight: 600;
+    line-height: 1.4;
+    text-align: center;
+}
+
+
+/* ============================================================
+   18. AVISO ACADÉMICO
+============================================================ */
+
+.director-aviso {
+    margin-top: 25px;
+    padding: 17px 20px;
+    border: 1px solid #efd39d;
+    border-radius: 10px;
+    background: #fff9ed;
+    color: #80591d;
+    font-size: 0.86rem;
+}
+
+
+/* ============================================================
+   19. MENSAJES SIN RESULTADOS
+============================================================ */
+
+.director-vacio {
+    padding: 28px;
+    color: var(--director-texto-secundario);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+
+/* ============================================================
+   20. RESPONSIVE - COMPUTADORES MEDIANOS
+============================================================ */
+
+@media (max-width: 1250px) {
+
+    .director-indicadores {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .director-main {
+        padding: 28px;
+    }
+
+    .director-desglose {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .director-filtros {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ============================================================
+   21. RESPONSIVE - TABLETS
+============================================================ */
+
+@media (max-width: 900px) {
+
+    .director-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .director-sidebar {
+        min-height: auto;
+        padding: 15px;
+    }
+
+    .director-sidebar-titulo {
+        margin-bottom: 12px;
+    }
+
+    .director-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .director-menu button {
+        width: auto;
+        padding: 11px 13px;
+    }
+
+    .director-main {
+        max-width: none;
+        padding: 24px 20px;
+    }
+
+    .director-desglose {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+
+/* ============================================================
+   22. RESPONSIVE - CELULARES
+============================================================ */
+
+@media (max-width: 650px) {
+
+    .director-topbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        min-height: 76px;
+        padding: 13px 15px;
+    }
+
+    .director-topbar img {
+        max-width: 155px;
+        max-height: 52px;
+    }
+
+    .director-usuario {
+        width: 100%;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .director-usuario-info {
+        align-items: flex-start;
+    }
+
+    .director-usuario-info strong {
+        font-size: 0.8rem;
+    }
+
+    .director-usuario-info span {
+        font-size: 0.75rem;
+    }
+
+    .director-cerrar-sesion {
+        padding: 8px 12px;
+        font-size: 0.78rem;
+    }
+
+    .director-main {
+        padding: 20px 14px;
+    }
+
+    .director-titulo h1 {
+        font-size: 1.7rem;
+    }
+
+    .director-indicadores,
+    .director-detalle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .director-indicador {
+        min-height: 115px;
+        padding: 19px;
+    }
+
+    .director-indicador-icono {
+        width: 38px;
+        height: 38px;
+    }
+
+    .director-indicador-icono svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .director-card {
+        padding: 19px;
+    }
+
+    .director-desglose {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 9px;
+    }
+
+    .director-desglose-item {
+        min-height: 82px;
+        padding: 12px 9px;
+    }
+
+    .director-filtros {
+        grid-template-columns: 1fr;
+    }
+
+    .director-dato.completo {
+        grid-column: auto;
+    }
+
+    .director-detalle {
+        padding: 17px;
+    }
+
+    .director-acciones {
+        align-items: stretch;
+    }
+
+    .director-acciones .director-boton {
+        width: 100%;
+    }
+
+    .director-tabla {
+        min-width: 680px;
+    }
+}
+
+
+/* ============================================================
+   ICONOS DEL MENÚ LATERAL - DIRECTOR
+============================================================ */
+
+/* Alinear iconos y textos */
+.director-menu button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Tamaño y apariencia de los iconos */
+.director-menu button svg {
+    display: block;
+    width: 19px;
+    height: 19px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+}
+
+/* Alinear el texto */
+.director-menu button span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Mantener el color al seleccionar una sección */
+.director-menu button:hover svg,
+.director-menu button.activo svg {
+    color: #ffffff;
+}

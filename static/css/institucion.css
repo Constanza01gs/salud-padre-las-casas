@@ -1,0 +1,701 @@
+
+/* ==========================================================
+   PORTAL DE SALUD MUNICIPAL - PADRE LAS CASAS
+
+   ARCHIVO: institucion.css
+
+   ESTILOS EXCLUSIVOS DE LA PÁGINA "QUIÉNES SOMOS"
+
+   1. Encabezado de la página
+   2. Presentación institucional
+   3. Imagen y tarjeta superpuesta
+   4. Principales funciones
+   5. Organización administrativa
+   6. Red de salud
+   7. Accesos de interés
+   8. Diseño responsive
+
+   Los estilos generales de navegación, buscador y footer
+   se encuentran en style.css.
+   ========================================================== */
+
+
+/* ==========================================================
+   1. ENCABEZADO DE LA PÁGINA
+   ========================================================== */
+
+.pagina-encabezado {
+    padding: 43px 0;
+    background: linear-gradient(
+        110deg,
+        #edf7fd,
+        #ffffff 65%,
+        #eef8f3
+    );
+    border-bottom: 1px solid var(--borde);
+}
+
+.migas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    font-size: .82rem;
+}
+
+.migas a {
+    color: var(--azul);
+}
+
+.migas a:hover {
+    text-decoration: underline;
+}
+
+.pagina-encabezado h1 {
+    margin-bottom: 12px;
+    color: #083e70;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.15;
+}
+
+.pagina-encabezado p {
+    max-width: 800px;
+    color: var(--texto-secundario);
+    font-size: .98rem;
+}
+
+
+/* ==========================================================
+   2. PRESENTACIÓN INSTITUCIONAL
+   ========================================================== */
+
+.institucion-seccion {
+    padding: 55px 0 95px;
+    background: #ffffff;
+}
+
+.institucion-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    align-items: center;
+    gap: 45px;
+}
+
+.institucion-texto h2,
+.seccion-titulo {
+    margin-bottom: 18px;
+    color: #083e70;
+    font-size: clamp(1.6rem, 2.8vw, 2.1rem);
+    line-height: 1.2;
+}
+
+.institucion-texto p {
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    font-size: .96rem;
+    line-height: 1.7;
+}
+
+.institucion-texto p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ==========================================================
+   3. IMAGEN INSTITUCIONAL Y TARJETA SUPERPUESTA
+
+   La imagen se incorporará cuando terminemos de revisar
+   todas las páginas del portal.
+
+   Por ahora utilizamos un fondo provisional.
+   ========================================================== */
+
+.institucion-ilustracion {
+    position: relative;
+    min-width: 0;
+    margin-bottom: 35px;
+}
+
+/* Espacio reservado para la futura fotografía */
+
+.institucion-imagen {
+    position: relative;
+    width: 100%;
+    min-height: 340px;
+    border: 1px solid #d7e9f2;
+    border-radius: 20px;
+    background: linear-gradient(
+        135deg,
+        #d9ebf7 0%,
+        #eaf6fb 55%,
+        #e3f3eb 100%
+    );
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+/* Decoración suave del fondo provisional */
+
+.institucion-imagen::before {
+    content: "";
+    position: absolute;
+    top: -85px;
+    right: -85px;
+    width: 260px;
+    height: 260px;
+    border: 45px solid rgba(255, 255, 255, .24);
+    border-radius: 50%;
+}
+
+.institucion-imagen::after {
+    content: "";
+    position: absolute;
+    bottom: -100px;
+    left: -80px;
+    width: 240px;
+    height: 240px;
+    border: 40px solid rgba(255, 255, 255, .20);
+    border-radius: 50%;
+}
+
+/*
+   Para agregar la fotografía definitiva más adelante:
+
+   .institucion-imagen {
+       background-image: url("../img/imagen-institucional.jpg");
+   }
+
+   No es necesario modificar el HTML.
+*/
+
+
+/* ----------------------------------------------------------
+   TARJETA INFORMATIVA SUPERPUESTA
+   ---------------------------------------------------------- */
+
+.institucion-ilustracion-contenido {
+    position: absolute;
+    right: 18px;
+    bottom: -35px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    width: min(390px, calc(100% - 36px));
+    padding: 19px;
+
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+
+    background: rgba(255, 255, 255, .98);
+    box-shadow: 0 12px 30px rgba(9, 46, 77, .13);
+}
+
+/* Círculo del icono */
+
+.institucion-ilustracion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 50%;
+    background: #e5f0fc;
+    color: #315b99;
+}
+
+.institucion-ilustracion-icono .icono {
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    color: inherit;
+}
+
+/* Textos de la tarjeta */
+
+.institucion-ilustracion-texto {
+    min-width: 0;
+}
+
+.institucion-ilustracion h3 {
+    margin-bottom: 6px;
+    color: #083e70;
+    font-size: 1.04rem;
+    line-height: 1.3;
+}
+
+.institucion-ilustracion p {
+    margin: 0;
+    color: var(--texto-secundario);
+    font-size: .82rem;
+    line-height: 1.5;
+}
+
+
+/* ==========================================================
+   4. PRINCIPALES FUNCIONES
+   ========================================================== */
+
+.institucion-funciones {
+    padding: 55px 0;
+    background: #f6fafd;
+}
+
+.institucion-introduccion {
+    max-width: 850px;
+    margin-bottom: 25px;
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+/* Distribución de las tarjetas */
+
+.funciones-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.funcion-tarjeta {
+    padding: 25px;
+    border: 1px solid var(--borde);
+    border-radius: 13px;
+    background: #ffffff;
+    box-shadow: var(--sombra);
+}
+
+/* Estilo general de los iconos */
+
+.funcion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 55px;
+    height: 55px;
+    margin-bottom: 16px;
+
+    border-radius: 50%;
+}
+
+.funcion-icono .icono {
+    width: 29px;
+    height: 29px;
+    color: inherit;
+}
+
+
+/* ----------------------------------------------------------
+   COLORES INSPIRADOS EN EL LOGO INSTITUCIONAL
+   ---------------------------------------------------------- */
+
+/* 1. Administración de establecimientos - AZUL */
+
+.funcion-tarjeta:nth-child(1) .funcion-icono {
+    background: #e5f0fc;
+    color: #315b99;
+}
+
+/* 2. Gestión de recursos - MORADO */
+
+.funcion-tarjeta:nth-child(2) .funcion-icono {
+    background: #f1e9fa;
+    color: #7b4bb0;
+}
+
+/* 3. Cumplimiento de programas - NARANJA */
+
+.funcion-tarjeta:nth-child(3) .funcion-icono {
+    background: #fff0db;
+    color: #bd741c;
+}
+
+/* 4. Prevención y salud comunitaria - ROJO */
+
+.funcion-tarjeta:nth-child(4) .funcion-icono {
+    background: #fde9ef;
+    color: #cc4564;
+}
+
+/* 5. Coordinación municipal - VERDE */
+
+.funcion-tarjeta:nth-child(5) .funcion-icono {
+    background: #e3f5ea;
+    color: #31835c;
+}
+
+
+/* Textos de las funciones */
+
+.funcion-tarjeta h3 {
+    margin-bottom: 10px;
+    color: #083e70;
+    font-size: 1.05rem;
+    line-height: 1.35;
+}
+
+.funcion-tarjeta p {
+    color: var(--texto-secundario);
+    font-size: .89rem;
+    line-height: 1.65;
+}
+
+
+/* ==========================================================
+   5. ORGANIZACIÓN ADMINISTRATIVA
+   ========================================================== */
+
+.institucion-organizacion {
+    padding: 55px 0;
+    background: #ffffff;
+}
+
+.organizacion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+}
+
+.organizacion-panel {
+    padding: 26px;
+    border: 1px solid var(--borde);
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+.organizacion-panel h3 {
+    margin-bottom: 15px;
+    color: #083e70;
+    font-size: 1.12rem;
+}
+
+/* Listas institucionales */
+
+.lista-institucional {
+    display: grid;
+    gap: 10px;
+    padding: 0;
+    list-style: none;
+}
+
+.lista-institucional li {
+    position: relative;
+    padding-left: 21px;
+    color: var(--texto-secundario);
+    font-size: .9rem;
+    line-height: 1.6;
+}
+
+.lista-institucional li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: .62em;
+
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: var(--verde);
+}
+
+/* Aclaración del prototipo */
+
+.organizacion-nota {
+    margin-top: 20px;
+    color: var(--texto-secundario);
+    font-size: .82rem;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   6. NUESTRA RED DE SALUD
+   ========================================================== */
+
+.institucion-red {
+    padding: 55px 0;
+    background: linear-gradient(
+        110deg,
+        #edf8fd,
+        #f9fcff 55%,
+        #edf8f3
+    );
+}
+
+.red-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.red-tarjeta {
+    padding: 26px;
+    border: 1px solid var(--borde);
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+.red-tarjeta h3 {
+    margin-bottom: 13px;
+    color: #083e70;
+    font-size: 1.12rem;
+}
+
+.red-tarjeta p {
+    margin-bottom: 14px;
+    color: var(--texto-secundario);
+    font-size: .89rem;
+    line-height: 1.65;
+}
+
+.red-tarjeta .lista-institucional {
+    gap: 8px;
+}
+
+/* Tarjeta de otros dispositivos */
+
+.red-otros {
+    grid-column: 1 / -1;
+}
+
+.red-otros .lista-institucional {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* Fuente informativa */
+
+.fuente-institucional {
+    margin-top: 20px;
+    color: var(--texto-secundario);
+    font-size: .82rem;
+    line-height: 1.65;
+}
+
+.fuente-institucional a {
+    color: var(--azul);
+    text-decoration: underline;
+}
+
+.fuente-institucional a:hover {
+    color: var(--azul-oscuro);
+}
+
+
+/* ==========================================================
+   7. INFORMACIÓN Y SERVICIOS DE INTERÉS
+   ========================================================== */
+
+.institucion-accesos {
+    padding: 55px 0 65px;
+    background: #ffffff;
+}
+
+.accesos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.acceso-tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    padding: 24px;
+
+    border: 1px solid var(--borde);
+    border-radius: 12px;
+    background: #ffffff;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
+}
+
+.acceso-tarjeta:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--sombra);
+}
+
+.acceso-tarjeta:focus-visible {
+    outline: 3px solid var(--azul);
+    outline-offset: 3px;
+}
+
+.acceso-tarjeta h3 {
+    color: #083e70;
+    font-size: 1.05rem;
+}
+
+.acceso-tarjeta p {
+    flex: 1;
+    color: var(--texto-secundario);
+    font-size: .87rem;
+    line-height: 1.65;
+}
+
+.acceso-tarjeta span {
+    color: var(--azul);
+    font-size: .87rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   8. DISEÑO RESPONSIVE
+   ========================================================== */
+
+
+/* ----------------------------------------------------------
+   TABLETS Y PANTALLAS MEDIANAS
+   ---------------------------------------------------------- */
+
+@media (max-width: 900px) {
+
+    .institucion-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .institucion-ilustracion {
+        width: 100%;
+        max-width: 650px;
+        margin: 0 auto 35px;
+    }
+
+    .funciones-grid,
+    .accesos-grid,
+    .organizacion-grid,
+    .red-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .institucion-seccion {
+        padding-bottom: 80px;
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   CELULARES
+   ---------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .pagina-encabezado {
+        padding: 30px 0;
+    }
+
+    .institucion-seccion {
+        padding: 35px 0 85px;
+    }
+
+    .institucion-funciones,
+    .institucion-organizacion,
+    .institucion-red,
+    .institucion-accesos {
+        padding: 35px 0;
+    }
+
+    .institucion-grid {
+        gap: 30px;
+    }
+
+    .institucion-imagen {
+        min-height: 260px;
+        border-radius: 16px;
+    }
+
+    .institucion-ilustracion {
+        margin-bottom: 40px;
+    }
+
+    .institucion-ilustracion-contenido {
+        right: 12px;
+        bottom: -40px;
+
+        width: calc(100% - 24px);
+        padding: 14px;
+        gap: 12px;
+    }
+
+    .institucion-ilustracion-icono {
+        width: 46px;
+        height: 46px;
+    }
+
+    .institucion-ilustracion-icono .icono {
+        width: 25px;
+        height: 25px;
+    }
+
+    .institucion-ilustracion h3 {
+        font-size: .98rem;
+    }
+
+    .institucion-ilustracion p {
+        font-size: .79rem;
+    }
+
+    .funciones-grid,
+    .accesos-grid,
+    .organizacion-grid,
+    .red-grid,
+    .red-otros .lista-institucional {
+        grid-template-columns: 1fr;
+    }
+
+    .red-otros {
+        grid-column: auto;
+    }
+
+    .funcion-tarjeta,
+    .organizacion-panel,
+    .red-tarjeta,
+    .acceso-tarjeta {
+        padding: 21px;
+    }
+
+}
+
+
+/* ----------------------------------------------------------
+   CELULARES PEQUEÑOS
+   ---------------------------------------------------------- */
+
+@media (max-width: 380px) {
+
+    .institucion-ilustracion-contenido {
+        gap: 9px;
+        padding: 12px;
+    }
+
+    .institucion-ilustracion-icono {
+        width: 40px;
+        height: 40px;
+    }
+
+    .institucion-ilustracion-icono .icono {
+        width: 22px;
+        height: 22px;
+    }
+
+    .institucion-ilustracion h3 {
+        font-size: .9rem;
+    }
+
+    .institucion-ilustracion p {
+        font-size: .74rem;
+    }
+
+}

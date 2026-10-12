@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Programas de salud del Departamento de Salud Municipal de Padre Las Casas.">
+
+    <title>Programas de salud | Salud Municipal Padre Las Casas</title>
+
+    <!-- Estilos generales -->
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- Estilos exclusivos de esta página -->
+    <link rel="stylesheet" href="../static/css/programas.css">
+
+    <!-- JavaScript general -->
+    <script src="../static/js/script.js" defer></script>
+
+    <!-- JavaScript exclusivo de programas -->
+    <script src="../static/js/programas.js" defer></script>
+</head>
+
+<body>
+
+<!-- DEFINICIONES DE ICONOS -->
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>
+    </symbol>
+
+</svg>
+
+<!-- ======================================================
+     ENCABEZADO
+====================================================== -->
+<header class="encabezado">
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+        </a>
+
+        <a href="login.html" class="boton-funcionarios">
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+            <span>Acceso funcionarios</span>
+        </a>
+
+    </div>
+</header>
+
+<!-- ======================================================
+     NAVEGACIÓN PRINCIPAL
+====================================================== -->
+<nav class="navegacion" aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+        </button>
+
+        <ul class="menu" id="menu-principal">
+
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+            <!-- INSTITUCIÓN -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+                    <li>
+                        <a href="institucion.html">Quiénes somos</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <!-- ESTABLECIMIENTOS: ENLACE DIRECTO -->
+            <li class="menu-item">
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+            </li>
+
+            <!-- PRESTACIONES Y PROGRAMAS -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+                    <li>
+                        <a href="programas.html" aria-current="page">
+                            Programas de salud
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+
+            <!-- NOTICIAS -->
+            <li class="menu-item">
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+            </li>
+
+            <!-- PARTICIPACIÓN CIUDADANA -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+                    <li>
+                        <a href="participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+
+        </ul>
+
+        <!-- BUSCADOR DIRECTO CON SUGERENCIAS -->
+
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="buscador-campo"
+                for="campo-busqueda">
+
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input id="campo-busqueda"
+                    type="search"
+                    placeholder="Buscar en el sitio..."
+                    autocomplete="off"
+                    aria-label="Buscar en el sitio"
+                    aria-expanded="false"
+                    aria-controls="resultados-busqueda">
+
+            </label>
+
+            <div id="resultados-busqueda"
+                class="resultados-busqueda"
+                aria-live="polite"
+                hidden>
+            </div>
+
+        </div>
+
+
+    </div>
+
+</nav>
+
+<!-- ======================================================
+     CONTENIDO PRINCIPAL
+====================================================== -->
+<main>
+
+    <!-- ENCABEZADO DE PÁGINA -->
+    <section class="pagina-encabezado">
+
+        <div class="contenedor">
+
+            <div class="migas">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Prestaciones y programas</span>
+                <span>/</span>
+                <span>Programas</span>
+            </div>
+
+            <span class="etiqueta">
+                Atención primaria
+            </span>
+
+            <h1>Programas de salud</h1>
+
+            <p>
+                Conoce los programas que forman parte de la
+                información institucional de salud municipal,
+                sus objetivos y las personas a quienes están dirigidos.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ==================================================
+         DIRECTORIO DE PROGRAMAS
+    ================================================== -->
+    <section class="programas-seccion"
+             id="seccion-programas">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Programas disponibles
+            </span>
+
+            <h2 class="programas-titulo">
+                Explora nuestros programas
+            </h2>
+
+            <p class="programas-introduccion">
+                Utiliza el buscador o selecciona un área de interés.
+                Presiona «Ver información» para consultar la ficha
+                de cada programa, sus objetivos y sus principales
+                líneas de acción.
+            </p>
+
+            <!-- BÚSQUEDA Y FILTROS -->
+            <div class="programas-herramientas">
+
+                <div class="programas-busqueda">
+
+                    <label for="buscar-programa">
+                        Buscar programa de salud
+                    </label>
+
+                    <input type="search"
+                           id="buscar-programa"
+                           placeholder="Ej.: adulto mayor, infancia, vida sana...">
+
+                </div>
+
+                <div class="programas-filtros"
+                     role="group"
+                     aria-label="Filtrar programas de salud">
+
+                    <button type="button"
+                            class="programa-filtro activo"
+                            data-filtro="todos"
+                            aria-pressed="true">
+                        Todos
+                    </button>
+
+                    <button type="button"
+                            class="programa-filtro"
+                            data-filtro="infancia"
+                            aria-pressed="false">
+                        Infancia y adolescencia
+                    </button>
+
+                    <button type="button"
+                            class="programa-filtro"
+                            data-filtro="bienestar"
+                            aria-pressed="false">
+                        Bienestar y prevención
+                    </button>
+
+                    <button type="button"
+                            class="programa-filtro"
+                            data-filtro="mayores"
+                            aria-pressed="false">
+                        Personas mayores
+                    </button>
+
+                    <button type="button"
+                            class="programa-filtro"
+                            data-filtro="domiciliaria"
+                            aria-pressed="false">
+                        Atención domiciliaria
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- CONTADOR DE RESULTADOS -->
+            <p class="programas-contador"
+               id="contador-programas"
+               aria-live="polite">
+            </p>
+
+            <!-- TARJETAS GENERADAS POR JAVASCRIPT -->
+            <div class="programas-grid"
+                 id="lista-programas">
+            </div>
+
+            <!-- MENSAJE SIN RESULTADOS -->
+            <div class="programas-vacio"
+                 id="programas-vacio"
+                 hidden>
+
+                No se encontraron programas con los criterios seleccionados.
+
+            </div>
+
+            <!-- REFERENCIA INSTITUCIONAL -->
+            <p class="programas-nota">
+                Las condiciones de ingreso, cupos y disponibilidad
+                deben consultarse directamente con el establecimiento.
+            </p>
+
+        </div>
+
+    </section>
+
+    <!-- ==================================================
+         FICHA INDIVIDUAL DEL PROGRAMA
+    ================================================== -->
+    <section class="programa-ficha-seccion"
+             id="seccion-ficha-programa"
+             hidden>
+
+        <div class="contenedor">
+
+            <button class="programa-volver"
+                    id="volver-programas"
+                    type="button">
+                ← Volver a programas
+            </button>
+
+            <!-- CABECERA -->
+            <div class="programa-ficha-cabecera">
+
+                <span class="etiqueta"
+                      id="ficha-programa-categoria">
+                </span>
+
+                <h2 id="ficha-programa-nombre"></h2>
+
+                <p id="ficha-programa-resumen"></p>
+
+            </div>
+
+            <!-- CONTENIDO DE LA FICHA -->
+            <div class="programa-ficha-grid">
+
+                <!-- PANEL IZQUIERDO -->
+                <article class="programa-panel">
+
+                    <h3>Descripción del programa</h3>
+
+                    <p id="ficha-programa-descripcion"></p>
+
+                    <h4>Objetivo general</h4>
+
+                    <p id="ficha-programa-objetivo"></p>
+
+                    <h4>Principales líneas de acción</h4>
+
+                    <ul id="ficha-programa-acciones"></ul>
+
+                    <div class="programa-aviso">
+
+                        Información orientativa para un prototipo académico.
+                        Los requisitos específicos de acceso y la vigencia
+                        del programa deben ser confirmados con la red
+                        de salud municipal.
+
+                    </div>
+
+                </article>
+
+                <!-- PANEL DERECHO -->
+                <aside class="programa-panel">
+
+                    <h3>Información general</h3>
+
+                    <div class="programa-dato">
+                        <strong>Área del programa</strong>
+                        <span id="ficha-programa-area"></span>
+                    </div>
+
+                    <div class="programa-dato">
+                        <strong>Población a la que se dirige</strong>
+                        <span id="ficha-programa-publico"></span>
+                    </div>
+
+                    <div class="programa-dato">
+
+                        <strong>Requisitos de acceso</strong>
+
+                        <span>
+                            Consultar criterios de ingreso y
+                            disponibilidad con el establecimiento.
+                        </span>
+
+                    </div>
+
+
+                    <a href="establecimientos.html"
+                       class="programa-boton">
+                        Consultar establecimientos
+                    </a>
+
+                </aside>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- ==================================================
+         ENLACES COMPLEMENTARIOS
+    ================================================== -->
+    <section class="programas-complemento">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Más información
+            </span>
+
+            <h2>Conoce los servicios de nuestra red</h2>
+
+            <p>
+                Además de los programas de salud, puedes consultar
+                las prestaciones de atención primaria y los datos
+                de los establecimientos municipales.
+            </p>
+
+            <div class="programas-enlaces">
+
+                <a href="prestaciones.html">
+                    Ver prestaciones de salud
+                </a>
+
+                <a href="establecimientos.html"
+                   class="secundario">
+                    Ver establecimientos
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ======================================================
+     PIE DE PÁGINA
+====================================================== -->
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+        <!-- IDENTIDAD -->
+        <div class="footer-identidad">
+
+            <img src="../static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+
+        </div>
+
+        <!-- ENLACES DE INTERÉS -->
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="oirs.html">OIRS</a>
+                </li>
+
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- ACCESOS INSTITUCIONALES -->
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+
+                <li>
+                    <a href="intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <!-- CONTACTO -->
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Los Alacalufes N.º 376,
+                Padre Las Casas.
+            </p>
+
+        </div>
+
+        <!-- REDES SOCIALES -->
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+                <span class="red-social"
+                      aria-label="Facebook">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+
+                    </svg>
+
+                </span>
+
+                <span class="red-social"
+                      aria-label="Instagram">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <rect x="3" y="3"
+                              width="18" height="18"
+                              rx="5"/>
+
+                        <circle cx="12" cy="12" r="4"/>
+
+                        <circle cx="17.5" cy="6.5"
+                                r="1"
+                                fill="currentColor"
+                                stroke="none"/>
+
+                    </svg>
+
+                </span>
+
+                <span class="red-social"
+                      aria-label="YouTube">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <rect x="2" y="5"
+                              width="20" height="14"
+                              rx="4"/>
+
+                        <path d="m10 9 5 3-5 3z"/>
+
+                    </svg>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- INFORMACIÓN INFERIOR -->
+    <div class="contenedor footer-inferior">
+
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

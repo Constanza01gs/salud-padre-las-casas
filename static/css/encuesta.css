@@ -1,0 +1,671 @@
+
+/*
+============================================================
+ENCUESTA DE SATISFACCIÓN
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+Estilos específicos de la página de encuesta.
+
+Incluye:
+1. Encabezado y navegación secundaria.
+2. Distribución del formulario.
+3. Campos y preguntas.
+4. Escala de satisfacción con caritas.
+5. Botones y mensajes.
+6. Información lateral.
+7. Confirmación.
+8. Diseño adaptable.
+
+Los estilos generales del sitio están en style.css.
+============================================================
+*/
+
+
+/* ==========================================================
+   1. ENCABEZADO DE LA PÁGINA
+========================================================== */
+
+.encuesta-encabezado {
+    padding: 43px 0;
+    background: linear-gradient(
+        110deg,
+        #edf7fd,
+        #ffffff 65%,
+        #eef8f3
+    );
+    border-bottom: 1px solid var(--borde);
+}
+
+.encuesta-migas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: var(--texto-secundario);
+    font-size: 0.82rem;
+}
+
+.encuesta-migas a {
+    color: var(--azul);
+}
+
+.encuesta-encabezado h1 {
+    margin: 12px 0;
+    color: #083e70;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.encuesta-encabezado p {
+    max-width: 850px;
+    color: var(--texto-secundario);
+}
+
+
+/* ==========================================================
+   2. SECCIÓN Y DISTRIBUCIÓN PRINCIPAL
+========================================================== */
+
+.encuesta-seccion {
+    padding: 50px 0 70px;
+}
+
+.encuesta-distribucion {
+    display: grid;
+    grid-template-columns: minmax(0, 1.65fr) minmax(260px, 0.7fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.encuesta-panel {
+    min-width: 0;
+    padding: 32px;
+    border: 1px solid var(--borde);
+    border-radius: 15px;
+    background: #ffffff;
+    box-shadow: var(--sombra);
+}
+
+.encuesta-panel h2 {
+    margin-bottom: 11px;
+    color: #083e70;
+    font-size: 1.55rem;
+}
+
+.encuesta-introduccion {
+    margin-bottom: 25px;
+    color: var(--texto-secundario);
+    font-size: 0.92rem;
+}
+
+
+/* ==========================================================
+   3. BLOQUES DEL FORMULARIO
+========================================================== */
+
+.encuesta-bloque {
+    padding: 26px 0;
+    border-top: 1px solid #e3ebf1;
+}
+
+.encuesta-bloque h3 {
+    margin-bottom: 17px;
+    color: #134b73;
+    font-size: 1.12rem;
+}
+
+.encuesta-campo {
+    margin-bottom: 20px;
+}
+
+.encuesta-campo:last-child {
+    margin-bottom: 0;
+}
+
+.encuesta-campo > label,
+.encuesta-pregunta {
+    display: block;
+    margin-bottom: 11px;
+    color: #264c65;
+    font-size: 0.92rem;
+    font-weight: 700;
+}
+
+
+/* ==========================================================
+   4. CAMPOS SELECT Y TEXTAREA
+========================================================== */
+
+.encuesta-campo select,
+.encuesta-campo textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #cbd8e5;
+    border-radius: 9px;
+    background: #ffffff;
+    color: var(--texto);
+    font: inherit;
+    font-size: 0.92rem;
+}
+
+.encuesta-campo textarea {
+    min-height: 125px;
+    resize: vertical;
+}
+
+.encuesta-campo select:focus,
+.encuesta-campo textarea:focus {
+    outline: 3px solid #b9e1f8;
+    border-color: #0b609d;
+}
+
+.encuesta-obligatorio {
+    color: #b42318;
+}
+
+.encuesta-ayuda {
+    margin-top: 9px;
+    color: #647c8c;
+    font-size: 0.8rem;
+}
+
+
+/* ==========================================================
+   5. ESCALA DE SATISFACCIÓN
+========================================================== */
+
+/*
+Cada pregunta presenta cinco opciones.
+
+Los valores de los radio buttons se mantienen:
+1 = Muy malo
+2 = Malo
+3 = Regular
+4 = Bueno
+5 = Muy bueno
+
+Los textos pueden variar según la pregunta.
+*/
+
+.encuesta-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.encuesta-opcion {
+    position: relative;
+
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 95px;
+    min-height: 112px;
+
+    padding: 15px 10px;
+
+    border: 1px solid #d3e0e9;
+    border-radius: 11px;
+
+    background: #ffffff;
+    color: #34556b;
+
+    font-size: 0.86rem;
+    font-weight: 500;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.encuesta-opcion:hover {
+    background: #f7fafc;
+    transform: translateY(-2px);
+}
+
+.encuesta-opcion input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.encuesta-opcion:has(input:focus-visible) {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* ==========================================================
+   6. CARITAS SVG
+========================================================== */
+
+/*
+Los iconos están definidos en encuesta.html.
+
+Se dibujan mediante:
+- Un círculo exterior.
+- Dos ojos.
+- Una boca según el nivel de satisfacción.
+
+El color se hereda desde cada opción.
+*/
+
+.encuesta-carita {
+    display: block;
+
+    width: 45px;
+    height: 45px;
+
+    margin-bottom: 10px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    flex-shrink: 0;
+
+    transition: transform 0.2s ease;
+}
+
+.encuesta-opcion:hover .encuesta-carita {
+    transform: scale(1.08);
+}
+
+/* Los ojos son círculos rellenos. */
+
+.encuesta-carita .cara-ojo {
+    fill: currentColor;
+    stroke: none;
+}
+
+.encuesta-opcion > span {
+    display: block;
+    line-height: 1.3;
+}
+
+
+/* ==========================================================
+   7. COLORES DE LOS CINCO NIVELES
+========================================================== */
+
+/* NIVEL 1: MUY MALO / MUY MALA / MUY BAJA */
+
+.encuesta-opcion.nivel-1 .encuesta-carita {
+    color: #cf5555;
+}
+
+.encuesta-opcion.nivel-1:has(input:checked) {
+    border-color: #cf7777;
+    background: #fff0f0;
+    color: #9f3535;
+    box-shadow: 0 0 0 1px #efb7b7;
+}
+
+
+/* NIVEL 2: MALO / MALA / BAJA */
+
+.encuesta-opcion.nivel-2 .encuesta-carita {
+    color: #d98649;
+}
+
+.encuesta-opcion.nivel-2:has(input:checked) {
+    border-color: #e3a174;
+    background: #fff3e8;
+    color: #9c5728;
+    box-shadow: 0 0 0 1px #f0c7a5;
+}
+
+
+/* NIVEL 3: REGULAR */
+
+.encuesta-opcion.nivel-3 .encuesta-carita {
+    color: #c49a38;
+}
+
+.encuesta-opcion.nivel-3:has(input:checked) {
+    border-color: #d9b65b;
+    background: #fff9e5;
+    color: #8b6a19;
+    box-shadow: 0 0 0 1px #ecd99a;
+}
+
+
+/* NIVEL 4: BUENO / BUENA / ALTA */
+
+.encuesta-opcion.nivel-4 .encuesta-carita {
+    color: #69a875;
+}
+
+.encuesta-opcion.nivel-4:has(input:checked) {
+    border-color: #88be92;
+    background: #edf8ef;
+    color: #377a45;
+    box-shadow: 0 0 0 1px #b8dec0;
+}
+
+
+/* NIVEL 5: MUY BUENO / MUY BUENA / MUY ALTA */
+
+.encuesta-opcion.nivel-5 .encuesta-carita {
+    color: #34875b;
+}
+
+.encuesta-opcion.nivel-5:has(input:checked) {
+    border-color: #65aa80;
+    background: #e5f5eb;
+    color: #216b42;
+    box-shadow: 0 0 0 1px #a9d9bc;
+}
+
+
+/* ==========================================================
+   8. ESTADO DE SELECCIÓN
+========================================================== */
+
+.encuesta-opcion:has(input:checked) {
+    font-weight: 700;
+}
+
+.encuesta-opcion:has(input:checked) .encuesta-carita {
+    transform: scale(1.08);
+}
+
+/*
+Los colores específicos se encuentran en las
+clases nivel-1, nivel-2, nivel-3, nivel-4 y nivel-5.
+*/
+
+
+/* ==========================================================
+   9. BOTONES DEL FORMULARIO
+========================================================== */
+
+.encuesta-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.encuesta-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 13px 21px;
+
+    border: 1px solid #0b609d;
+    border-radius: 9px;
+
+    background: #0b609d;
+    color: #ffffff;
+
+    font: inherit;
+    font-size: 0.92rem;
+    font-weight: 700;
+
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.encuesta-boton:hover {
+    background: #084b7a;
+}
+
+.encuesta-boton.secundario {
+    border-color: #cbd8e5;
+    background: #ffffff;
+    color: #0b609d;
+}
+
+.encuesta-boton.secundario:hover {
+    background: #eef7fd;
+}
+
+
+/* ==========================================================
+   10. INFORMACIÓN LATERAL
+========================================================== */
+
+.encuesta-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.encuesta-info {
+    padding: 25px;
+    border: 1px solid #dbe8f0;
+    border-radius: 14px;
+    background: #f4f9fd;
+}
+
+.encuesta-info h3 {
+    margin-bottom: 13px;
+    color: #083e70;
+    font-size: 1.08rem;
+}
+
+.encuesta-info p,
+.encuesta-info li {
+    color: var(--texto-secundario);
+    font-size: 0.87rem;
+    line-height: 1.65;
+}
+
+.encuesta-info ul {
+    padding-left: 19px;
+}
+
+.encuesta-info li + li {
+    margin-top: 8px;
+}
+
+.encuesta-info a {
+    color: #0b609d;
+    font-weight: 700;
+}
+
+.encuesta-enlace-oirs {
+    margin-top: 13px;
+}
+
+
+/* ==========================================================
+   11. AVISO DE PROTOTIPO ACADÉMICO
+========================================================== */
+
+.encuesta-aviso {
+    padding: 18px;
+    border: 1px solid #f1d4aa;
+    border-radius: 12px;
+    background: #fff9ed;
+    color: #79551c;
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+.encuesta-aviso strong {
+    display: block;
+    margin-bottom: 7px;
+}
+
+
+/* ==========================================================
+   12. MENSAJES DE ERROR
+========================================================== */
+
+.encuesta-error {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid #f2c6c1;
+    border-radius: 9px;
+    background: #fff1f0;
+    color: #9b2d24;
+    font-size: 0.88rem;
+}
+
+
+/* ==========================================================
+   13. CONFIRMACIÓN DE ENVÍO
+========================================================== */
+
+.encuesta-confirmacion {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 42px;
+
+    border: 1px solid #d8e9e1;
+    border-radius: 17px;
+
+    background: #ffffff;
+    box-shadow: var(--sombra);
+
+    text-align: center;
+}
+
+.encuesta-confirmacion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 78px;
+    height: 78px;
+
+    margin: 0 auto 22px;
+
+    border-radius: 50%;
+    background: #e1f5e9;
+    color: #16814e;
+
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.encuesta-confirmacion h2 {
+    margin-bottom: 14px;
+    color: #0c5e40;
+    font-size: 1.8rem;
+}
+
+.encuesta-confirmacion p {
+    color: var(--texto-secundario);
+    line-height: 1.7;
+}
+
+.encuesta-confirmacion-nota {
+    margin-top: 16px;
+}
+
+.encuesta-confirmacion .encuesta-acciones {
+    justify-content: center;
+}
+
+
+/* ==========================================================
+   14. ELEMENTOS OCULTOS
+========================================================== */
+
+[hidden] {
+    display: none !important;
+}
+
+
+/* ==========================================================
+   15. DISEÑO RESPONSIVE
+========================================================== */
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+
+    .encuesta-distribucion {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* PANTALLAS INTERMEDIAS */
+
+@media (max-width: 700px) {
+
+    .encuesta-opciones {
+        gap: 8px;
+    }
+
+    .encuesta-opcion {
+        min-width: 80px;
+        padding: 13px 7px;
+    }
+
+    .encuesta-carita {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+
+/* TELÉFONOS */
+
+@media (max-width: 600px) {
+
+    .encuesta-encabezado,
+    .encuesta-seccion {
+        padding: 35px 0;
+    }
+
+    .encuesta-panel,
+    .encuesta-confirmacion {
+        padding: 22px;
+    }
+
+    .encuesta-opciones {
+        flex-direction: column;
+    }
+
+    .encuesta-opcion {
+        flex: auto;
+        flex-direction: row;
+        justify-content: flex-start;
+
+        width: 100%;
+        min-width: 100%;
+        min-height: 64px;
+
+        gap: 15px;
+        padding: 12px 16px;
+
+        text-align: left;
+    }
+
+    .encuesta-carita {
+        width: 38px;
+        height: 38px;
+        margin-bottom: 0;
+    }
+
+    .encuesta-boton {
+        width: 100%;
+    }
+
+}

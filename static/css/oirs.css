@@ -1,0 +1,1158 @@
+
+/*
+============================================================
+PÁGINA PÚBLICA OIRS
+Departamento de Salud Municipal de Padre Las Casas
+============================================================
+
+1. Configuración general
+2. Encabezado institucional
+3. Presentación de la OIRS
+4. Distribución principal
+5. Formulario y secciones numeradas
+6. Tipos de solicitud
+7. Campos y controles
+8. Representante y autorizaciones
+9. Botones y mensajes
+10. Información lateral
+11. Consulta de estado
+12. Confirmación y folio
+13. Iconos informativos
+14. Colores de tarjetas
+15. Ayuda presencial
+16. Adaptación a dispositivos móviles
+
+============================================================
+*/
+
+
+/* =========================================================
+   1. CONFIGURACIÓN GENERAL
+========================================================= */
+
+:root {
+    --oirs-azul: #075c99;
+    --oirs-azul-oscuro: #083e70;
+    --oirs-azul-claro: #e8f4fc;
+    --oirs-celeste: #d7ecf9;
+    --oirs-texto: #29475b;
+    --oirs-secundario: #627b8e;
+    --oirs-borde: #dce7ef;
+    --oirs-fondo: #f3f8fc;
+    --oirs-blanco: #ffffff;
+    --oirs-verde: #21865b;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--oirs-texto);
+    background: var(--oirs-fondo);
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.iconos-definiciones {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+
+/* =========================================================
+   2. ENCABEZADO INSTITUCIONAL
+========================================================= */
+
+/*
+El logo, el encabezado, la navegación, el buscador
+y el acceso a funcionarios utilizan los estilos
+compartidos de static/css/style.css.
+
+No se sobrescriben aquí, para mantener la misma
+apariencia que en Noticias y actividades.
+*/
+
+
+/* =========================================================
+   3. PRESENTACIÓN DE LA OIRS
+========================================================= */
+
+.oirs-encabezado {
+    padding: 43px 0;
+    background: linear-gradient(
+        110deg,
+        #edf7fd,
+        #ffffff 65%,
+        #eef8f3
+    );
+    border-bottom: 1px solid var(--borde, #dce7ef);
+}
+
+.oirs-migas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 15px;
+    color: var(--texto-secundario, #627b8e);
+    font-size: 0.82rem;
+}
+
+.oirs-migas a {
+    color: var(--azul, #075c99);
+    text-decoration: none;
+}
+
+.oirs-migas a:hover {
+    text-decoration: underline;
+}
+
+/*
+La etiqueta institucional conserva los estilos
+originales de style.css, sin fondo adicional
+ni efecto de globo.
+*/
+
+.oirs-encabezado h1 {
+    max-width: 1000px;
+    margin: 4px 0 10px;
+    color: #083e70;
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1.2;
+}
+
+.oirs-encabezado p {
+    max-width: 800px;
+    margin: 0 0 9px;
+    color: var(--texto-secundario, #627b8e);
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   4. DISTRIBUCIÓN PRINCIPAL
+========================================================= */
+
+.oirs-seccion {
+    padding: 34px 0 65px;
+}
+
+.oirs-distribucion {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.95fr)
+        minmax(285px, 0.85fr);
+    gap: 23px;
+    align-items: start;
+}
+
+.oirs-panel,
+.oirs-info,
+.oirs-alerta,
+.oirs-confirmacion {
+    border: 1px solid var(--oirs-borde);
+    border-radius: 13px;
+    background: #ffffff;
+    box-shadow: 0 3px 14px rgba(9, 63, 106, 0.035);
+}
+
+.oirs-panel {
+    min-width: 0;
+    padding: 28px 31px;
+}
+
+.oirs-panel > h2 {
+    margin: 0 0 10px;
+    color: var(--oirs-azul-oscuro);
+    font-size: 1.48rem;
+}
+
+.oirs-descripcion {
+    margin: 0 0 27px;
+    color: var(--oirs-secundario);
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   5. FORMULARIO Y SECCIONES NUMERADAS
+========================================================= */
+
+.oirs-bloque {
+    padding: 25px 0;
+    border-top: 1px solid #e2ebf2;
+}
+
+.oirs-bloque:first-of-type {
+    padding-top: 10px;
+    border-top: none;
+}
+
+.oirs-bloque:last-child {
+    padding-bottom: 0;
+}
+
+.oirs-bloque h3 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 18px;
+    color: var(--oirs-azul-oscuro);
+    font-size: 1.06rem;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.oirs-numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 32px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #0966a7;
+    color: #ffffff;
+    font-size: 0.89rem;
+    font-weight: 800;
+}
+
+.oirs-texto-bloque {
+    margin: -5px 0 19px;
+    color: var(--oirs-secundario);
+    font-size: 0.86rem;
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   6. TIPOS DE SOLICITUD
+========================================================= */
+
+.oirs-tipos {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.oirs-tipo-opcion {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 55px;
+    padding: 10px 7px;
+    border: 1px solid #d8e5ee;
+    border-radius: 9px;
+    background: #f6fafd;
+    color: #3a5b71;
+    font-size: 0.79rem;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.oirs-tipo-opcion:hover {
+    border-color: #8cc5e8;
+    background: #eaf5fc;
+}
+
+.oirs-tipo-opcion input {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    width: 14px;
+    height: 14px;
+    accent-color: #0b609d;
+}
+
+.oirs-tipo-opcion span {
+    padding-left: 10px;
+    overflow-wrap: anywhere;
+}
+
+.oirs-tipo-opcion:has(input:checked) {
+    border-color: #0b609d;
+    background: #e5f3fc;
+    color: #075c99;
+    box-shadow: inset 0 0 0 1px #0b609d;
+}
+
+.oirs-tipo-opcion:focus-within {
+    outline: 3px solid #b6dff7;
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   7. CAMPOS Y CONTROLES
+========================================================= */
+
+.oirs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 19px 17px;
+}
+
+.oirs-campo {
+    min-width: 0;
+}
+
+.oirs-campo.ancho-completo {
+    grid-column: 1 / -1;
+}
+
+.oirs-campo label {
+    display: block;
+    margin-bottom: 8px;
+    color: #34566d;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.oirs-campo input,
+.oirs-campo select,
+.oirs-campo textarea {
+    display: block;
+    width: 100%;
+    min-height: 44px;
+    padding: 11px 13px;
+    border: 1px solid #ccdce7;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #29475b;
+    font-size: 0.87rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.oirs-campo input::placeholder,
+.oirs-campo textarea::placeholder {
+    color: #91a1ad;
+}
+
+.oirs-campo textarea {
+    min-height: 125px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+.oirs-campo input:focus,
+.oirs-campo select:focus,
+.oirs-campo textarea:focus {
+    outline: none;
+    border-color: #0b609d;
+    box-shadow: 0 0 0 3px #cce8f9;
+}
+
+.oirs-campo input:disabled,
+.oirs-campo select:disabled,
+.oirs-campo textarea:disabled {
+    background: #f0f4f7;
+    color: #718595;
+    cursor: not-allowed;
+}
+
+.oirs-campo input[type="file"] {
+    padding: 10px;
+    border-style: dashed;
+    background: #f8fbfd;
+    cursor: pointer;
+}
+
+.oirs-campo input[type="file"]::file-selector-button {
+    padding: 9px 12px;
+    margin-right: 12px;
+    border: 1px solid #c6dfee;
+    border-radius: 6px;
+    background: #e8f4fc;
+    color: #075c99;
+    font-size: 0.81rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.oirs-ayuda {
+    display: block;
+    margin-top: 8px;
+    color: #6a8395;
+    font-size: 0.79rem;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   8. REPRESENTANTE Y AUTORIZACIONES
+========================================================= */
+
+.oirs-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin: 18px 0;
+    color: #45677b;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    cursor: pointer;
+}
+
+.oirs-checkbox input {
+    flex-shrink: 0;
+    width: 17px;
+    height: 17px;
+    margin-top: 3px;
+    accent-color: #0b609d;
+}
+
+.oirs-checkbox-destacado {
+    margin: 0 0 20px;
+    padding: 14px 15px;
+    border: 1px solid #d8e9f4;
+    border-radius: 9px;
+    background: #f0f8fd;
+    color: #234f6e;
+    font-weight: 700;
+}
+
+#datos-representante {
+    padding: 17px;
+    border: 1px solid #dce8f1;
+    border-radius: 10px;
+    background: #f9fcfe;
+}
+
+.oirs-aviso-correo {
+    margin: 19px 0;
+    padding: 16px 18px;
+    border: 1px solid #c8e2f3;
+    border-radius: 9px;
+    background: #edf7fd;
+    color: #315e7b;
+}
+
+.oirs-aviso-correo strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #075c99;
+    font-size: 0.87rem;
+}
+
+.oirs-aviso-correo p {
+    margin: 0 0 7px;
+    font-size: 0.84rem;
+    line-height: 1.65;
+}
+
+.oirs-aviso-correo p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   9. BOTONES Y MENSAJES
+========================================================= */
+
+.oirs-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 23px;
+}
+
+.oirs-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 43px;
+    padding: 11px 19px;
+    border: 1px solid #075c99;
+    border-radius: 8px;
+    background: #075c99;
+    color: #ffffff;
+    font-size: 0.86rem;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.oirs-boton:hover {
+    border-color: #084b7a;
+    background: #084b7a;
+    color: #ffffff;
+}
+
+.oirs-boton.secundario {
+    border-color: #b8d5e8;
+    background: #ffffff;
+    color: #075c99;
+}
+
+.oirs-boton.secundario:hover {
+    background: #eaf5fc;
+    color: #075c99;
+}
+
+.oirs-boton:focus-visible {
+    outline: 3px solid #a7d8f5;
+    outline-offset: 3px;
+}
+
+.oirs-error {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border: 1px solid #efc4c0;
+    border-radius: 8px;
+    background: #fff2f1;
+    color: #9a2e27;
+    font-size: 0.86rem;
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   10. INFORMACIÓN LATERAL
+========================================================= */
+
+.oirs-lateral {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    min-width: 0;
+}
+
+.oirs-info {
+    padding: 22px;
+}
+
+.oirs-info h3 {
+    margin: 0 0 14px;
+    color: #083e70;
+    font-size: 1.06rem;
+    line-height: 1.4;
+}
+
+.oirs-info h4 {
+    margin: 18px 0 9px;
+    color: #075c99;
+    font-size: 0.89rem;
+}
+
+.oirs-info p {
+    margin: 0 0 12px;
+    color: #526f82;
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.oirs-info p:last-child {
+    margin-bottom: 0;
+}
+
+.oirs-info ul {
+    margin: 10px 0 0;
+    padding-left: 19px;
+}
+
+.oirs-info li {
+    margin-bottom: 10px;
+    color: #526f82;
+    font-size: 0.84rem;
+    line-height: 1.65;
+}
+
+.oirs-info li:last-child {
+    margin-bottom: 0;
+}
+
+.oirs-info li strong {
+    color: #0b609d;
+}
+
+.oirs-alerta {
+    padding: 19px 21px;
+    border-color: #ecd6ad;
+    background: #fffaf0;
+}
+
+.oirs-alerta strong {
+    display: block;
+    margin-bottom: 9px;
+    color: #87601d;
+    font-size: 0.91rem;
+}
+
+.oirs-alerta p {
+    margin: 0 0 10px;
+    color: #84652e;
+    font-size: 0.82rem;
+    line-height: 1.65;
+}
+
+.oirs-alerta p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   11. CONSULTA DE ESTADO
+========================================================= */
+
+.oirs-consulta-panel {
+    border-color: #c8e1f2;
+    background: #f0f8fe;
+}
+
+.oirs-consulta-panel form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.oirs-consulta-panel .oirs-boton {
+    width: 100%;
+}
+
+.oirs-resultado-consulta {
+    margin-top: 19px;
+    padding: 16px;
+    border: 1px solid #c9e0ed;
+    border-radius: 9px;
+    background: #ffffff;
+}
+
+.oirs-resultado-consulta h4 {
+    margin: 0 0 13px;
+    color: #083e70;
+    font-size: 0.94rem;
+}
+
+.oirs-resultado-consulta p {
+    margin: 0 0 9px;
+    overflow-wrap: anywhere;
+}
+
+.oirs-resultado-consulta strong {
+    color: #315c78;
+}
+
+.oirs-resultado-consulta .oirs-estado {
+    display: inline-block;
+    padding: 6px 11px;
+    border-radius: 20px;
+    background: #e4f1fc;
+    color: #075c99;
+    font-size: 0.78rem;
+    font-weight: 800;
+}
+
+.oirs-resultado-consulta .oirs-estado.proceso {
+    background: #fff1d6;
+    color: #96610b;
+}
+
+.oirs-resultado-consulta .oirs-estado.respondida {
+    background: #e1f5e9;
+    color: #21774b;
+}
+
+.oirs-resultado-consulta .oirs-estado.cerrada {
+    background: #e8edf1;
+    color: #526577;
+}
+
+
+/* =========================================================
+   12. CONFIRMACIÓN Y FOLIO
+========================================================= */
+
+.oirs-confirmacion {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 35px;
+    text-align: center;
+}
+
+.oirs-confirmacion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 66px;
+    height: 66px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    background: #dff5e8;
+    color: #21865b;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.oirs-confirmacion h2 {
+    margin: 0 0 12px;
+    color: #168054;
+    font-size: 1.7rem;
+}
+
+.oirs-confirmacion > p {
+    color: #567487;
+    font-size: 0.94rem;
+    line-height: 1.7;
+}
+
+.oirs-folio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    max-width: 430px;
+    margin: 26px auto;
+    padding: 19px;
+    border: 1px solid #add5ed;
+    border-radius: 11px;
+    background: #eef8ff;
+}
+
+.oirs-folio span {
+    color: #567c96;
+    font-size: 0.83rem;
+    font-weight: 700;
+}
+
+.oirs-folio strong {
+    color: #083e70;
+    font-size: clamp(1.1rem, 2.4vw, 1.55rem);
+    letter-spacing: 0.5px;
+    overflow-wrap: anywhere;
+}
+
+.oirs-confirmacion .oirs-aviso-correo {
+    max-width: 680px;
+    margin: 22px auto;
+    text-align: left;
+}
+
+.oirs-resumen {
+    max-width: 680px;
+    margin: 24px auto;
+    padding: 22px;
+    border: 1px solid #dce8f1;
+    border-radius: 10px;
+    background: #f9fcfe;
+    text-align: left;
+}
+
+.oirs-resumen h3 {
+    margin: 0 0 15px;
+    color: #083e70;
+    font-size: 1.05rem;
+}
+
+.oirs-resumen p {
+    margin: 0 0 12px;
+    color: #526f82;
+    font-size: 0.87rem;
+    line-height: 1.55;
+}
+
+.oirs-resumen p:last-child {
+    margin-bottom: 0;
+}
+
+.oirs-resumen strong {
+    color: #294e68;
+}
+
+.oirs-confirmacion .oirs-acciones {
+    justify-content: center;
+    margin-top: 25px;
+}
+
+#mensaje-copia {
+    margin-top: 13px;
+    text-align: center;
+}
+
+
+/* =========================================================
+   13. ICONOS DE LAS TARJETAS INFORMATIVAS
+========================================================= */
+
+.oirs-info-encabezado {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 17px;
+}
+
+.oirs-info-encabezado h3 {
+    flex: 1;
+    margin: 0;
+    color: #083e70;
+    font-size: 1.06rem;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.oirs-info-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    border-radius: 11px;
+}
+
+.oirs-info-icono svg {
+    width: 22px;
+    height: 22px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* =========================================================
+   14. COLORES DE ICONOS Y TARJETAS
+========================================================= */
+
+.oirs-icono-azul {
+    background: #e4f2fd;
+    color: #0966a7;
+}
+
+.oirs-icono-celeste {
+    background: #e2f5fb;
+    color: #1682a6;
+}
+
+.oirs-icono-morado {
+    background: #f0ebfc;
+    color: #7852b5;
+}
+
+.oirs-icono-verde {
+    background: #e5f6ed;
+    color: #21865b;
+}
+
+.oirs-icono-rojo {
+    background: #fff0ee;
+    color: #c65a51;
+}
+
+.oirs-icono-amarillo {
+    background: #fff5dc;
+    color: #b98618;
+}
+
+/* Tarjeta: ¿Qué es la OIRS? */
+
+.oirs-info-institucional {
+    border-color: #d7e7f2;
+}
+
+.oirs-info-institucional h4 {
+    margin-top: 19px;
+}
+
+/* Tarjeta: Plazos de respuesta */
+
+.oirs-info-plazos {
+    border-color: #d3e9f3;
+    background: #f5fbff;
+}
+
+.oirs-info-plazos p strong {
+    color: #075c99;
+}
+
+/* Tarjeta: Tipos de solicitudes */
+
+.oirs-info-tipos {
+    border-color: #e1dff0;
+}
+
+.oirs-info .oirs-lista-tipos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.oirs-info .oirs-lista-tipos li {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin: 0;
+    padding: 0;
+    color: #526f82;
+    font-size: 0.84rem;
+    line-height: 1.6;
+}
+
+.oirs-lista-tipos li > span:last-child {
+    flex: 1;
+    min-width: 0;
+}
+
+.oirs-lista-tipos li strong {
+    color: #294e68;
+}
+
+.oirs-tipo-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 33px;
+    height: 33px;
+    border-radius: 9px;
+}
+
+.oirs-tipo-icono svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Tarjeta: Consultar estado */
+
+.oirs-consulta-panel {
+    border-color: #c8e1f2;
+    background: #f0f8fe;
+}
+
+.oirs-consulta-panel .oirs-info-encabezado {
+    margin-bottom: 15px;
+}
+
+.oirs-consulta-panel .oirs-campo {
+    margin-bottom: 0;
+}
+
+.oirs-consulta-panel .oirs-boton {
+    width: 100%;
+}
+
+
+/* =========================================================
+   15. TARJETA: ¿NECESITAS AYUDA?
+========================================================= */
+
+.oirs-info-ayuda {
+    border-color: #cce9d9;
+    background: #f2fbf6;
+}
+
+.oirs-info-ayuda .oirs-info-encabezado h3 {
+    color: #176d49;
+}
+
+.oirs-info-ayuda p {
+    color: #486e5b;
+}
+
+.oirs-info-ayuda p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================================
+   16. ADAPTACIÓN A DISPOSITIVOS MÓVILES
+========================================================= */
+
+@media (max-width: 1120px) {
+
+    .oirs-distribucion {
+        grid-template-columns:
+            minmax(0, 1.5fr)
+            minmax(265px, 0.8fr);
+    }
+
+    .oirs-tipos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 900px) {
+
+    .oirs-distribucion {
+        grid-template-columns: 1fr;
+    }
+
+    .oirs-lateral {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: start;
+    }
+
+    .oirs-tipos {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .oirs-encabezado {
+        padding: 35px 0;
+    }
+
+    .oirs-seccion {
+        padding: 22px 0 45px;
+    }
+
+    .oirs-panel {
+        padding: 21px 17px;
+    }
+
+    .oirs-bloque {
+        padding: 22px 0;
+    }
+
+    .oirs-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .oirs-campo.ancho-completo {
+        grid-column: auto;
+    }
+
+    .oirs-tipos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .oirs-lateral {
+        grid-template-columns: 1fr;
+    }
+
+    .oirs-confirmacion {
+        padding: 26px 18px;
+    }
+
+    .oirs-acciones {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .oirs-acciones .oirs-boton {
+        width: 100%;
+    }
+
+    .oirs-info-encabezado {
+        gap: 11px;
+        margin-bottom: 15px;
+    }
+
+    .oirs-info-icono {
+        width: 40px;
+        height: 40px;
+    }
+
+    .oirs-info-icono svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .oirs-info-encabezado h3 {
+        font-size: 1rem;
+    }
+
+    .oirs-info .oirs-lista-tipos {
+        gap: 13px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .oirs-tipos {
+        grid-template-columns: 1fr;
+    }
+
+    .oirs-tipo-opcion {
+        justify-content: flex-start;
+        min-height: 46px;
+        padding-left: 13px;
+    }
+
+    .oirs-tipo-opcion input {
+        position: static;
+        margin-right: 10px;
+    }
+
+    .oirs-tipo-opcion span {
+        padding-left: 0;
+    }
+
+    .oirs-bloque h3 {
+        align-items: flex-start;
+    }
+
+    .oirs-numero {
+        flex: 0 0 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .oirs-info {
+        padding: 19px;
+    }
+
+    .oirs-tipo-icono {
+        width: 31px;
+        height: 31px;
+    }
+
+    .oirs-tipo-icono svg {
+        width: 17px;
+        height: 17px;
+    }
+
+}

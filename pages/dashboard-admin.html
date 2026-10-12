@@ -1,0 +1,890 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Administración del Sistema | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dashboard-admin.css">
+</head>
+
+<body>
+
+<!-- ================================================
+     ENCABEZADO DEL ADMINISTRADOR
+================================================ -->
+<header class="admin-topbar">
+
+    <img
+        src="../static/img/logo-salud-encabezado.png"
+        alt="Salud Municipal Padre Las Casas"
+    >
+
+    <div class="admin-usuario">
+
+        <div class="admin-usuario-info">
+            <strong id="nombre-administrador">
+                Administrador del sistema
+            </strong>
+            <span>Administración general</span>
+        </div>
+
+        <button
+            type="button"
+            class="admin-salir"
+            id="cerrar-sesion"
+        >
+            Cerrar sesión
+        </button>
+
+    </div>
+
+</header>
+
+<div class="admin-layout">
+
+    <!-- ============================================
+         MENÚ LATERAL
+    ============================================ -->
+    <aside class="admin-sidebar">
+
+        <p class="admin-sidebar-titulo">
+            Administración del sistema
+        </p>
+
+        <nav class="admin-menu" aria-label="Menú de administración">
+
+            <button
+                type="button"
+                class="activo"
+                data-seccion="inicio"
+            >
+                <svg class="admin-menu-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+                <span>Panel principal</span>
+            </button>
+
+            <button
+                type="button"
+                data-seccion="usuarios"
+            >
+                <svg class="admin-menu-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                <span>Gestión de usuarios</span>
+            </button>
+
+            <button
+                type="button"
+                data-seccion="establecimientos"
+            >
+                <svg class="admin-menu-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 21v-4h6v4M8 7h2M14 7h2M8 11h2M14 11h2"/></svg>
+                <span>Gestión de establecimientos</span>
+            </button>
+
+            <button
+                type="button"
+                data-seccion="solicitudes"
+            >
+                <svg class="admin-menu-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8l-5-5h-3"/><path d="M13 3v5h5M8 13h8M8 17h6"/></svg>
+                <span>Supervisión de solicitudes</span>
+            </button>
+
+            <button
+                type="button"
+                data-seccion="configuracion"
+            >
+                <svg class="admin-menu-icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06-2.1 2.1-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.56V21h-3v-.81a1.7 1.7 0 0 0-1-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06-2.1-2.1.06-.06A1.7 1.7 0 0 0 7.14 15a1.7 1.7 0 0 0-1.56-1H5v-3h.58a1.7 1.7 0 0 0 1.56-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06 2.1-2.1.06.06a1.7 1.7 0 0 0 1.87.34 1.7 1.7 0 0 0 1-1.56V4h3v.81a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06 2.1 2.1-.06.06A1.7 1.7 0 0 0 19.4 10a1.7 1.7 0 0 0 1.56 1H21v3h-.04A1.7 1.7 0 0 0 19.4 15Z"/></svg>
+                <span>Configuración</span>
+            </button>
+
+        </nav>
+
+    </aside>
+
+    <main class="admin-main" id="contenido-principal">
+
+        <!-- ========================================
+             1. PANEL PRINCIPAL
+        ======================================== -->
+        <section id="seccion-inicio">
+
+            <div class="admin-titulo">
+
+                <span class="admin-etiqueta">
+                    Administrador del sistema
+                </span>
+
+                <h1>Panel principal</h1>
+
+                <p>
+                    Administración de usuarios, establecimientos
+                    y configuración del prototipo institucional.
+                </p>
+
+            </div>
+
+            <!-- INDICADORES CON ICONOS -->
+            <div class="admin-indicadores">
+
+                <!-- Usuarios activos -->
+                <article class="admin-indicador">
+
+                    <div class="admin-indicador-icono">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+
+                    <span>Usuarios activos</span>
+
+                    <strong id="indicador-usuarios">0</strong>
+
+                </article>
+
+                <!-- Establecimientos activos -->
+                <article class="admin-indicador">
+
+                    <div class="admin-indicador-icono">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="4" y="3" width="16" height="18" rx="2"/>
+                            <path d="M9 21v-4h6v4"/>
+                            <path d="M8 7h2M14 7h2M8 11h2M14 11h2"/>
+                        </svg>
+                    </div>
+
+                    <span>Establecimientos activos</span>
+
+                    <strong id="indicador-establecimientos">0</strong>
+
+                </article>
+
+                <!-- Solicitudes registradas -->
+                <article class="admin-indicador">
+
+                    <div class="admin-indicador-icono">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="5" y="4" width="14" height="17" rx="2"/>
+                            <path d="M9 4.5V3h6v1.5"/>
+                            <path d="M9 10h6M9 14h6M9 18h4"/>
+                        </svg>
+                    </div>
+
+                    <span>Solicitudes registradas</span>
+
+                    <strong id="indicador-solicitudes">0</strong>
+
+                </article>
+
+                <!-- Solicitudes pendientes -->
+                <article class="admin-indicador">
+
+                    <div class="admin-indicador-icono">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9"/>
+                            <path d="M12 7v5l3 2"/>
+                        </svg>
+                    </div>
+
+                    <span>Solicitudes pendientes</span>
+
+                    <strong id="indicador-pendientes">0</strong>
+
+                </article>
+
+            </div>
+
+            <!-- ACCESOS DIRECTOS -->
+            <div class="admin-card">
+
+                <h2>Administración general</h2>
+
+                <p>
+                    Accede a las principales funciones
+                    de configuración y supervisión.
+                </p>
+
+                <div class="admin-acciones">
+
+                    <button
+                        type="button"
+                        class="admin-boton"
+                        data-ir="usuarios"
+                    >
+                        Gestionar usuarios
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-boton secundario"
+                        data-ir="establecimientos"
+                    >
+                        Gestionar establecimientos
+                    </button>
+
+                    <button
+                        type="button"
+                        class="admin-boton secundario"
+                        data-ir="solicitudes"
+                    >
+                        Supervisar solicitudes
+                    </button>
+
+                </div>
+
+            </div>
+
+            <!-- ÚLTIMAS SOLICITUDES -->
+            <div class="admin-card">
+
+                <h2>Últimas solicitudes registradas</h2>
+
+                <div class="admin-tabla-contenedor">
+
+                    <table class="admin-tabla">
+
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Establecimiento</th>
+                                <th>Tipo</th>
+                                <th>Estado</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabla-recientes"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+             2. GESTIÓN DE USUARIOS
+        ======================================== -->
+        <section id="seccion-usuarios" hidden>
+
+            <div class="admin-titulo">
+
+                <span class="admin-etiqueta">
+                    Control de acceso
+                </span>
+
+                <h1>Gestión de usuarios</h1>
+
+                <p>
+                    Registra usuarios de demostración,
+                    asigna roles y administra su estado.
+                </p>
+
+            </div>
+
+            <!-- FORMULARIO DE USUARIOS -->
+            <div class="admin-card">
+
+                <h2 id="titulo-formulario-usuario">
+                    Registrar usuario
+                </h2>
+
+                <form id="formulario-usuario">
+
+                    <input type="hidden" id="usuario-id">
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-campo">
+
+                            <label for="usuario-nombre">
+                                Nombre completo *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="usuario-nombre"
+                                maxlength="120"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="admin-campo">
+
+                            <label for="usuario-correo">
+                                Correo electrónico *
+                            </label>
+
+                            <input
+                                type="email"
+                                id="usuario-correo"
+                                maxlength="150"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="admin-campo">
+
+                            <label for="usuario-rol">
+                                Rol *
+                            </label>
+
+                            <select id="usuario-rol" required>
+
+                                <option value="">
+                                    Seleccionar rol
+                                </option>
+
+                                <option value="OIRS_ESTABLECIMIENTO">
+                                    Funcionario OIRS de establecimiento
+                                </option>
+
+                                <option value="OIRS_DSM">
+                                    Funcionario OIRS DSM
+                                </option>
+
+                                <option value="DIRECTOR">
+                                    Director de establecimiento
+                                </option>
+
+                                <option value="ADMINISTRADOR">
+                                    Administrador del sistema
+                                </option>
+
+                                <option value="GESTOR_CONTENIDOS">
+                                    Gestor de contenidos
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="admin-campo">
+
+                            <label for="usuario-establecimiento">
+                                Establecimiento
+                            </label>
+
+                            <select id="usuario-establecimiento">
+                                <option value="">
+                                    Seleccionar establecimiento
+                                </option>
+                            </select>
+
+                            <p class="admin-ayuda">
+                                Obligatorio para funcionario OIRS
+                                de establecimiento y director.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="admin-acciones">
+
+                        <button type="submit" class="admin-boton">
+                            Guardar usuario
+                        </button>
+
+                        <button
+                            type="button"
+                            class="admin-boton secundario"
+                            id="cancelar-usuario"
+                        >
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="admin-mensaje"
+                        id="mensaje-usuario"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+
+                </form>
+
+            </div>
+
+            <!-- LISTADO DE USUARIOS -->
+            <div class="admin-card">
+
+                <h2>Usuarios registrados</h2>
+
+                <div class="admin-filtros">
+
+                    <input
+                        type="search"
+                        id="buscar-usuarios"
+                        placeholder="Buscar nombre o correo..."
+                        aria-label="Buscar usuarios"
+                    >
+
+                    <select
+                        id="filtro-usuarios-estado"
+                        aria-label="Filtrar usuarios por estado"
+                    >
+                        <option value="">Todos los estados</option>
+                        <option value="activo">Activos</option>
+                        <option value="inactivo">Inactivos</option>
+                    </select>
+
+                </div>
+
+                <div class="admin-tabla-contenedor">
+
+                    <table class="admin-tabla">
+
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Correo</th>
+                                <th>Rol</th>
+                                <th>Establecimiento</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabla-usuarios"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+             3. GESTIÓN DE ESTABLECIMIENTOS
+        ======================================== -->
+        <section id="seccion-establecimientos" hidden>
+
+            <div class="admin-titulo">
+
+                <span class="admin-etiqueta">
+                    Organización de la red
+                </span>
+
+                <h1>Gestión de establecimientos</h1>
+
+                <p>
+                    Registra, edita y administra
+                    establecimientos de demostración.
+                </p>
+
+            </div>
+
+            <!-- FORMULARIO -->
+            <div class="admin-card">
+
+                <h2 id="titulo-formulario-establecimiento">
+                    Registrar establecimiento
+                </h2>
+
+                <form id="formulario-establecimiento">
+
+                    <input
+                        type="hidden"
+                        id="establecimiento-id"
+                    >
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-campo">
+
+                            <label for="establecimiento-nombre">
+                                Nombre del establecimiento *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="establecimiento-nombre"
+                                maxlength="150"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="admin-campo">
+
+                            <label for="establecimiento-tipo">
+                                Tipo *
+                            </label>
+
+                            <select id="establecimiento-tipo" required>
+
+                                <option value="">
+                                    Seleccionar tipo
+                                </option>
+
+                                <option value="CESFAM">
+                                    CESFAM
+                                </option>
+
+                                <option value="CECOSF">
+                                    CECOSF
+                                </option>
+
+                                <option value="Posta de Salud Rural">
+                                    Posta de Salud Rural
+                                </option>
+
+                                <option value="Otro">
+                                    Otro
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="admin-campo completo">
+
+                            <label for="establecimiento-direccion">
+                                Dirección (opcional)
+                            </label>
+
+                            <input
+                                type="text"
+                                id="establecimiento-direccion"
+                                maxlength="200"
+                            >
+
+                        </div>
+
+                    </div>
+
+                    <div class="admin-acciones">
+
+                        <button
+                            type="submit"
+                            class="admin-boton"
+                        >
+                            Guardar establecimiento
+                        </button>
+
+                        <button
+                            type="button"
+                            class="admin-boton secundario"
+                            id="cancelar-establecimiento"
+                        >
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="admin-mensaje"
+                        id="mensaje-establecimiento"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+
+                </form>
+
+            </div>
+
+            <!-- LISTADO -->
+            <div class="admin-card">
+
+                <h2>Establecimientos registrados</h2>
+
+                <div class="admin-tabla-contenedor">
+
+                    <table class="admin-tabla">
+
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tipo</th>
+                                <th>Dirección</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabla-establecimientos"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+             4. SUPERVISIÓN DE SOLICITUDES
+        ======================================== -->
+        <section id="seccion-solicitudes" hidden>
+
+            <div class="admin-titulo">
+
+                <span class="admin-etiqueta">
+                    Supervisión general
+                </span>
+
+                <h1>Solicitudes de la red</h1>
+
+                <p>
+                    Consulta solicitudes e historiales.
+                    Este panel no modifica su gestión.
+                </p>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Listado general</h2>
+
+                <div class="admin-filtros">
+
+                    <input
+                        type="search"
+                        id="buscar-solicitudes"
+                        placeholder="Buscar folio, asunto o establecimiento..."
+                        aria-label="Buscar solicitudes"
+                    >
+
+                    <select
+                        id="filtro-solicitudes-estado"
+                        aria-label="Filtrar solicitudes por estado"
+                    >
+
+                        <option value="">
+                            Todos los estados
+                        </option>
+
+                        <option value="Ingresada">
+                            Ingresada
+                        </option>
+
+                        <option value="En proceso">
+                            En proceso
+                        </option>
+
+                        <option value="Derivada">
+                            Derivada
+                        </option>
+
+                        <option value="Respondida">
+                            Respondida
+                        </option>
+
+                        <option value="Cerrada">
+                            Cerrada
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="admin-tabla-contenedor">
+
+                    <table class="admin-tabla">
+
+                        <thead>
+                            <tr>
+                                <th>Folio</th>
+                                <th>Establecimiento</th>
+                                <th>Tipo</th>
+                                <th>Asunto</th>
+                                <th>Estado</th>
+                                <th>Acción</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="tabla-solicitudes"></tbody>
+
+                    </table>
+
+                </div>
+
+                <!-- DETALLE DE SOLICITUD -->
+                <div
+                    class="admin-detalle"
+                    id="detalle-solicitud"
+                    hidden
+                >
+
+                    <h3>Detalle de solicitud</h3>
+
+                    <div
+                        class="admin-detalle-grid"
+                        id="detalle-contenido"
+                    ></div>
+
+                    <h3 style="margin-top: 25px;">
+                        Historial de movimientos
+                    </h3>
+
+                    <ol
+                        class="admin-historial"
+                        id="detalle-historial"
+                    ></ol>
+
+                    <div class="admin-acciones">
+
+                        <button
+                            type="button"
+                            class="admin-boton secundario"
+                            id="cerrar-detalle"
+                        >
+                            Cerrar detalle
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ========================================
+             5. CONFIGURACIÓN DEL SISTEMA
+        ======================================== -->
+        <section id="seccion-configuracion" hidden>
+
+            <div class="admin-titulo">
+
+                <span class="admin-etiqueta">
+                    Parámetros generales
+                </span>
+
+                <h1>Configuración del sistema</h1>
+
+                <p>
+                    Personaliza parámetros básicos
+                    del prototipo académico.
+                </p>
+
+            </div>
+
+            <div class="admin-card">
+
+                <h2>Configuración general</h2>
+
+                <form id="formulario-configuracion">
+
+                    <div class="admin-form-grid">
+
+                        <div class="admin-campo completo">
+
+                            <label for="config-nombre">
+                                Nombre del sistema *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="config-nombre"
+                                maxlength="150"
+                                required
+                            >
+
+                        </div>
+
+                        <div class="admin-campo">
+
+                            <label for="config-prefijo">
+                                Prefijo de folios *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="config-prefijo"
+                                maxlength="12"
+                                pattern="[A-Za-z0-9-]+"
+                                required
+                            >
+
+                            <p class="admin-ayuda">
+                                Parámetro de demostración.
+                                Los formularios actuales
+                                continúan usando el prefijo OIRS.
+                            </p>
+
+                        </div>
+
+                        <div class="admin-campo">
+
+                            <label for="config-correo">
+                                Correo institucional de contacto
+                                (opcional)
+                            </label>
+
+                            <input
+                                type="email"
+                                id="config-correo"
+                                maxlength="150"
+                            >
+
+                        </div>
+
+                        <div class="admin-campo completo">
+
+                            <label for="config-mensaje">
+                                Mensaje interno de bienvenida
+                            </label>
+
+                            <textarea
+                                id="config-mensaje"
+                                maxlength="500"
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                    <div class="admin-acciones">
+
+                        <button
+                            type="submit"
+                            class="admin-boton"
+                        >
+                            Guardar configuración
+                        </button>
+
+                    </div>
+
+                    <div
+                        class="admin-mensaje"
+                        id="mensaje-configuracion"
+                        role="status"
+                        aria-live="polite"
+                        hidden
+                    ></div>
+
+                </form>
+
+            </div>
+
+            <div class="admin-aviso">
+                Esta configuración se almacena localmente
+                para fines de demostración. No modifica
+                los datos oficiales ni configura un servidor real.
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<!-- ================================================
+     JAVASCRIPT DEL ADMINISTRADOR
+================================================ -->
+<script src="../static/js/dashboard-admin.js"></script>
+
+</body>
+</html>

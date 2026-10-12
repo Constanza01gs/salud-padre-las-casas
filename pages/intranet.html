@@ -1,0 +1,674 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Información sobre el acceso a la intranet institucional del Departamento de Salud Municipal de Padre Las Casas.">
+
+    <title>Intranet institucional | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/intranet.css">
+
+    <script src="../static/js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ======================================================
+     DEFINICIONES DE ICONOS
+====================================================== -->
+
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <symbol id="icon-shield" viewBox="0 0 24 24">
+        <path d="M12 2 20 5v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/>
+        <path d="m9 12 2 2 4-4"/>
+    </symbol>
+
+    <symbol id="icon-lock" viewBox="0 0 24 24">
+        <rect x="5" y="10" width="14" height="11" rx="2"/>
+        <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+        <circle cx="12" cy="15" r="1"/>
+    </symbol>
+
+    <symbol id="icon-info" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10"/>
+        <path d="M12 11v6M12 7h.01"/>
+    </symbol>
+
+    <symbol id="icon-arrow-left" viewBox="0 0 24 24">
+        <path d="m12 19-7-7 7-7M5 12h14"/>
+    </symbol>
+
+    <symbol id="icon-external" viewBox="0 0 24 24">
+        <path d="M13 5h6v6M19 5l-9 9"/>
+        <path d="M19 13v5a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5"/>
+    </symbol>
+
+</svg>
+
+
+<!-- ======================================================
+     ENCABEZADO INSTITUCIONAL
+====================================================== -->
+
+<header class="encabezado">
+
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+
+        </a>
+
+        <a href="login.html" class="boton-funcionarios">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+
+            <span>Acceso funcionarios</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ======================================================
+     NAVEGACIÓN PRINCIPAL
+====================================================== -->
+
+<nav class="navegacion" aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+
+        </button>
+
+        <ul class="menu" id="menu-principal">
+
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+
+                    <li>
+                        <a href="institucion.html">
+                            Quiénes somos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="menu-item">
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+            </li>
+
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li class="menu-item">
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+            </li>
+
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+
+
+        <!-- BUSCADOR GENERAL DEL PORTAL -->
+
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="buscador-campo" for="campo-busqueda">
+
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input id="campo-busqueda"
+                       type="search"
+                       placeholder="Buscar en el sitio..."
+                       autocomplete="off"
+                       aria-label="Buscar en el sitio"
+                       aria-expanded="false"
+                       aria-controls="resultados-busqueda">
+
+            </label>
+
+            <div id="resultados-busqueda"
+                 class="resultados-busqueda"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<main>
+
+    <!-- ==================================================
+         ENCABEZADO DE PÁGINA
+    ================================================== -->
+
+    <section class="intranet-encabezado">
+
+        <div class="contenedor">
+
+            <div class="intranet-migas">
+
+                <a href="../index.html">Inicio</a>
+
+                <span>/</span>
+
+                <span>Intranet institucional</span>
+
+            </div>
+
+            <span class="etiqueta">
+                Accesos institucionales
+            </span>
+
+            <h1>Acceso a intranet institucional</h1>
+
+            <p>
+                Información sobre la plataforma interna existente
+                para el personal autorizado del Departamento de
+                Salud Municipal de Padre Las Casas.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         INFORMACIÓN PRINCIPAL
+    ================================================== -->
+
+    <section class="intranet-seccion">
+
+        <div class="contenedor intranet-contenido">
+
+            <!-- TARJETA PRINCIPAL -->
+
+            <article class="intranet-tarjeta-principal">
+
+                <div class="intranet-icono-principal">
+
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-shield"/>
+                    </svg>
+
+                </div>
+
+                <h2>Plataforma institucional existente</h2>
+
+                <p>
+                    La intranet institucional corresponde a una
+                    plataforma interna utilizada por personal
+                    autorizado. Su administración y funcionamiento
+                    son independientes de este portal.
+                </p>
+
+                <p>
+                    Esta sección se incorpora únicamente como
+                    referencia dentro del prototipo académico,
+                    para distinguir los sistemas institucionales
+                    existentes de las funcionalidades propuestas
+                    en el proyecto.
+                </p>
+
+                <div class="intranet-acciones">
+
+                    <a href="../index.html"
+                       class="intranet-boton">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-arrow-left"/>
+                        </svg>
+
+                        Volver al inicio
+
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- INFORMACIÓN COMPLEMENTARIA -->
+
+            <aside class="intranet-lateral">
+
+                <div class="intranet-info">
+
+                    <div class="intranet-info-icono azul">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-lock"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Acceso autorizado</h3>
+
+                    <p>
+                        El ingreso a la intranet existente está
+                        reservado a las personas que cuenten con
+                        las credenciales y autorizaciones
+                        correspondientes.
+                    </p>
+
+                </div>
+
+
+                <div class="intranet-info">
+
+                    <div class="intranet-info-icono verde">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-info"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Sin integración en el prototipo</h3>
+
+                    <p>
+                        Este proyecto no modifica la intranet
+                        institucional, no administra sus usuarios
+                        y no permite acceder a sus contenidos.
+                    </p>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         ACLARACIÓN SOBRE EL PROTOTIPO
+    ================================================== -->
+
+    <section class="intranet-aclaracion">
+
+        <div class="contenedor">
+
+            <div class="intranet-aclaracion-contenido">
+
+                <div>
+
+                    <span class="etiqueta">
+                        Información importante
+                    </span>
+
+                    <h2>
+                        Un acceso diferente al gestor del portal
+                    </h2>
+
+                    <p>
+                        El acceso de funcionarios disponible en
+                        el encabezado de este sitio corresponde
+                        exclusivamente a los módulos internos
+                        desarrollados para el prototipo académico,
+                        como la gestión de solicitudes OIRS y
+                        contenidos del portal.
+                    </p>
+
+                    <p>
+                        Dichos módulos no forman parte de la
+                        intranet institucional existente.
+                    </p>
+
+                </div>
+
+                <a href="login.html"
+                   class="intranet-enlace-gestor">
+
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-user"/>
+                    </svg>
+
+                    Acceso a módulos del prototipo
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ======================================================
+     PIE DE PÁGINA
+====================================================== -->
+
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+        <!-- LOGO -->
+
+        <div class="footer-identidad">
+
+            <img src="../static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+
+        </div>
+
+
+        <!-- ENLACES DE INTERÉS -->
+
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="oirs.html">
+                        OIRS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ACCESOS INSTITUCIONALES -->
+
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+
+                <li>
+                    <a href="intranet.html" aria-current="page">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CONTACTO -->
+
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Información de contacto pendiente
+                de validación institucional.
+            </p>
+
+        </div>
+
+
+        <!-- REDES SOCIALES -->
+
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+                <span class="red-social" aria-label="Facebook">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+                    </svg>
+
+                </span>
+
+                <span class="red-social" aria-label="Instagram">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1"
+                                fill="currentColor"
+                                stroke="none"/>
+                    </svg>
+
+                </span>
+
+                <span class="red-social" aria-label="YouTube">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="5" width="20" height="14" rx="4"/>
+                        <path d="m10 9 5 3-5 3z"/>
+                    </svg>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- COPYRIGHT -->
+
+    <div class="contenedor footer-inferior">
+
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

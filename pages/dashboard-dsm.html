@@ -1,0 +1,1090 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Panel OIRS DSM | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dashboard-dsm.css">
+</head>
+
+<body>
+
+    <!-- ==========================================
+         ENCABEZADO
+    =========================================== -->
+
+    <header class="dsm-topbar">
+
+        <img
+            src="../static/img/logo-salud-encabezado.png"
+            alt="Salud Municipal Padre Las Casas"
+        >
+
+        <div class="dsm-usuario">
+
+            <div class="dsm-usuario-info">
+                <strong id="nombre-funcionario">
+                    Funcionario OIRS DSM
+                </strong>
+
+                <span>
+                    Departamento de Salud Municipal
+                </span>
+            </div>
+
+            <button
+                type="button"
+                class="dsm-salir"
+                id="cerrar-sesion"
+            >
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==========================================
+         ESTRUCTURA GENERAL
+    =========================================== -->
+
+    <div class="dsm-layout">
+
+        <!-- MENÚ LATERAL -->
+
+        <aside class="dsm-sidebar">
+
+            <p class="dsm-sidebar-titulo">
+                Supervisión OIRS
+            </p>
+
+            <nav class="dsm-menu" aria-label="Menú OIRS DSM">
+
+                <!-- PANEL PRINCIPAL -->
+                <button
+                    type="button"
+                    class="activo"
+                    data-seccion="inicio"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+
+                    <span>Panel principal</span>
+                </button>
+
+
+                <!-- SOLICITUDES DE LA RED -->
+                <button
+                    type="button"
+                    data-seccion="solicitudes"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M8 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7l-4-4H8z"/>
+                        <path d="M14 3v5h6"/>
+                        <path d="M8 13h8"/>
+                        <path d="M8 17h8"/>
+                    </svg>
+
+                    <span>Solicitudes de la red</span>
+                </button>
+
+
+                <!-- DERIVACIONES Y SEGUIMIENTO -->
+                <button
+                    type="button"
+                    data-seccion="derivaciones"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 7h13"/>
+                        <path d="m13 3 4 4-4 4"/>
+                        <path d="M20 17H7"/>
+                        <path d="m11 13-4 4 4 4"/>
+                    </svg>
+
+                    <span>Derivaciones y seguimiento</span>
+                </button>
+
+
+                <!-- REPORTES GENERALES -->
+                <button
+                    type="button"
+                    data-seccion="reportes"
+                >
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <path d="M4 20V12"/>
+                        <path d="M10 20V5"/>
+                        <path d="M16 20v-9"/>
+                        <path d="M22 20v-6"/>
+                        <path d="M2 20h20"/>
+                    </svg>
+
+                    <span>Reportes generales</span>
+                </button>
+
+            </nav>
+
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main class="dsm-main">
+
+
+            <!-- ==========================================
+                 1. PANEL PRINCIPAL
+            =========================================== -->
+
+            <section id="seccion-inicio">
+
+                <div class="dsm-titulo">
+
+                    <span class="dsm-etiqueta">
+                        Funcionario OIRS · Departamento de Salud Municipal
+                    </span>
+
+                    <h1>Panel principal DSM</h1>
+
+                    <p>
+                        Supervisión de las solicitudes ciudadanas
+                        registradas en los establecimientos de la red.
+                    </p>
+
+                </div>
+
+
+                <!-- INDICADORES PRINCIPALES -->
+
+                <div class="dsm-indicadores">
+    <article class="dsm-indicador dsm-indicador-azul">
+        <div class="dsm-indicador-encabezado">
+            <span>Total de solicitudes</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M9 9h6M9 13h6M9 17h4"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-total">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-gris">
+        <div class="dsm-indicador-encabezado">
+            <span>Ingresadas</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8"/><path d="M3 13h5l2 3h4l2-3h5v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-ingresadas">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-amarillo">
+        <div class="dsm-indicador-encabezado">
+            <span>En proceso / derivadas</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-proceso">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-verde">
+        <div class="dsm-indicador-encabezado">
+            <span>Respondidas / cerradas</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-finalizadas">0</strong>
+    </article>
+
+</div>
+
+
+                <!-- CONTROL DE PLAZOS -->
+
+                <div class="dsm-card">
+
+                    <h2>Seguimiento de plazos de reclamos</h2>
+
+                    <p>
+                        Referencia académica de 15 días hábiles
+                        desde el día siguiente al ingreso.
+                        Se excluyen fines de semana, pero no
+                        feriados oficiales.
+                    </p>
+
+                    <div class="dsm-indicadores dsm-indicadores-plazos">
+    <article class="dsm-indicador dsm-indicador-gris">
+        <div class="dsm-indicador-encabezado">
+            <span>Reclamos pendientes</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 10h6M9 14h4"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-reclamos-pendientes">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-verde">
+        <div class="dsm-indicador-encabezado">
+            <span>En plazo</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-en-plazo">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-amarillo">
+        <div class="dsm-indicador-encabezado">
+            <span>Próximos a vencer</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M12 2v2"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-proximas-vencer">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-rojo">
+        <div class="dsm-indicador-encabezado">
+            <span>Vencidos</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19z"/><path d="M12 9v5M12 17h.01"/></svg>
+            </span>
+        </div>
+        <strong id="indicador-vencidas">0</strong>
+    </article>
+
+</div>
+
+                    <div class="dsm-tabla-contenedor">
+
+                        <table class="dsm-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Establecimiento</th>
+                                    <th>Asunto</th>
+                                    <th>Fecha límite</th>
+                                    <th>Situación</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-prioritarias"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SOLICITUDES RECIENTES -->
+
+                <div class="dsm-card">
+
+                    <h2>Solicitudes recientes de la red</h2>
+
+                    <p>
+                        Últimas solicitudes registradas,
+                        independientemente del establecimiento.
+                    </p>
+
+                    <div class="dsm-tabla-contenedor">
+
+                        <table class="dsm-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Establecimiento</th>
+                                    <th>Tipo</th>
+                                    <th>Estado</th>
+                                    <th>Fecha</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-recientes"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ACCIONES RÁPIDAS -->
+
+                <div class="dsm-card">
+
+                    <h2>Acciones de supervisión</h2>
+
+                    <p>
+                        Consulta el estado de la red,
+                        gestiona derivaciones y revisa indicadores.
+                    </p>
+
+                    <div class="dsm-acciones">
+
+                        <button
+                            type="button"
+                            class="dsm-boton"
+                            data-ir="solicitudes"
+                        >
+                            Consultar solicitudes
+                        </button>
+
+                        <button
+                            type="button"
+                            class="dsm-boton secundario"
+                            data-ir="derivaciones"
+                        >
+                            Gestionar derivaciones
+                        </button>
+
+                        <button
+                            type="button"
+                            class="dsm-boton secundario"
+                            data-ir="reportes"
+                        >
+                            Ver reportes
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==========================================
+                 2. SOLICITUDES DE LA RED
+            =========================================== -->
+
+            <section id="seccion-solicitudes" hidden>
+
+                <div class="dsm-titulo">
+
+                    <span class="dsm-etiqueta">
+                        Consulta general
+                    </span>
+
+                    <h1>Solicitudes de la red</h1>
+
+                    <p>
+                        Busca solicitudes por establecimiento,
+                        tipo, estado, plazo o folio.
+                    </p>
+
+                </div>
+
+
+                <div class="dsm-card">
+
+                    <h2>Listado general de solicitudes</h2>
+
+                    <!-- FILTROS -->
+
+                    <div class="dsm-filtros">
+
+                        <input
+                            type="search"
+                            id="buscar-solicitudes"
+                            placeholder="Buscar folio, asunto o establecimiento..."
+                            aria-label="Buscar solicitudes"
+                        >
+
+                        <select
+                            id="filtro-establecimiento"
+                            aria-label="Filtrar por establecimiento"
+                        >
+                            <option value="">
+                                Todos los establecimientos
+                            </option>
+                        </select>
+
+                        <select
+                            id="filtro-tipo"
+                            aria-label="Filtrar por tipo"
+                        >
+                            <option value="">Todos los tipos</option>
+                            <option value="Reclamo">Reclamo</option>
+                            <option value="Consulta">Consulta</option>
+                            <option value="Sugerencia">Sugerencia</option>
+                            <option value="Solicitud">Solicitud</option>
+                            <option value="Felicitación">Felicitación</option>
+                        </select>
+
+                        <select
+                            id="filtro-estado"
+                            aria-label="Filtrar por estado"
+                        >
+                            <option value="">Todos los estados</option>
+                            <option value="Ingresada">Ingresada</option>
+                            <option value="En proceso">En proceso</option>
+                            <option value="Derivada">Derivada</option>
+                            <option value="Respondida">Respondida</option>
+                            <option value="Cerrada">Cerrada</option>
+                        </select>
+
+                        <select
+                            id="filtro-plazo"
+                            aria-label="Filtrar por plazo"
+                        >
+                            <option value="">Todos los plazos</option>
+                            <option value="En plazo">En plazo</option>
+                            <option value="Próxima a vencer">
+                                Próxima a vencer
+                            </option>
+                            <option value="Vencida">Vencida</option>
+                            <option value="Finalizada">Finalizada</option>
+                            <option value="No aplica">No aplica</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- TABLA -->
+
+                    <div class="dsm-tabla-contenedor">
+
+                        <table class="dsm-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Folio</th>
+                                    <th>Establecimiento</th>
+                                    <th>Tipo</th>
+                                    <th>Asunto</th>
+                                    <th>Estado</th>
+                                    <th>Plazo</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-solicitudes"></tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- DETALLE DE SOLICITUD -->
+
+                    <div
+                        class="dsm-detalle"
+                        id="detalle-solicitud"
+                        hidden
+                    >
+
+                        <h3>Detalle de solicitud</h3>
+
+                        <div
+                            class="dsm-detalle-grid"
+                            id="detalle-contenido"
+                        ></div>
+
+                        <h3 class="dsm-subtitulo-historial">
+                            Historial de movimientos
+                        </h3>
+
+                        <ol
+                            class="dsm-historial"
+                            id="detalle-historial"
+                        ></ol>
+
+                        <div class="dsm-acciones">
+
+                            <button
+                                type="button"
+                                class="dsm-boton secundario"
+                                id="cerrar-detalle"
+                            >
+                                Cerrar detalle
+                            </button>
+
+                            <button
+                                type="button"
+                                class="dsm-boton"
+                                id="boton-seguimiento-detalle"
+                            >
+                                Ir a seguimiento
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==========================================
+                 3. DERIVACIONES Y SEGUIMIENTO
+            =========================================== -->
+
+            <section id="seccion-derivaciones" hidden>
+
+                <div class="dsm-titulo">
+
+                    <span class="dsm-etiqueta">
+                        Coordinación de solicitudes
+                    </span>
+
+                    <h1>Derivaciones y seguimiento</h1>
+
+                    <p>
+                        Registra derivaciones y movimientos
+                        de seguimiento desde el Departamento de Salud.
+                    </p>
+
+                </div>
+
+
+                <div class="dsm-card">
+
+                    <h2>Gestionar solicitud</h2>
+
+
+                    <!-- SELECCIÓN DE SOLICITUD -->
+
+                    <div class="dsm-campo">
+
+                        <label for="gestion-solicitud">
+                            Seleccionar solicitud
+                        </label>
+
+                        <select id="gestion-solicitud">
+
+                            <option value="">
+                                Seleccionar solicitud
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- CONTENEDOR DE GESTIÓN -->
+
+                    <div id="gestion-contenedor" hidden>
+
+
+                        <!-- ANTECEDENTES -->
+
+                        <div class="dsm-detalle">
+
+                            <h3>Antecedentes de la solicitud</h3>
+
+                            <div
+                                class="dsm-detalle-grid"
+                                id="gestion-resumen"
+                            ></div>
+
+                            <div
+                                class="dsm-panel-plazo"
+                                id="gestion-panel-plazo"
+                                hidden
+                            >
+
+                                <strong>
+                                    Seguimiento de plazo
+                                </strong>
+
+                                <p id="gestion-detalle-plazo"></p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- FORMULARIO -->
+
+                        <form
+                            class="dsm-formulario-gestion"
+                            id="formulario-gestion"
+                        >
+
+                            <div class="dsm-form-grid">
+
+
+                                <!-- ESTADO -->
+
+                                <div class="dsm-campo">
+
+                                    <label for="gestion-estado">
+                                        Estado de seguimiento *
+                                    </label>
+
+                                    <select
+                                        id="gestion-estado"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Seleccionar estado
+                                        </option>
+
+                                        <option value="Ingresada">
+                                            Ingresada
+                                        </option>
+
+                                        <option value="En proceso">
+                                            En proceso
+                                        </option>
+
+                                        <option value="Derivada">
+                                            Derivada
+                                        </option>
+
+                                        <option value="Respondida">
+                                            Respondida
+                                        </option>
+
+                                        <option value="Cerrada">
+                                            Cerrada
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- DESTINATARIO -->
+
+                                <div class="dsm-campo">
+
+                                    <label for="gestion-destino">
+                                        Unidad o destinatario
+                                    </label>
+
+                                    <select id="gestion-destino">
+
+                                        <option value="">
+                                            Sin asignación
+                                        </option>
+
+                                        <option value="OIRS del establecimiento">
+                                            OIRS del establecimiento
+                                        </option>
+
+                                        <option value="Dirección del establecimiento">
+                                            Dirección del establecimiento
+                                        </option>
+
+                                        <option value="Departamento de Salud Municipal">
+                                            Departamento de Salud Municipal
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- RESPUESTA -->
+
+                                <div class="dsm-campo completo">
+
+                                    <label for="gestion-respuesta">
+                                        Respuesta registrada para la solicitud
+                                    </label>
+
+                                    <textarea
+                                        id="gestion-respuesta"
+                                        maxlength="3000"
+                                        placeholder="Registrar la respuesta cuando corresponda. Este registro no envía correos ni notificaciones automáticamente."
+                                    ></textarea>
+
+                                </div>
+
+
+                                <!-- OBSERVACIÓN -->
+
+                                <div class="dsm-campo completo">
+
+                                    <label for="gestion-observacion">
+                                        Observación de seguimiento
+                                    </label>
+
+                                    <textarea
+                                        id="gestion-observacion"
+                                        maxlength="1000"
+                                        placeholder="Describe la derivación o el seguimiento realizado..."
+                                    ></textarea>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- GUARDAR -->
+
+                            <div class="dsm-acciones">
+
+                                <button
+                                    type="submit"
+                                    class="dsm-boton"
+                                >
+                                    Guardar seguimiento
+                                </button>
+
+                            </div>
+
+                        </form>
+
+
+                        <!-- MENSAJE DE GESTIÓN -->
+
+                        <div
+                            id="mensaje-gestion"
+                            class="dsm-mensaje"
+                            role="status"
+                            aria-live="polite"
+                            hidden
+                        ></div>
+
+
+                        <!-- HISTORIAL -->
+
+                        <div class="dsm-detalle">
+
+                            <h3>Historial de movimientos</h3>
+
+                            <ol
+                                class="dsm-historial"
+                                id="gestion-historial"
+                            ></ol>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- ==========================================
+                 4. REPORTES GENERALES
+            =========================================== -->
+
+            <section id="seccion-reportes" hidden>
+
+                <div class="dsm-titulo">
+
+                    <span class="dsm-etiqueta">
+                        Indicadores consolidados
+                    </span>
+
+                    <h1>Reportes generales</h1>
+
+                    <p>
+                        Resumen de solicitudes y encuestas
+                        registradas en el prototipo.
+                    </p>
+
+                </div>
+
+
+                <!-- FILTROS DE REPORTES -->
+
+                <div class="dsm-card">
+
+                    <h2>Filtros del reporte</h2>
+
+                    <p>
+                        Selecciona un período y, si corresponde,
+                        un establecimiento de la red.
+                    </p>
+
+                    <div class="dsm-filtros">
+
+                        <div class="dsm-campo">
+
+                            <label for="reporte-fecha-desde">
+                                Desde
+                            </label>
+
+                            <input
+                                type="date"
+                                id="reporte-fecha-desde"
+                            >
+
+                        </div>
+
+                        <div class="dsm-campo">
+
+                            <label for="reporte-fecha-hasta">
+                                Hasta
+                            </label>
+
+                            <input
+                                type="date"
+                                id="reporte-fecha-hasta"
+                            >
+
+                        </div>
+
+                        <div class="dsm-campo">
+
+                            <label for="reporte-establecimiento">
+                                Establecimiento
+                            </label>
+
+                            <select id="reporte-establecimiento">
+
+                                <option value="">
+                                    Todos los establecimientos
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="dsm-acciones">
+
+                        <button
+                            type="button"
+                            class="dsm-boton secundario"
+                            id="reporte-limpiar-filtros"
+                        >
+                            Limpiar filtros
+                        </button>
+
+                        <button
+                            type="button"
+                            class="dsm-boton"
+                            id="reporte-exportar-csv"
+                        >
+                            Exportar resumen CSV
+                        </button>
+
+                    </div>
+
+                    <p
+                        id="reporte-periodo-mensaje"
+                        class="dsm-ayuda"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
+
+                </div>
+
+
+                <!-- INDICADORES -->
+
+                <div class="dsm-indicadores">
+    <article class="dsm-indicador dsm-indicador-azul">
+        <div class="dsm-indicador-encabezado">
+            <span>Solicitudes de la red</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4.5h6M9 9h6M9 13h6M9 17h4"/></svg>
+            </span>
+        </div>
+        <strong id="reporte-total">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-amarillo">
+        <div class="dsm-indicador-encabezado">
+            <span>Reclamos</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19z"/><path d="M12 9v5M12 17h.01"/></svg>
+            </span>
+        </div>
+        <strong id="reporte-reclamos">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-gris">
+        <div class="dsm-indicador-encabezado">
+            <span>Encuestas</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h3"/></svg>
+            </span>
+        </div>
+        <strong id="reporte-encuestas">0</strong>
+    </article>
+
+    <article class="dsm-indicador dsm-indicador-verde">
+        <div class="dsm-indicador-encabezado">
+            <span>Satisfacción promedio</span>
+            <span class="dsm-indicador-icono" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 3.1 6.3 7 1-5.1 5 .9 7-5.9-3.2-5.9 3.2.9-7-5.1-5 7-1z"/></svg>
+            </span>
+        </div>
+        <strong id="reporte-promedio">—</strong>
+    </article>
+
+</div>
+
+
+                <!-- SOLICITUDES POR ESTABLECIMIENTO -->
+
+                <div class="dsm-card">
+
+                    <h2>Solicitudes por establecimiento</h2>
+
+                    <p>
+                        Cantidad de solicitudes registradas
+                        para cada establecimiento presente en los datos.
+                    </p>
+
+                    <div
+                        class="dsm-desglose"
+                        id="desglose-establecimientos"
+                    ></div>
+
+                </div>
+
+
+                <!-- SOLICITUDES POR TIPO -->
+
+                <div class="dsm-card">
+
+                    <h2>Solicitudes por tipo</h2>
+
+                    <div
+                        class="dsm-desglose"
+                        id="desglose-tipos"
+                    ></div>
+
+                </div>
+
+
+                <!-- SOLICITUDES POR ESTADO -->
+
+                <div class="dsm-card">
+
+                    <h2>Solicitudes por estado</h2>
+
+                    <p>
+                        Distribución de las etapas de gestión
+                        en el período seleccionado.
+                    </p>
+
+                    <div
+                        class="dsm-desglose"
+                        id="desglose-estados"
+                    ></div>
+
+                </div>
+
+
+                <!-- SEGUIMIENTO DE PLAZOS -->
+
+                <div class="dsm-card">
+
+                    <h2>Seguimiento de plazos</h2>
+
+                    <p>
+                        Indicadores referenciales para reclamos.
+                        No constituyen un cálculo oficial de
+                        plazos administrativos.
+                    </p>
+
+                    <div
+                        class="dsm-desglose"
+                        id="desglose-plazos"
+                    ></div>
+
+                </div>
+
+
+                <!-- MOTIVOS FRECUENTES -->
+
+                <div class="dsm-card">
+
+                    <h2>Motivos más frecuentes</h2>
+
+                    <p>
+                        Motivos declarados en las solicitudes
+                        registradas.
+                    </p>
+
+                    <div
+                        class="dsm-desglose"
+                        id="desglose-motivos"
+                    ></div>
+
+                </div>
+
+
+                <!-- AVISO ACADÉMICO -->
+
+                <div class="dsm-aviso">
+
+                    Los indicadores corresponden únicamente
+                    a datos de demostración almacenados
+                    en este navegador.
+
+                    No representan estadísticas oficiales
+                    de la institución.
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==========================================
+         JAVASCRIPT
+    =========================================== -->
+
+    <script
+        src="../static/js/dashboard-dsm.js"
+        defer
+    ></script>
+
+</body>
+</html>

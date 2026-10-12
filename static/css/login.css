@@ -1,0 +1,414 @@
+
+/* ============================================================
+   LOGIN - ACCESO DE FUNCIONARIOS
+   Departamento de Salud Municipal de Padre Las Casas
+
+   Estilos exclusivos de la página de acceso demostrativo.
+   Los estilos generales del encabezado, navegación y footer
+   se encuentran en style.css.
+============================================================ */
+
+
+/* ============================================================
+   1. FONDO PRINCIPAL
+============================================================ */
+
+.login-fondo {
+    min-height: 72vh;
+    padding: 65px 20px;
+    background: linear-gradient(
+        125deg,
+        #e9f5fd,
+        #f9fcff 55%,
+        #eaf7ef
+    );
+}
+
+
+/* ============================================================
+   2. CONTENEDOR PRINCIPAL
+============================================================ */
+
+.login-contenedor {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    max-width: 1050px;
+    margin: 0 auto;
+
+    overflow: hidden;
+
+    border: 1px solid #dce7ef;
+    border-radius: 19px;
+
+    background: #ffffff;
+
+    box-shadow: 0 15px 40px rgba(19, 64, 97, 0.09);
+}
+
+
+/* ============================================================
+   3. COLUMNA IZQUIERDA - PRESENTACIÓN
+============================================================ */
+
+.login-presentacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 45px;
+
+    background: linear-gradient(
+        145deg,
+        #0b609d,
+        #083e70
+    );
+
+    color: #ffffff;
+}
+
+
+/* ICONO DE CANDADO */
+
+.login-presentacion-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 75px;
+    height: 75px;
+
+    margin-bottom: 25px;
+
+    border-radius: 17px;
+
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.login-presentacion-icono svg {
+    width: 42px;
+    height: 42px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+
+/* TÍTULO */
+
+.login-presentacion h1 {
+    margin-bottom: 17px;
+
+    color: #ffffff;
+
+    font-size: clamp(1.9rem, 3vw, 2.5rem);
+    line-height: 1.2;
+}
+
+
+/* DESCRIPCIÓN */
+
+.login-presentacion p {
+    margin-bottom: 23px;
+
+    color: #e2f1fc;
+
+    line-height: 1.7;
+}
+
+
+/* LISTA DE FUNCIONALIDADES */
+
+.login-presentacion ul {
+    padding-left: 20px;
+
+    color: #e2f1fc;
+
+    font-size: 0.91rem;
+    line-height: 1.9;
+}
+
+
+/* ============================================================
+   4. COLUMNA DERECHA - FORMULARIO
+============================================================ */
+
+.login-formulario-contenedor {
+    padding: 45px;
+}
+
+
+/* ETIQUETA SUPERIOR */
+
+.login-etiqueta {
+    display: inline-block;
+
+    padding: 6px 12px;
+    margin-bottom: 17px;
+
+    border-radius: 20px;
+
+    background: #e7f3fc;
+    color: #135c90;
+
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+
+/* TÍTULO DEL FORMULARIO */
+
+.login-formulario-contenedor h2 {
+    margin-bottom: 11px;
+
+    color: #083e70;
+
+    font-size: 1.65rem;
+}
+
+
+/* DESCRIPCIÓN */
+
+.login-descripcion {
+    margin-bottom: 27px;
+
+    color: var(--texto-secundario);
+
+    font-size: 0.91rem;
+}
+
+
+/* ============================================================
+   5. CAMPOS DEL FORMULARIO
+============================================================ */
+
+.login-campo {
+    margin-bottom: 20px;
+}
+
+
+/* ETIQUETAS */
+
+.login-campo label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #264c65;
+
+    font-size: 0.89rem;
+    font-weight: 700;
+}
+
+
+/* SELECTOR DE PERFIL */
+
+.login-campo select {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    border: 1px solid #cbd8e5;
+    border-radius: 9px;
+
+    background: #ffffff;
+    color: var(--texto);
+
+    font: inherit;
+    font-size: 0.91rem;
+
+    cursor: pointer;
+}
+
+
+/* ENFOQUE DEL SELECTOR */
+
+.login-campo select:focus {
+    outline: 3px solid #b9e1f8;
+    border-color: #0b609d;
+}
+
+
+/* ============================================================
+   6. INFORMACIÓN DEL PERFIL SELECCIONADO
+============================================================ */
+
+.login-detalle {
+    min-height: 105px;
+
+    margin-bottom: 22px;
+    padding: 17px;
+
+    border: 1px solid #dce9f2;
+    border-radius: 11px;
+
+    background: #f5f9fc;
+}
+
+
+/* TÍTULO DEL PERFIL */
+
+.login-detalle h3 {
+    margin-bottom: 7px;
+
+    color: #134b73;
+
+    font-size: 0.96rem;
+}
+
+
+/* DESCRIPCIÓN DEL PERFIL */
+
+.login-detalle p {
+    color: var(--texto-secundario);
+
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   7. BOTÓN DE INGRESO
+============================================================ */
+
+.login-boton {
+    display: block;
+
+    width: 100%;
+
+    padding: 14px 20px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background: #0b609d;
+    color: #ffffff;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.login-boton:hover {
+    background: #084b7a;
+}
+
+.login-boton:focus-visible {
+    outline: 3px solid #b9e1f8;
+    outline-offset: 3px;
+}
+
+
+/* ============================================================
+   8. ENLACE PARA VOLVER AL PORTAL
+============================================================ */
+
+.login-volver {
+    display: block;
+
+    margin-top: 20px;
+
+    color: #0b609d;
+
+    font-size: 0.88rem;
+    text-align: center;
+    text-decoration: none;
+}
+
+.login-volver:hover {
+    text-decoration: underline;
+}
+
+
+/* ============================================================
+   9. AVISO DEL PROTOTIPO ACADÉMICO
+============================================================ */
+
+.login-aviso {
+    margin-top: 22px;
+    padding: 16px;
+
+    border: 1px solid #f1d4aa;
+    border-radius: 10px;
+
+    background: #fff9ed;
+    color: #79551c;
+
+    font-size: 0.83rem;
+    line-height: 1.6;
+}
+
+
+/* ============================================================
+   10. MENSAJE DE ERROR
+============================================================ */
+
+.login-error {
+    margin-bottom: 15px;
+    padding: 13px;
+
+    border: 1px solid #f2c6c1;
+    border-radius: 9px;
+
+    background: #fff1f0;
+    color: #9b2d24;
+
+    font-size: 0.86rem;
+}
+
+
+/* OCULTAR ELEMENTOS CON EL ATRIBUTO HIDDEN */
+
+.login-error[hidden] {
+    display: none !important;
+}
+
+
+/* ============================================================
+   11. DISEÑO RESPONSIVO - TABLETS
+============================================================ */
+
+@media (max-width: 850px) {
+
+    .login-contenedor {
+        grid-template-columns: 1fr;
+    }
+
+    .login-presentacion {
+        padding: 35px;
+    }
+
+    .login-formulario-contenedor {
+        padding: 35px;
+    }
+
+}
+
+
+/* ============================================================
+   12. DISEÑO RESPONSIVO - TELÉFONOS
+============================================================ */
+
+@media (max-width: 550px) {
+
+    .login-fondo {
+        padding: 30px 15px;
+    }
+
+    .login-presentacion,
+    .login-formulario-contenedor {
+        padding: 25px;
+    }
+
+    .login-presentacion h1 {
+        font-size: 1.9rem;
+    }
+
+}

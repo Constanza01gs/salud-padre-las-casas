@@ -1,0 +1,1251 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Información institucional, funciones y red de salud del Departamento de Salud Municipal de Padre Las Casas.">
+
+    <title>
+        Quiénes somos | Salud Municipal Padre Las Casas
+    </title>
+
+    <!-- ESTILOS GENERALES -->
+    <link rel="stylesheet"
+          href="../static/css/style.css">
+
+    <!-- ESTILOS EXCLUSIVOS DE ESTA PÁGINA -->
+    <link rel="stylesheet"
+          href="../static/css/institucion.css">
+
+    <!-- FUNCIONALIDADES GENERALES -->
+    <script src="../static/js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ======================================================
+     DEFINICIONES DE ICONOS SVG
+     ====================================================== -->
+
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <symbol id="icon-building" viewBox="0 0 24 24">
+        <path d="M3 21h18M5 21V7h6v14M13 21V3h6v18M7 10h2m-2 4h2m6-7h2m-2 4h2m-2 4h2"/>
+    </symbol>
+
+    <symbol id="icon-people" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="3"/>
+        <circle cx="4.5" cy="10" r="2"/>
+        <circle cx="19.5" cy="10" r="2"/>
+        <path d="M6 21v-3a6 6 0 0 1 12 0v3M1 20v-3a4 4 0 0 1 4-4m18 7v-3a4 4 0 0 0-4-4"/>
+    </symbol>
+
+    <symbol id="icon-clipboard" viewBox="0 0 24 24">
+        <rect x="5" y="5" width="14" height="17" rx="2"/>
+        <rect x="9" y="2" width="6" height="5" rx="1"/>
+        <path d="M9 12h6M9 16h6"/>
+    </symbol>
+
+    <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>
+    </symbol>
+
+    <symbol id="icon-message" viewBox="0 0 24 24">
+        <path d="M4 4h16v13H9l-5 4V4zM8 9h8M8 13h6"/>
+    </symbol>
+
+</svg>
+
+
+<!-- ======================================================
+     ENCABEZADO INSTITUCIONAL
+     ====================================================== -->
+
+<header class="encabezado">
+
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img
+                src="../static/img/logo-salud-encabezado.png"
+                alt="Departamento de Salud Municipal de Padre Las Casas"
+                class="logo-institucional">
+
+        </a>
+
+        <a href="login.html"
+           class="boton-funcionarios">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+
+            <span>Acceso funcionarios</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ======================================================
+     NAVEGACIÓN PRINCIPAL
+     ====================================================== -->
+
+<nav class="navegacion"
+     aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <!-- MENÚ MÓVIL -->
+
+        <button
+            class="boton-menu-movil"
+            id="boton-menu"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+
+        </button>
+
+
+        <!-- ENLACES DE NAVEGACIÓN -->
+
+        <ul class="menu" id="menu-principal">
+
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+
+            <!-- INSTITUCIÓN -->
+
+            <li class="menu-item tiene-submenu">
+
+                <button
+                    class="menu-desplegable"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha"
+                         aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu"
+                    id="submenu-institucion">
+
+                    <li>
+                        <a href="institucion.html"
+                           aria-current="page">
+                            Quiénes somos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- ESTABLECIMIENTOS -->
+
+            <li class="menu-item">
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+            </li>
+
+
+            <!-- PRESTACIONES Y PROGRAMAS -->
+
+            <li class="menu-item tiene-submenu">
+
+                <button
+                    class="menu-desplegable"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha"
+                         aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu"
+                    id="submenu-prestaciones">
+
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- NOTICIAS -->
+
+            <li class="menu-item">
+
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+
+            </li>
+
+
+            <!-- PARTICIPACIÓN CIUDADANA -->
+
+            <li class="menu-item tiene-submenu">
+
+                <button
+                    class="menu-desplegable"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha"
+                         aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu"
+                    id="submenu-participacion">
+
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+
+
+        <!-- BUSCADOR DIRECTO -->
+
+        <div class="buscador-navegacion"
+             id="buscador-sitio">
+
+            <label class="buscador-campo"
+                   for="campo-busqueda">
+
+                <svg class="icono"
+                     aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input
+                    id="campo-busqueda"
+                    type="search"
+                    placeholder="Buscar en el sitio..."
+                    autocomplete="off"
+                    aria-label="Buscar en el sitio"
+                    aria-expanded="false"
+                    aria-controls="resultados-busqueda">
+
+            </label>
+
+            <div
+                id="resultados-busqueda"
+                class="resultados-busqueda"
+                aria-live="polite"
+                hidden>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ======================================================
+     CONTENIDO PRINCIPAL
+     ====================================================== -->
+
+<main>
+
+
+    <!-- ==================================================
+         1. ENCABEZADO DE LA PÁGINA
+         ================================================== -->
+
+    <section class="pagina-encabezado">
+
+        <div class="contenedor">
+
+            <div class="migas"
+                 aria-label="Ruta de navegación">
+
+                <a href="../index.html">Inicio</a>
+
+                <span>/</span>
+
+                <span>Institución</span>
+
+                <span>/</span>
+
+                <span>Quiénes somos</span>
+
+            </div>
+
+            <span class="etiqueta">
+                Nuestra institución
+            </span>
+
+            <h1>
+                Departamento de Salud Municipal
+            </h1>
+
+            <p>
+                Conoce el rol, las principales funciones,
+                la organización administrativa y la red de
+                atención primaria de salud de Padre Las Casas.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         2. QUIÉNES SOMOS
+         ================================================== -->
+
+    <section class="institucion-seccion"
+             id="quienes-somos">
+
+        <div class="contenedor institucion-grid">
+
+            <!-- INFORMACIÓN INSTITUCIONAL -->
+
+            <div class="institucion-texto">
+
+                <span class="etiqueta">
+                    Quiénes somos
+                </span>
+
+                <h2>
+                    Salud municipal al servicio
+                    de la comunidad
+                </h2>
+
+                <p>
+                    El Departamento de Salud Municipal de
+                    Padre Las Casas tiene a su cargo la
+                    administración y operación de los
+                    establecimientos municipales de atención
+                    primaria de salud.
+                </p>
+
+                <p>
+                    Su labor comprende apoyar el funcionamiento
+                    de los establecimientos, gestionar los
+                    recursos necesarios y velar por el
+                    cumplimiento de los objetivos, normas,
+                    planes y programas del Ministerio de Salud
+                    que correspondan a la atención primaria.
+                </p>
+
+                <p>
+                    Este portal facilita el acceso a información
+                    institucional, establecimientos, prestaciones,
+                    programas y canales de participación ciudadana.
+                </p>
+
+            </div>
+
+
+            <!-- FOTOGRAFÍA Y TARJETA SUPERPUESTA -->
+
+            <div class="institucion-ilustracion">
+
+                <!--
+                    ESPACIO PARA FOTOGRAFÍA
+
+                    La imagen definitiva se incorporará
+                    al terminar la revisión del portal.
+
+                    El fondo provisional será definido
+                    en institucion.css.
+                -->
+
+                <div
+                    class="institucion-imagen"
+                    role="img"
+                    aria-label="Espacio reservado para una fotografía institucional">
+                </div>
+
+
+                <!-- TARJETA INFORMATIVA -->
+
+                <div class="institucion-ilustracion-contenido">
+
+                    <div class="institucion-ilustracion-icono">
+
+                        <svg class="icono"
+                             aria-hidden="true">
+
+                            <use href="#icon-building"/>
+
+                        </svg>
+
+                    </div>
+
+                    <div class="institucion-ilustracion-texto">
+
+                        <h3>
+                            Red de salud municipal
+                        </h3>
+
+                        <p>
+                            Información accesible sobre los
+                            establecimientos, programas y
+                            servicios de salud de la comuna.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         3. PRINCIPALES FUNCIONES
+         ================================================== -->
+
+    <section class="institucion-funciones"
+             id="funciones">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Responsabilidades institucionales
+            </span>
+
+            <h2 class="seccion-titulo">
+                Principales funciones
+            </h2>
+
+            <p class="institucion-introduccion">
+                El Departamento de Salud Municipal desarrolla
+                funciones administrativas y de coordinación
+                para apoyar la atención primaria de salud
+                de la comuna.
+            </p>
+
+
+            <div class="funciones-grid">
+
+
+                <!-- FUNCIÓN 1 -->
+
+                <article class="funcion-tarjeta">
+
+                    <div class="funcion-icono">
+
+                        <svg class="icono"
+                             aria-hidden="true">
+
+                            <use href="#icon-building"/>
+
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        Administración de establecimientos
+                    </h3>
+
+                    <p>
+                        Asumir la dirección administrativa de
+                        los establecimientos municipales de
+                        salud, conforme a las disposiciones
+                        legales vigentes.
+                    </p>
+
+                </article>
+
+
+                <!-- FUNCIÓN 2 -->
+
+                <article class="funcion-tarjeta">
+
+                    <div class="funcion-icono">
+
+                        <svg class="icono"
+                             aria-hidden="true">
+
+                            <use href="#icon-people"/>
+
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        Gestión de recursos
+                    </h3>
+
+                    <p>
+                        Proveer recursos humanos, financieros
+                        y materiales necesarios para el
+                        funcionamiento de los servicios y
+                        la entrega de prestaciones.
+                    </p>
+
+                </article>
+
+
+                <!-- FUNCIÓN 3 -->
+
+                <article class="funcion-tarjeta">
+
+                    <div class="funcion-icono">
+
+                        <svg class="icono"
+                             aria-hidden="true">
+
+                            <use href="#icon-clipboard"/>
+
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        Cumplimiento de programas
+                    </h3>
+
+                    <p>
+                        Velar por el cumplimiento de las normas,
+                        planes y programas establecidos por
+                        el Ministerio de Salud.
+                    </p>
+
+                </article>
+
+
+                <!-- FUNCIÓN 4 -->
+
+                <article class="funcion-tarjeta">
+
+                    <div class="funcion-icono">
+
+                        <svg class="icono"
+                             aria-hidden="true">
+
+                            <use href="#icon-heart"/>
+
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        Prevención y salud comunitaria
+                    </h3>
+
+                    <p>
+                        Desarrollar programas relacionados
+                        con la higiene, prevención, detección
+                        y tratamiento de enfermedades,
+                        en coordinación con las entidades
+                        correspondientes.
+                    </p>
+
+                </article>
+
+
+                <!-- FUNCIÓN 5 -->
+
+                <article class="funcion-tarjeta">
+
+                    <div class="funcion-icono">
+
+                        <svg class="icono"
+                             aria-hidden="true">
+
+                            <use href="#icon-message"/>
+
+                        </svg>
+
+                    </div>
+
+                    <h3>
+                        Coordinación municipal
+                    </h3>
+
+                    <p>
+                        Coordinar con otras reparticiones
+                        municipales acciones vinculadas a
+                        la salud pública dentro del marco
+                        normativo aplicable.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         4. ORGANIZACIÓN ADMINISTRATIVA
+         ================================================== -->
+
+    <section class="institucion-organizacion"
+             id="organizacion">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Estructura institucional
+            </span>
+
+            <h2 class="seccion-titulo">
+                Organización administrativa
+            </h2>
+
+            <p class="institucion-introduccion">
+                El Departamento de Salud Municipal cuenta
+                con distintas áreas que contribuyen a la
+                administración, coordinación y funcionamiento
+                de la red de salud.
+            </p>
+
+
+            <div class="organizacion-grid">
+
+
+                <!-- GESTIÓN Y ADMINISTRACIÓN -->
+
+                <article class="organizacion-panel">
+
+                    <h3>
+                        Gestión y administración
+                    </h3>
+
+                    <ul class="lista-institucional">
+
+                        <li>
+                            Dirección del Departamento de Salud
+                        </li>
+
+                        <li>
+                            Administración y finanzas
+                        </li>
+
+                        <li>
+                            Recursos humanos
+                        </li>
+
+                        <li>
+                            Adquisiciones y abastecimiento
+                        </li>
+
+                    </ul>
+
+                </article>
+
+
+                <!-- COORDINACIÓN Y APOYO TÉCNICO -->
+
+                <article class="organizacion-panel">
+
+                    <h3>
+                        Coordinación y apoyo técnico
+                    </h3>
+
+                    <ul class="lista-institucional">
+
+                        <li>
+                            Coordinación de atención primaria
+                        </li>
+
+                        <li>
+                            Gestión de programas de salud
+                        </li>
+
+                        <li>
+                            Apoyo a establecimientos de salud
+                        </li>
+
+                        <li>
+                            Coordinación de acciones comunitarias
+                        </li>
+
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <!-- ACLARACIÓN DEL PROTOTIPO -->
+
+            <p class="organizacion-nota">
+                La agrupación presentada es referencial para
+                el prototipo. Los nombres y la estructura de
+                las unidades deberán validarse con la contraparte
+                antes de una implementación institucional.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         5. NUESTRA RED DE SALUD
+         ================================================== -->
+
+    <section class="institucion-red"
+             id="red-salud">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Atención primaria de salud
+            </span>
+
+            <h2 class="seccion-titulo">
+                Nuestra red de salud
+            </h2>
+
+            <p class="institucion-introduccion">
+                La red municipal comprende centros de salud
+                familiar, postas rurales y otros dispositivos
+                de apoyo a la atención de la comunidad.
+            </p>
+
+
+            <div class="red-grid">
+
+
+                <!-- CESFAM -->
+
+                <article class="red-tarjeta">
+
+                    <h3>
+                        Centros de Salud Familiar (CESFAM)
+                    </h3>
+
+                    <p>
+                        Establecimientos que forman parte
+                        de la red municipal de atención primaria.
+                    </p>
+
+                    <ul class="lista-institucional">
+
+                        <li>CESFAM Padre Las Casas</li>
+
+                        <li>CESFAM Las Colinas</li>
+
+                        <li>CESFAM Pulmahue</li>
+
+                        <li>CESFAM Conunhuenu</li>
+
+                    </ul>
+
+                </article>
+
+
+                <!-- POSTAS RURALES -->
+
+                <article class="red-tarjeta">
+
+                    <h3>
+                        Postas de Salud Rural
+                    </h3>
+
+                    <p>
+                        Dispositivos de atención que contribuyen
+                        a acercar los servicios de salud a
+                        sectores rurales de la comuna.
+                    </p>
+
+                    <ul class="lista-institucional">
+
+                        <li>Posta Codopille</li>
+
+                        <li>Posta Laurel Huacho</li>
+
+                        <li>Posta Metrenco</li>
+
+                        <li>Posta San Ramón</li>
+
+                        <li>Posta Roble Huacho</li>
+
+                        <li>Posta Truf Truf</li>
+
+                    </ul>
+
+                </article>
+
+
+                <!-- OTROS DISPOSITIVOS -->
+
+                <article class="red-tarjeta red-otros">
+
+                    <h3>
+                        Otros dispositivos y servicios
+                    </h3>
+
+                    <p>
+                        La información institucional también
+                        contempla servicios y programas de
+                        apoyo a la atención de salud.
+                    </p>
+
+                    <ul class="lista-institucional">
+
+                        <li>
+                            Centro Comunitario de Rehabilitación
+                        </li>
+
+                        <li>
+                            Programa de Atención Domiciliaria
+                        </li>
+
+                    </ul>
+
+                </article>
+
+            </div>
+
+
+            <!-- REFERENCIA INSTITUCIONAL -->
+
+            <p class="fuente-institucional">
+
+                Referencia informativa:
+
+                <a
+                    href="https://salud.padrelascasas.cl/quienes-somos/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+
+                    sitio web del Departamento de Salud Municipal
+                    de Padre Las Casas
+
+                </a>.
+
+                Datos sujetos a verificación institucional
+                antes de una publicación real.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         6. INFORMACIÓN Y SERVICIOS DE INTERÉS
+         ================================================== -->
+
+    <section class="institucion-accesos"
+             id="servicios-interes">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Explora el portal
+            </span>
+
+            <h2 class="seccion-titulo">
+                Información y servicios de interés
+            </h2>
+
+
+            <div class="accesos-grid">
+
+
+                <!-- ESTABLECIMIENTOS -->
+
+                <a href="establecimientos.html"
+                   class="acceso-tarjeta">
+
+                    <h3>
+                        Establecimientos de salud
+                    </h3>
+
+                    <p>
+                        Conoce la red de establecimientos
+                        y consulta sus datos de atención.
+                    </p>
+
+                    <span>
+                        Ver establecimientos →
+                    </span>
+
+                </a>
+
+
+                <!-- PRESTACIONES -->
+
+                <a href="prestaciones.html"
+                   class="acceso-tarjeta">
+
+                    <h3>
+                        Prestaciones y programas
+                    </h3>
+
+                    <p>
+                        Revisa información sobre prestaciones
+                        y programas disponibles para la comunidad.
+                    </p>
+
+                    <span>
+                        Ver prestaciones →
+                    </span>
+
+                </a>
+
+
+                <!-- CONTACTO -->
+
+                <a href="contacto.html"
+                   class="acceso-tarjeta">
+
+                    <h3>
+                        Contacto institucional
+                    </h3>
+
+                    <p>
+                        Consulta los canales de contacto
+                        e información institucional.
+                    </p>
+
+                    <span>
+                        Ir a contacto →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ======================================================
+     PIE DE PÁGINA
+     ====================================================== -->
+
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+
+        <!-- LOGOTIPO -->
+
+        <div class="footer-identidad">
+
+            <img
+                src="../static/img/logo-salud-footer.png"
+                alt="Departamento de Salud Municipal de Padre Las Casas"
+                class="footer-logo">
+
+        </div>
+
+
+        <!-- ENLACES DE INTERÉS -->
+
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="oirs.html">
+                        OIRS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ACCESOS INSTITUCIONALES -->
+
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+
+                <li>
+                    <a href="intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CONTACTO -->
+
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Información oficial de contacto
+                pendiente de incorporar.
+            </p>
+
+        </div>
+
+
+        <!-- REDES SOCIALES -->
+
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+
+                <!-- FACEBOOK -->
+
+                <span class="red-social"
+                      aria-label="Facebook"
+                      title="Facebook">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <path
+                            fill="currentColor"
+                            stroke="none"
+                            d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+
+                    </svg>
+
+                </span>
+
+
+                <!-- INSTAGRAM -->
+
+                <span class="red-social"
+                      aria-label="Instagram"
+                      title="Instagram">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <rect
+                            x="3"
+                            y="3"
+                            width="18"
+                            height="18"
+                            rx="5"
+                            ry="5"/>
+
+                        <circle cx="12"
+                                cy="12"
+                                r="4"/>
+
+                        <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            fill="currentColor"
+                            stroke="none"/>
+
+                    </svg>
+
+                </span>
+
+
+                <!-- YOUTUBE -->
+
+                <span class="red-social"
+                      aria-label="YouTube"
+                      title="YouTube">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <rect
+                            x="2"
+                            y="5"
+                            width="20"
+                            height="14"
+                            rx="4"/>
+
+                        <path d="m10 9 5 3-5 3z"/>
+
+                    </svg>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INFORMACIÓN INFERIOR -->
+
+    <div class="contenedor footer-inferior">
+
+        <p>
+            © 2026 Departamento de Salud Municipal
+            de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

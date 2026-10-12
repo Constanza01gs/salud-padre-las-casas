@@ -1,0 +1,1008 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Oficina de Informaciones, Reclamos y Sugerencias de Salud Municipal de Padre Las Casas.">
+    <title>OIRS | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/oirs.css">
+
+    <script src="../static/js/script.js" defer></script>
+    <script src="../static/js/oirs.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ICONOS GENERALES Y DE LA OIRS -->
+    <svg class="iconos-definiciones" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <symbol id="icon-user" viewBox="0 0 24 24">
+            <circle cx="12" cy="7" r="4"/>
+            <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+        </symbol>
+        <symbol id="icon-search" viewBox="0 0 24 24">
+            <circle cx="10.8" cy="10.8" r="7"/>
+            <path d="m16 16 5 5"/>
+        </symbol>
+        <symbol id="icon-chevron" viewBox="0 0 24 24">
+            <path d="m6 9 6 6 6-6"/>
+        </symbol>
+        <symbol id="icon-menu" viewBox="0 0 24 24">
+            <path d="M4 6h16M4 12h16M4 18h16"/>
+        </symbol>
+        <symbol id="oirs-icon-info" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 11v6M12 7.5v.5"/>
+        </symbol>
+        <symbol id="oirs-icon-clock" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M12 7v5l3.5 2"/>
+        </symbol>
+        <symbol id="oirs-icon-list" viewBox="0 0 24 24">
+            <rect x="4" y="3" width="16" height="18" rx="2"/>
+            <path d="M9 8h7M9 12h7M9 16h7M7 8h.01M7 12h.01M7 16h.01"/>
+        </symbol>
+        <symbol id="oirs-icon-help" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="9"/>
+            <path d="M9.5 9a2.7 2.7 0 0 1 5.2 1c0 2-2.7 2.1-2.7 4M12 17.5v.5"/>
+        </symbol>
+        <symbol id="oirs-icon-message" viewBox="0 0 24 24">
+            <path d="M4 5h16v12H8l-4 3V5z"/>
+            <path d="M8 9h8M8 13h5"/>
+        </symbol>
+        <symbol id="oirs-icon-lightbulb" viewBox="0 0 24 24">
+            <path d="M9 18h6M10 21h4M9 15c-2-1.3-3-3-3-5a6 6 0 0 1 12 0c0 2-1 3.7-3 5l-.5 2h-5z"/>
+        </symbol>
+        <symbol id="oirs-icon-star" viewBox="0 0 24 24">
+            <path d="m12 2 3 6.2 6.8 1-4.9 4.8 1.2 6.8-6.1-3.2-6.1 3.2 1.2-6.8-4.9-4.8 6.8-1z"/>
+        </symbol>
+        <symbol id="oirs-icon-alert" viewBox="0 0 24 24">
+            <path d="M12 3 2.5 20h19L12 3zM12 9v5M12 17v.5"/>
+        </symbol>
+        <symbol id="oirs-icon-file" viewBox="0 0 24 24">
+            <path d="M6 3h8l5 5v13H6zM14 3v5h5M9 13h7M9 17h7"/>
+        </symbol>
+    </svg>
+
+    <!-- ENCABEZADO -->
+    <header class="encabezado">
+        <div class="contenedor encabezado-contenido">
+            <a href="../index.html" class="identidad" aria-label="Volver al inicio">
+                <img
+                    src="../static/img/logo-salud-encabezado.png"
+                    alt="Departamento de Salud Municipal de Padre Las Casas"
+                    class="logo-institucional"
+                >
+            </a>
+
+            <a href="login.html" class="boton-funcionarios">
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-user"/>
+                </svg>
+                <span>Acceso funcionarios</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- NAVEGACIÓN -->
+    <nav class="navegacion" aria-label="Navegación principal">
+        <div class="contenedor navegacion-contenido">
+
+            <button
+                class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+            >
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-menu"/>
+                </svg>
+                <span>Menú</span>
+            </button>
+
+            <ul class="menu" id="menu-principal">
+                <li class="menu-item">
+                    <a href="../index.html">Inicio</a>
+                </li>
+
+                <li class="menu-item tiene-submenu">
+                    <button
+                        class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion"
+                    >
+                        Institución
+                        <svg class="icono icono-flecha" aria-hidden="true">
+                            <use href="#icon-chevron"/>
+                        </svg>
+                    </button>
+                    <ul class="submenu" id="submenu-institucion">
+                        <li><a href="institucion.html">Quiénes somos</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item">
+                    <a href="establecimientos.html">Establecimientos</a>
+                </li>
+
+                <li class="menu-item tiene-submenu">
+                    <button
+                        class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones"
+                    >
+                        Prestaciones y programas
+                        <svg class="icono icono-flecha" aria-hidden="true">
+                            <use href="#icon-chevron"/>
+                        </svg>
+                    </button>
+                    <ul class="submenu" id="submenu-prestaciones">
+                        <li><a href="prestaciones.html">Prestaciones de salud</a></li>
+                        <li><a href="programas.html">Programas de salud</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item">
+                    <a href="noticias.html">Noticias y actividades</a>
+                </li>
+
+                <li class="menu-item tiene-submenu">
+                    <button
+                        class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion"
+                    >
+                        Participación ciudadana
+                        <svg class="icono icono-flecha" aria-hidden="true">
+                            <use href="#icon-chevron"/>
+                        </svg>
+                    </button>
+                    <ul class="submenu" id="submenu-participacion">
+                        <li><a href="oirs.html" aria-current="page">Ingresar solicitud OIRS</a></li>
+                        <li><a href="encuesta.html">Encuesta de satisfacción</a></li>
+                        <li><a href="participacion.html">Canales de participación</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="buscador-navegacion" id="buscador-sitio">
+                <label class="buscador-campo" for="campo-busqueda">
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-search"/>
+                    </svg>
+                    <span class="sr-only">Buscar una sección del portal</span>
+                    <input
+                        id="campo-busqueda"
+                        type="search"
+                        placeholder="Buscar en el sitio..."
+                        autocomplete="off"
+                        aria-label="Buscar en el sitio"
+                        aria-expanded="false"
+                        aria-controls="resultados-busqueda"
+                    >
+                </label>
+                <div
+                    id="resultados-busqueda"
+                    class="resultados-busqueda"
+                    aria-live="polite"
+                    hidden
+                ></div>
+            </div>
+
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- PRESENTACIÓN -->
+        <section class="oirs-encabezado">
+            <div class="contenedor">
+                <div class="oirs-migas">
+                    <a href="../index.html">Inicio</a>
+                    <span>/</span>
+                    <a href="participacion.html">Participación ciudadana</a>
+                    <span>/</span>
+                    <span>OIRS</span>
+                </div>
+
+                <span class="etiqueta">Atención ciudadana</span>
+
+                <h1>Oficina de Informaciones, Reclamos y Sugerencias (OIRS)</h1>
+
+                <p>
+                    Este espacio permite registrar consultas, reclamos, sugerencias,
+                    solicitudes y felicitaciones relacionadas con la atención y
+                    los servicios de la red de salud municipal de Padre Las Casas.
+                </p>
+                <p>
+                    Puedes realizar tu solicitud sin iniciar sesión y consultar
+                    posteriormente su estado mediante un número de folio.
+                </p>
+            </div>
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="oirs-seccion" id="seccion-formulario">
+            <div class="contenedor oirs-distribucion">
+
+                <div class="oirs-panel">
+                    <h2>Formulario de solicitud ciudadana</h2>
+
+                    <p class="oirs-descripcion">
+                        Completa los datos correspondientes a la persona afectada y,
+                        si corresponde, a quien presenta la solicitud en su representación.
+                        Los campos marcados con (*) son obligatorios.
+                    </p>
+
+                    <form id="formulario-oirs">
+
+                        <!-- 1. TIPO DE SOLICITUD -->
+                        <div class="oirs-bloque">
+                            <h3>
+                                <span class="oirs-numero">1</span>
+                                Tipo de solicitud
+                            </h3>
+                            <p class="oirs-texto-bloque">
+                                Selecciona el tipo de requerimiento que deseas presentar.
+                            </p>
+
+                            <div class="oirs-tipos">
+                                <label class="oirs-tipo-opcion">
+                                    <input type="radio" name="tipo" value="Reclamo" required>
+                                    <span>Reclamo</span>
+                                </label>
+                                <label class="oirs-tipo-opcion">
+                                    <input type="radio" name="tipo" value="Consulta">
+                                    <span>Consulta</span>
+                                </label>
+                                <label class="oirs-tipo-opcion">
+                                    <input type="radio" name="tipo" value="Sugerencia">
+                                    <span>Sugerencia</span>
+                                </label>
+                                <label class="oirs-tipo-opcion">
+                                    <input type="radio" name="tipo" value="Solicitud">
+                                    <span>Solicitud</span>
+                                </label>
+                                <label class="oirs-tipo-opcion">
+                                    <input type="radio" name="tipo" value="Felicitación">
+                                    <span>Felicitación</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- 2. ESTABLECIMIENTO Y MOTIVO -->
+                        <div class="oirs-bloque">
+                            <h3>
+                                <span class="oirs-numero">2</span>
+                                Establecimiento, unidad y motivo
+                            </h3>
+
+                            <div class="oirs-grid">
+                                <div class="oirs-campo">
+                                    <label for="establecimiento-solicitud">Establecimiento *</label>
+                                    <select id="establecimiento-solicitud" name="establecimiento" required>
+                                        <option value="">Seleccionar establecimiento</option>
+                                        <option value="Departamento de Salud Municipal">Departamento de Salud Municipal</option>
+                                        <option value="CESFAM Padre Las Casas">CESFAM Padre Las Casas</option>
+                                        <option value="CESFAM Las Colinas">CESFAM Las Colinas</option>
+                                        <option value="CESFAM Pulmahue">CESFAM Pulmahue</option>
+                                        <option value="CESFAM Conunhuenu">CESFAM Conunhuenu</option>
+                                        <option value="Posta Codopille">Posta Codopille</option>
+                                        <option value="Posta Laurel Huacho">Posta Laurel Huacho</option>
+                                        <option value="Posta Metrenco">Posta Metrenco</option>
+                                        <option value="Posta San Ramón">Posta San Ramón</option>
+                                        <option value="Posta Roble Huacho">Posta Roble Huacho</option>
+                                        <option value="Posta Truf Truf">Posta Truf Truf</option>
+                                        <option value="Centro Comunitario de Rehabilitación">Centro Comunitario de Rehabilitación</option>
+                                        <option value="Programa de Atención Domiciliaria">Programa de Atención Domiciliaria</option>
+                                    </select>
+                                </div>
+
+                                <div class="oirs-campo">
+                                    <label for="unidad-solicitud">Unidad o servicio</label>
+                                    <select id="unidad-solicitud" name="unidad">
+                                        <option value="">Seleccionar unidad</option>
+                                        <option value="SOME">SOME / Admisión</option>
+                                        <option value="Medicina general">Medicina general</option>
+                                        <option value="Enfermería">Enfermería</option>
+                                        <option value="Odontología">Odontología</option>
+                                        <option value="Farmacia">Farmacia</option>
+                                        <option value="Vacunatorio">Vacunatorio</option>
+                                        <option value="Urgencia">Urgencia</option>
+                                        <option value="Atención domiciliaria">Atención domiciliaria</option>
+                                        <option value="Administración">Administración</option>
+                                        <option value="Otra">Otra unidad</option>
+                                        <option value="No especificada">No corresponde / No sabe</option>
+                                    </select>
+                                </div>
+                                
+                                <!-- =====================================================
+                                    MOTIVO DINÁMICO SEGÚN EL TIPO DE SOLICITUD
+                                ===================================================== -->
+
+                                <div
+                                    class="oirs-campo ancho-completo"
+                                    id="contenedor-motivo"
+                                    hidden
+                                >
+                                    <label for="motivo-reclamo" id="etiqueta-motivo">
+                                        Motivo de la solicitud *
+                                    </label>
+
+                                    <select
+                                        id="motivo-reclamo"
+                                        name="motivo"
+                                        disabled
+                                    >
+                                        <option value="">
+                                            Seleccionar motivo
+                                        </option>
+                                    </select>
+
+                                    <span class="oirs-ayuda" id="ayuda-motivo">
+                                        Las opciones se mostrarán según el tipo de solicitud seleccionado.
+                                    </span>
+                                </div>
+
+                                <!-- CAMPO ADICIONAL SI SE SELECCIONA "OTRO" -->
+
+                                <div
+                                    class="oirs-campo ancho-completo"
+                                    id="contenedor-otro-motivo"
+                                    hidden
+                                >
+                                    <label for="otro-motivo">
+                                        Especifica el motivo *
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        id="otro-motivo"
+                                        name="otroMotivo"
+                                        maxlength="150"
+                                        placeholder="Describe brevemente el motivo"
+                                        disabled
+                                    >
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- 3. DATOS DEL PACIENTE -->
+                        <div class="oirs-bloque">
+                            <h3>
+                                <span class="oirs-numero">3</span>
+                                Datos de la persona afectada (paciente)
+                            </h3>
+                            <p class="oirs-texto-bloque">
+                                Ingresa los datos de la persona a quien corresponde
+                                la atención o situación descrita.
+                            </p>
+
+                            <div class="oirs-grid">
+                                <div class="oirs-campo">
+                                    <label for="paciente-nombre">Nombres *</label>
+                                    <input
+                                        type="text"
+                                        id="paciente-nombre"
+                                        name="pacienteNombre"
+                                        maxlength="80"
+                                        autocomplete="off"
+                                        required
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="paciente-apellido-paterno">Apellido paterno *</label>
+                                    <input
+                                        type="text"
+                                        id="paciente-apellido-paterno"
+                                        name="pacienteApellidoPaterno"
+                                        maxlength="70"
+                                        autocomplete="off"
+                                        required
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="paciente-apellido-materno">Apellido materno</label>
+                                    <input
+                                        type="text"
+                                        id="paciente-apellido-materno"
+                                        name="pacienteApellidoMaterno"
+                                        maxlength="70"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="paciente-rut">RUT o documento de identificación</label>
+                                    <input
+                                        type="text"
+                                        id="paciente-rut"
+                                        name="pacienteRut"
+                                        maxlength="20"
+                                        placeholder="Ej.: 12.345.678-9"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. REPRESENTANTE -->
+                        <div class="oirs-bloque">
+                            <h3>
+                                <span class="oirs-numero">4</span>
+                                Datos del solicitante o representante
+                            </h3>
+                            <p class="oirs-texto-bloque">
+                                Indica quién presenta la solicitud. Puede ser el propio
+                                paciente o una persona que actúe en su representación.
+                            </p>
+
+                            <label class="oirs-checkbox oirs-checkbox-destacado">
+                                <input type="checkbox" id="misma-persona" checked>
+                                <span>Soy la misma persona afectada (paciente).</span>
+                            </label>
+
+                            <div class="oirs-grid" id="datos-representante" hidden>
+                                <div class="oirs-campo">
+                                    <label for="nombre-solicitante">Nombres del representante *</label>
+                                    <input
+                                        type="text"
+                                        id="nombre-solicitante"
+                                        name="nombre"
+                                        maxlength="80"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="apellido-solicitante">Apellido paterno *</label>
+                                    <input
+                                        type="text"
+                                        id="apellido-solicitante"
+                                        name="apellido"
+                                        maxlength="70"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="apellido-materno-solicitante">Apellido materno</label>
+                                    <input
+                                        type="text"
+                                        id="apellido-materno-solicitante"
+                                        name="apellidoMaterno"
+                                        maxlength="70"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="rut-solicitante">RUT o documento de identificación</label>
+                                    <input
+                                        type="text"
+                                        id="rut-solicitante"
+                                        name="rut"
+                                        maxlength="20"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="oirs-campo ancho-completo">
+                                    <label for="relacion-paciente">Relación con la persona afectada *</label>
+                                    <select id="relacion-paciente" name="relacionPaciente">
+                                        <option value="">Seleccionar relación</option>
+                                        <option value="Madre o padre">Madre o padre</option>
+                                        <option value="Hijo o hija">Hijo o hija</option>
+                                        <option value="Cónyuge o pareja">Cónyuge o pareja</option>
+                                        <option value="Cuidador">Cuidador</option>
+                                        <option value="Representante legal">Representante legal</option>
+                                        <option value="Otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. DETALLE -->
+                        <div class="oirs-bloque">
+                            <h3>
+                                <span class="oirs-numero">5</span>
+                                Detalle de la solicitud
+                            </h3>
+
+                            <div class="oirs-grid">
+                                <div class="oirs-campo ancho-completo">
+                                    <label for="asunto-solicitud">Asunto *</label>
+                                    <input
+                                        type="text"
+                                        id="asunto-solicitud"
+                                        name="asunto"
+                                        minlength="5"
+                                        maxlength="120"
+                                        placeholder="Escribe un título breve"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="oirs-campo ancho-completo">
+                                    <label for="descripcion-solicitud">Descripción de la situación *</label>
+                                    <textarea
+                                        id="descripcion-solicitud"
+                                        name="descripcion"
+                                        minlength="15"
+                                        maxlength="3000"
+                                        placeholder="Describe lo ocurrido, cuándo sucedió y en qué lugar."
+                                        required
+                                    ></textarea>
+                                    <span class="oirs-ayuda">Entre 15 y 3000 caracteres.</span>
+                                </div>
+
+                                <div class="oirs-campo ancho-completo">
+                                    <label for="peticion-solicitud">¿Qué respuesta o solución esperas? *</label>
+                                    <textarea
+                                        id="peticion-solicitud"
+                                        name="peticion"
+                                        minlength="5"
+                                        maxlength="1000"
+                                        placeholder="Indica qué esperas obtener mediante esta solicitud."
+                                        required
+                                    ></textarea>
+                                </div>
+
+                                <div class="oirs-campo ancho-completo">
+                                    <label for="documentos-solicitud">Adjuntar documentos (opcional)</label>
+                                    <input
+                                        type="file"
+                                        id="documentos-solicitud"
+                                        name="documentos"
+                                        accept=".pdf,.jpg,.jpeg,.png"
+                                        multiple
+                                    >
+                                    <span class="oirs-ayuda">
+                                        Formatos de demostración: PDF, JPG o PNG.
+                                        Los archivos no se almacenan ni se envían en esta versión.
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 6. CONTACTO -->
+                        <div class="oirs-bloque">
+                            <h3>
+                                <span class="oirs-numero">6</span>
+                                Datos de contacto y autorización
+                            </h3>
+
+                            <div class="oirs-grid">
+                                <div class="oirs-campo">
+                                    <label for="telefono-solicitante">Teléfono (opcional)</label>
+                                    <input
+                                        type="tel"
+                                        id="telefono-solicitante"
+                                        name="telefono"
+                                        maxlength="20"
+                                        placeholder="+56 9 1234 5678"
+                                        autocomplete="off"
+                                    >
+                                </div>
+                                <div class="oirs-campo">
+                                    <label for="correo-solicitante">Correo electrónico *</label>
+                                    <input
+                                        type="email"
+                                        id="correo-solicitante"
+                                        name="correo"
+                                        maxlength="120"
+                                        placeholder="ejemplo@correo.cl"
+                                        autocomplete="off"
+                                        required
+                                    >
+                                </div>
+                            </div>
+
+                            <label class="oirs-checkbox">
+                                <input type="checkbox" id="autoriza-correo">
+                                <span>
+                                    Autorizo recibir comunicaciones y la respuesta a mi solicitud
+                                    mediante el correo electrónico proporcionado.
+                                </span>
+                            </label>
+
+                            <div class="oirs-aviso-correo">
+                                <strong>Comprobante de recepción</strong>
+                                <p>
+                                    En la implementación real se contempla enviar un comprobante
+                                    con el número de folio al correo electrónico indicado.
+                                    Este prototipo académico no envía correos.
+                                </p>
+                            </div>
+
+                            <label class="oirs-checkbox">
+                                <input type="checkbox" id="confirmacion-datos" required>
+                                <span>
+                                    Confirmo que estoy utilizando información ficticia
+                                    para probar este prototipo académico. *
+                                </span>
+                            </label>
+
+                            <div
+                                class="oirs-error"
+                                id="mensaje-error"
+                                role="alert"
+                                hidden
+                            ></div>
+
+                            <div class="oirs-acciones">
+                                <button type="submit" class="oirs-boton" id="boton-enviar">
+                                    Registrar solicitud
+                                </button>
+                                <button type="reset" class="oirs-boton secundario">
+                                    Limpiar formulario
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <!-- INFORMACIÓN LATERAL -->
+                <aside class="oirs-lateral">
+
+                    <!-- QUÉ ES LA OIRS -->
+                    <div class="oirs-info oirs-info-institucional">
+                        <div class="oirs-info-encabezado">
+                            <span class="oirs-info-icono oirs-icono-azul">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="#oirs-icon-info"/>
+                                </svg>
+                            </span>
+                            <h3>¿Qué es la OIRS?</h3>
+                        </div>
+
+                        <p>
+                            La Oficina de Informaciones, Reclamos y Sugerencias
+                            (OIRS) es un canal de comunicación entre la ciudadanía
+                            y los establecimientos de salud.
+                        </p>
+                        <p>
+                            Permite recibir requerimientos, orientar a las personas
+                            y facilitar el seguimiento de sus solicitudes.
+                        </p>
+
+                        <h4>Sus principales funciones son:</h4>
+                        <ul>
+                            <li>Recibir consultas, reclamos, sugerencias, solicitudes y felicitaciones.</li>
+                            <li>Orientar sobre servicios y procedimientos.</li>
+                            <li>Derivar los requerimientos a las unidades correspondientes.</li>
+                            <li>Registrar la gestión y respuesta de las solicitudes.</li>
+                        </ul>
+                    </div>
+
+                    <!-- PLAZOS -->
+                    <div class="oirs-info oirs-info-plazos">
+                        <div class="oirs-info-encabezado">
+                            <span class="oirs-info-icono oirs-icono-celeste">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="#oirs-icon-clock"/>
+                                </svg>
+                            </span>
+                            <h3>Plazos de respuesta</h3>
+                        </div>
+
+                        <p>
+                            Los antecedentes del procedimiento OIRS consideran un plazo
+                            de <strong>15 días hábiles</strong> para responder reclamos.
+                        </p>
+                        <p>
+                            El seguimiento de plazos y vencimientos se incorporará
+                            a la gestión del sistema.
+                        </p>
+                    </div>
+
+                    <!-- TIPOS DE SOLICITUD -->
+                    <div class="oirs-info oirs-info-tipos">
+                        <div class="oirs-info-encabezado">
+                            <span class="oirs-info-icono oirs-icono-morado">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="#oirs-icon-list"/>
+                                </svg>
+                            </span>
+                            <h3>Tipos de solicitudes</h3>
+                        </div>
+
+                        <ul class="oirs-lista-tipos">
+                            <li>
+                                <span class="oirs-tipo-icono oirs-icono-rojo">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="#oirs-icon-alert"/>
+                                    </svg>
+                                </span>
+                                <span><strong>Reclamo:</strong> disconformidad con una atención o servicio recibido.</span>
+                            </li>
+                            <li>
+                                <span class="oirs-tipo-icono oirs-icono-azul">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="#oirs-icon-message"/>
+                                    </svg>
+                                </span>
+                                <span><strong>Consulta:</strong> petición de información u orientación.</span>
+                            </li>
+                            <li>
+                                <span class="oirs-tipo-icono oirs-icono-amarillo">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="#oirs-icon-lightbulb"/>
+                                    </svg>
+                                </span>
+                                <span><strong>Sugerencia:</strong> propuesta para mejorar la atención.</span>
+                            </li>
+                            <li>
+                                <span class="oirs-tipo-icono oirs-icono-morado">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="#oirs-icon-file"/>
+                                    </svg>
+                                </span>
+                                <span><strong>Solicitud:</strong> requerimiento de gestión o información.</span>
+                            </li>
+                            <li>
+                                <span class="oirs-tipo-icono oirs-icono-verde">
+                                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                                        <use href="#oirs-icon-star"/>
+                                    </svg>
+                                </span>
+                                <span><strong>Felicitación:</strong> reconocimiento de una atención positiva.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CONSULTA DE ESTADO -->
+                    <div
+                        class="oirs-info oirs-consulta-panel"
+                        id="consulta-estado"
+                    >
+                        <div class="oirs-info-encabezado">
+                            <span class="oirs-info-icono oirs-icono-azul">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="#icon-search"/>
+                                </svg>
+                            </span>
+                            <h3>Consultar estado de solicitud</h3>
+                        </div>
+
+                        <p>
+                            Ingresa el número de folio para consultar el estado
+                            de una solicitud registrada en este prototipo.
+                        </p>
+
+                        <form id="formulario-consulta">
+                            <div class="oirs-campo">
+                                <label for="folio-consulta">Número de folio</label>
+                                <input
+                                    type="text"
+                                    id="folio-consulta"
+                                    placeholder="Ej.: OIRS-2026-ABC123"
+                                    maxlength="60"
+                                    autocomplete="off"
+                                    required
+                                >
+                            </div>
+                            <button type="submit" class="oirs-boton">
+                                Consultar estado
+                            </button>
+                        </form>
+
+                        <div
+                            class="oirs-resultado-consulta"
+                            id="resultado-consulta"
+                            aria-live="polite"
+                            hidden
+                        >
+                            <h4>Estado de la solicitud</h4>
+                            <div id="consulta-contenido"></div>
+                        </div>
+                    </div>
+
+                    <!-- NUEVA TARJETA DE AYUDA -->
+                    <div class="oirs-info oirs-info-ayuda">
+                        <div class="oirs-info-encabezado">
+                            <span class="oirs-info-icono oirs-icono-verde">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <use href="#oirs-icon-help"/>
+                                </svg>
+                            </span>
+                            <h3>¿Necesitas ayuda?</h3>
+                        </div>
+
+                        <p>
+                            Si tienes dificultades para completar este formulario,
+                            puedes acudir presencialmente a la OIRS de tu
+                            establecimiento de salud y solicitar orientación
+                            a un funcionario.
+                        </p>
+                        <p>
+                            También puedes presentar tu solicitud de manera
+                            presencial, sin necesidad de utilizar este formulario digital.
+                        </p>
+                    </div>
+
+                    <!-- AVISO ACADÉMICO -->
+                    <div class="oirs-alerta">
+                        <strong>Prototipo académico</strong>
+                        <p>
+                            Este sitio es una demostración. No envía solicitudes
+                            a un organismo público ni correos electrónicos.
+                        </p>
+                        <p>
+                            Los registros se almacenan localmente en el navegador.
+                            No ingreses datos personales ni antecedentes clínicos reales.
+                        </p>
+                    </div>
+
+                </aside>
+
+            </div>
+        </section>
+
+        <!-- CONFIRMACIÓN DE REGISTRO -->
+        <section class="oirs-seccion" id="seccion-confirmacion" hidden>
+            <div class="contenedor">
+                <div class="oirs-confirmacion" role="status" aria-live="polite">
+
+                    <div class="oirs-confirmacion-icono">✓</div>
+
+                    <h2>¡Solicitud registrada correctamente!</h2>
+                    <p>
+                        Tu solicitud de demostración fue registrada en este navegador.
+                    </p>
+
+                    <div class="oirs-folio">
+                        <span>Número de folio</span>
+                        <strong id="folio-generado"></strong>
+                    </div>
+
+                    <div class="oirs-aviso-correo">
+                        <strong>Confirmación por correo electrónico</strong>
+                        <p>
+                            En el sistema real, el comprobante de recepción
+                            y el folio se enviarían al correo proporcionado.
+                        </p>
+                        <p>
+                            En esta demostración no se ha enviado ningún
+                            correo electrónico.
+                        </p>
+                    </div>
+
+                    <div class="oirs-resumen">
+                        <h3>Resumen de la solicitud</h3>
+                        <p><strong>Tipo:</strong> <span id="resumen-tipo"></span></p>
+                        <p><strong>Establecimiento:</strong> <span id="resumen-establecimiento"></span></p>
+                        <p><strong>Asunto:</strong> <span id="resumen-asunto"></span></p>
+                        <p><strong>Fecha de registro:</strong> <span id="resumen-fecha"></span></p>
+                        <p><strong>Estado inicial:</strong> <span id="resumen-estado"></span></p>
+                    </div>
+
+                    <div class="oirs-acciones">
+                        <button
+                            type="button"
+                            class="oirs-boton"
+                            id="boton-copiar-folio"
+                        >
+                            Copiar folio
+                        </button>
+                        <button
+                            type="button"
+                            class="oirs-boton secundario"
+                            id="boton-consultar-folio"
+                        >
+                            Consultar estado
+                        </button>
+                        <button
+                            type="button"
+                            class="oirs-boton secundario"
+                            id="boton-nueva-solicitud"
+                        >
+                            Registrar otra solicitud
+                        </button>
+                        <a href="participacion.html" class="oirs-boton secundario">
+                            Volver a participación
+                        </a>
+                    </div>
+
+                    <p
+                        id="mensaje-copia"
+                        class="oirs-ayuda"
+                        aria-live="polite"
+                    ></p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer">
+        <div class="contenedor footer-contenido">
+
+            <div class="footer-identidad">
+                <img
+                    src="../static/img/logo-salud-footer.png"
+                    alt="Departamento de Salud Municipal de Padre Las Casas"
+                    class="footer-logo"
+                >
+            </div>
+
+            <div class="footer-columna">
+                <h3>Enlaces de interés</h3>
+                <ul>
+                    <li><a href="establecimientos.html">Establecimientos de salud</a></li>
+                    <li><a href="prestaciones.html">Prestaciones y programas</a></li>
+                    <li><a href="oirs.html">OIRS</a></li>
+                    <li><a href="encuesta.html">Encuesta de satisfacción</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Accesos institucionales</h3>
+                <ul>
+                    <li><a href="contacto.html">Contacto institucional</a></li>
+                    <li><a href="intranet.html">Acceso a intranet existente</a></li>
+                    <li><a href="login.html">Gestión de contenidos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-columna">
+                <h3>Contacto</h3>
+                <div class="footer-contacto">
+                    <svg class="icono" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                        <circle cx="12" cy="9" r="2.5"/>
+                    </svg>
+                    <p>Departamento de Salud Municipal de Padre Las Casas</p>
+                </div>
+                <p class="footer-nota">
+                    Información de contacto pendiente de validación institucional.
+                </p>
+            </div>
+
+            <div class="footer-columna footer-redes">
+                <h3>Síguenos</h3>
+                <div class="redes-sociales">
+                    <span class="red-social" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                fill="currentColor"
+                                stroke="none"
+                                d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"
+                            />
+                        </svg>
+                    </span>
+                    <span class="red-social" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="3" y="3" width="18" height="18" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+                        </svg>
+                    </span>
+                    <span class="red-social" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <rect x="2" y="5" width="20" height="14" rx="4"/>
+                            <path d="m10 9 5 3-5 3z"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="contenedor footer-inferior">
+            <p>
+                © 2026 Departamento de Salud Municipal de Padre Las Casas.
+                Prototipo de interfaz para el proyecto integrado.
+                No corresponde a un sitio institucional en producción.
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

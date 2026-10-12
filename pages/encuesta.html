@@ -1,0 +1,997 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Encuesta de satisfacción ciudadana del prototipo de Salud Municipal de Padre Las Casas.">
+
+    <title>Encuesta de satisfacción | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/encuesta.css">
+
+    <script src="../static/js/script.js" defer></script>
+    <script src="../static/js/encuesta.js" defer></script>
+</head>
+
+<body>
+
+<!-- DEFINICIONES DE ICONOS -->
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <!-- CARITAS PARA LA ESCALA DE SATISFACCIÓN -->
+
+    <symbol id="cara-1" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27"/>
+        <circle cx="23" cy="25" r="2.5" class="cara-ojo"/>
+        <circle cx="41" cy="25" r="2.5" class="cara-ojo"/>
+        <path d="M20 46 Q32 29 44 46"/>
+    </symbol>
+
+    <symbol id="cara-2" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27"/>
+        <circle cx="23" cy="25" r="2.5" class="cara-ojo"/>
+        <circle cx="41" cy="25" r="2.5" class="cara-ojo"/>
+        <path d="M21 43 Q32 34 43 43"/>
+    </symbol>
+
+    <symbol id="cara-3" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27"/>
+        <circle cx="23" cy="25" r="2.5" class="cara-ojo"/>
+        <circle cx="41" cy="25" r="2.5" class="cara-ojo"/>
+        <path d="M22 40 H42"/>
+    </symbol>
+
+    <symbol id="cara-4" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27"/>
+        <circle cx="23" cy="25" r="2.5" class="cara-ojo"/>
+        <circle cx="41" cy="25" r="2.5" class="cara-ojo"/>
+        <path d="M21 37 Q32 47 43 37"/>
+    </symbol>
+
+    <symbol id="cara-5" viewBox="0 0 64 64">
+        <circle cx="32" cy="32" r="27"/>
+        <circle cx="23" cy="25" r="2.5" class="cara-ojo"/>
+        <circle cx="41" cy="25" r="2.5" class="cara-ojo"/>
+        <path d="M19 35 Q32 54 45 35"/>
+    </symbol>
+
+</svg>
+
+<!-- ENCABEZADO -->
+<header class="encabezado">
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+        </a>
+
+        <a href="login.html" class="boton-funcionarios">
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+            <span>Acceso funcionarios</span>
+        </a>
+
+    </div>
+</header>
+
+<!-- NAVEGACIÓN PRINCIPAL -->
+<nav class="navegacion" aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+        </button>
+
+        <ul class="menu" id="menu-principal">
+
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+            <li class="menu-item tiene-submenu">
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+                    <li>
+                        <a href="institucion.html">Quiénes somos</a>
+                    </li>
+                    <li>
+                        <a href="contacto.html">Contacto</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+            </li>
+
+            <li class="menu-item tiene-submenu">
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+                    <li>
+                        <a href="programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="menu-item">
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+            </li>
+
+            <li class="menu-item tiene-submenu">
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+                    <li>
+                        <a href="encuesta.html" aria-current="page">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+                    <li>
+                        <a href="participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+
+        <!-- BUSCADOR GENERAL -->
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="buscador-campo" for="campo-busqueda">
+
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input id="campo-busqueda"
+                       type="search"
+                       placeholder="Buscar en el sitio..."
+                       autocomplete="off"
+                       aria-label="Buscar en el sitio"
+                       aria-expanded="false"
+                       aria-controls="resultados-busqueda">
+            </label>
+
+            <div id="resultados-busqueda"
+                 class="resultados-busqueda"
+                 aria-live="polite"
+                 hidden></div>
+
+        </div>
+
+    </div>
+</nav>
+
+<main>
+
+    <!-- TÍTULO -->
+    <section class="encuesta-encabezado">
+        <div class="contenedor">
+
+            <div class="encuesta-migas">
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <a href="participacion.html">
+                    Participación ciudadana
+                </a>
+                <span>/</span>
+                <span>Encuesta de satisfacción</span>
+            </div>
+
+            <span class="etiqueta">Tu opinión importa</span>
+
+            <h1>Encuesta de satisfacción</h1>
+
+            <p>
+                Comparte tu experiencia con la atención recibida
+                en la red de salud municipal. Esta encuesta es
+                anónima y no requiere iniciar sesión.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- FORMULARIO -->
+    <section class="encuesta-seccion" id="seccion-encuesta">
+
+        <div class="contenedor encuesta-distribucion">
+
+            <div class="encuesta-panel">
+
+                <h2>Cuéntanos tu experiencia</h2>
+
+                <p class="encuesta-introduccion">
+                    Selecciona el establecimiento donde recibiste
+                    atención y responde las siguientes preguntas.
+                    Los campos marcados con (*) son obligatorios.
+                </p>
+
+                <form id="formulario-encuesta">
+
+                    <!-- 1. INFORMACIÓN DE LA ATENCIÓN -->
+                    <div class="encuesta-bloque">
+
+                        <h3>1. Información de la atención</h3>
+
+                        <div class="encuesta-campo">
+
+                            <label for="encuesta-establecimiento">
+                                Establecimiento de salud
+                                <span class="encuesta-obligatorio">*</span>
+                            </label>
+
+                            <select id="encuesta-establecimiento"
+                                    name="establecimiento"
+                                    required>
+
+                                <option value="">
+                                    Seleccionar establecimiento
+                                </option>
+
+                                <option value="CESFAM Padre Las Casas">
+                                    CESFAM Padre Las Casas
+                                </option>
+
+                                <option value="CESFAM Las Colinas">
+                                    CESFAM Las Colinas
+                                </option>
+
+                                <option value="CESFAM Pulmahue">
+                                    CESFAM Pulmahue
+                                </option>
+
+                                <option value="CESFAM Conunhuenu">
+                                    CESFAM Conunhuenu
+                                </option>
+
+                                <option value="Posta Codopille">
+                                    Posta Codopille
+                                </option>
+
+                                <option value="Posta Laurel Huacho">
+                                    Posta Laurel Huacho
+                                </option>
+
+                                <option value="Posta Metrenco">
+                                    Posta Metrenco
+                                </option>
+
+                                <option value="Posta San Ramón">
+                                    Posta San Ramón
+                                </option>
+
+                                <option value="Posta Roble Huacho">
+                                    Posta Roble Huacho
+                                </option>
+
+                                <option value="Posta Truf Truf">
+                                    Posta Truf Truf
+                                </option>
+
+                                <option value="Centro Comunitario de Rehabilitación">
+                                    Centro Comunitario de Rehabilitación
+                                </option>
+
+                                <option value="Programa de Atención Domiciliaria">
+                                    Programa de Atención Domiciliaria
+                                </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <!-- 2. EVALUACIÓN DE LA ATENCIÓN -->
+                    <div class="encuesta-bloque">
+
+                        <h3>2. Evaluación de la atención</h3>
+
+                        <!-- PREGUNTA 1 -->
+                        <div class="encuesta-campo">
+
+                            <span class="encuesta-pregunta" id="pregunta-trato">
+                                ¿Cómo evalúas el trato recibido?
+                                <span class="encuesta-obligatorio">*</span>
+                            </span>
+
+                            <div class="encuesta-opciones"
+                                 role="radiogroup"
+                                 aria-labelledby="pregunta-trato">
+
+                                <label class="encuesta-opcion nivel-1">
+                                    <input type="radio"
+                                           name="trato"
+                                           value="1"
+                                           required>
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-1"/>
+                                    </svg>
+
+                                    <span>Muy malo</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-2">
+                                    <input type="radio"
+                                           name="trato"
+                                           value="2">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-2"/>
+                                    </svg>
+
+                                    <span>Malo</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-3">
+                                    <input type="radio"
+                                           name="trato"
+                                           value="3">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-3"/>
+                                    </svg>
+
+                                    <span>Regular</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-4">
+                                    <input type="radio"
+                                           name="trato"
+                                           value="4">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-4"/>
+                                    </svg>
+
+                                    <span>Bueno</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-5">
+                                    <input type="radio"
+                                           name="trato"
+                                           value="5">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-5"/>
+                                    </svg>
+
+                                    <span>Muy bueno</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <!-- PREGUNTA 2 -->
+                        <div class="encuesta-campo">
+
+                            <span class="encuesta-pregunta" id="pregunta-tiempo">
+                                ¿Cómo evalúas el tiempo de espera?
+                                <span class="encuesta-obligatorio">*</span>
+                            </span>
+
+                            <div class="encuesta-opciones"
+                                 role="radiogroup"
+                                 aria-labelledby="pregunta-tiempo">
+
+                                <label class="encuesta-opcion nivel-1">
+                                    <input type="radio"
+                                           name="tiempoEspera"
+                                           value="1"
+                                           required>
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-1"/>
+                                    </svg>
+
+                                    <span>Muy malo</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-2">
+                                    <input type="radio"
+                                           name="tiempoEspera"
+                                           value="2">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-2"/>
+                                    </svg>
+
+                                    <span>Malo</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-3">
+                                    <input type="radio"
+                                           name="tiempoEspera"
+                                           value="3">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-3"/>
+                                    </svg>
+
+                                    <span>Regular</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-4">
+                                    <input type="radio"
+                                           name="tiempoEspera"
+                                           value="4">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-4"/>
+                                    </svg>
+
+                                    <span>Bueno</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-5">
+                                    <input type="radio"
+                                           name="tiempoEspera"
+                                           value="5">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-5"/>
+                                    </svg>
+
+                                    <span>Muy bueno</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <!-- PREGUNTA 3 -->
+                        <div class="encuesta-campo">
+
+                            <span class="encuesta-pregunta"
+                                  id="pregunta-informacion">
+                                ¿Qué tan clara fue la información entregada?
+                                <span class="encuesta-obligatorio">*</span>
+                            </span>
+
+                            <div class="encuesta-opciones"
+                                 role="radiogroup"
+                                 aria-labelledby="pregunta-informacion">
+
+                                <label class="encuesta-opcion nivel-1">
+                                    <input type="radio"
+                                           name="claridad"
+                                           value="1"
+                                           required>
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-1"/>
+                                    </svg>
+
+                                    <span>Muy mala</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-2">
+                                    <input type="radio"
+                                           name="claridad"
+                                           value="2">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-2"/>
+                                    </svg>
+
+                                    <span>Mala</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-3">
+                                    <input type="radio"
+                                           name="claridad"
+                                           value="3">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-3"/>
+                                    </svg>
+
+                                    <span>Regular</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-4">
+                                    <input type="radio"
+                                           name="claridad"
+                                           value="4">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-4"/>
+                                    </svg>
+
+                                    <span>Buena</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-5">
+                                    <input type="radio"
+                                           name="claridad"
+                                           value="5">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-5"/>
+                                    </svg>
+
+                                    <span>Muy buena</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <!-- PREGUNTA 4 -->
+                        <div class="encuesta-campo">
+
+                            <span class="encuesta-pregunta" id="pregunta-general">
+                                ¿Cuál es tu satisfacción general con la atención?
+                                <span class="encuesta-obligatorio">*</span>
+                            </span>
+
+                            <div class="encuesta-opciones"
+                                 role="radiogroup"
+                                 aria-labelledby="pregunta-general">
+
+                                <label class="encuesta-opcion nivel-1">
+                                    <input type="radio"
+                                           name="satisfaccionGeneral"
+                                           value="1"
+                                           required>
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-1"/>
+                                    </svg>
+
+                                    <span>Muy baja</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-2">
+                                    <input type="radio"
+                                           name="satisfaccionGeneral"
+                                           value="2">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-2"/>
+                                    </svg>
+
+                                    <span>Baja</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-3">
+                                    <input type="radio"
+                                           name="satisfaccionGeneral"
+                                           value="3">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-3"/>
+                                    </svg>
+
+                                    <span>Regular</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-4">
+                                    <input type="radio"
+                                           name="satisfaccionGeneral"
+                                           value="4">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-4"/>
+                                    </svg>
+
+                                    <span>Alta</span>
+                                </label>
+
+                                <label class="encuesta-opcion nivel-5">
+                                    <input type="radio"
+                                           name="satisfaccionGeneral"
+                                           value="5">
+
+                                    <svg class="encuesta-carita" aria-hidden="true">
+                                        <use href="#cara-5"/>
+                                    </svg>
+
+                                    <span>Muy alta</span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- 3. COMENTARIOS ADICIONALES -->
+                    <div class="encuesta-bloque">
+
+                        <h3>3. Comentarios adicionales</h3>
+
+                        <div class="encuesta-campo">
+
+                            <label for="encuesta-comentarios">
+                                ¿Qué podríamos mejorar? (opcional)
+                            </label>
+
+                            <textarea id="encuesta-comentarios"
+                                      name="comentarios"
+                                      maxlength="1000"
+                                      placeholder="Comparte una sugerencia o comentario general. No incluyas datos personales ni información clínica."></textarea>
+
+                            <p class="encuesta-ayuda">
+                                Máximo 1000 caracteres. No incluyas nombres,
+                                RUT, teléfonos ni antecedentes de salud.
+                            </p>
+
+                        </div>
+
+                        <div class="encuesta-error"
+                             id="encuesta-error"
+                             role="alert"
+                             hidden></div>
+
+                        <div class="encuesta-acciones">
+
+                            <button type="submit"
+                                    class="encuesta-boton">
+                                Enviar encuesta
+                            </button>
+
+                            <button type="reset"
+                                    class="encuesta-boton secundario">
+                                Limpiar respuestas
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- INFORMACIÓN LATERAL -->
+            <aside class="encuesta-lateral">
+
+                <div class="encuesta-info">
+
+                    <h3>Encuesta anónima</h3>
+
+                    <p>
+                        Este formulario no solicita nombre,
+                        RUT, correo electrónico ni teléfono.
+                        Las respuestas se utilizarán únicamente
+                        para demostrar cómo el sistema podría
+                        generar estadísticas de satisfacción.
+                    </p>
+
+                </div>
+
+                <div class="encuesta-info">
+
+                    <h3>¿Qué evaluamos?</h3>
+
+                    <ul>
+                        <li>Trato recibido.</li>
+                        <li>Tiempo de espera.</li>
+                        <li>Claridad de la información.</li>
+                        <li>Satisfacción general.</li>
+                    </ul>
+
+                </div>
+
+                <div class="encuesta-info">
+
+                    <h3>¿Quieres ingresar una solicitud?</h3>
+
+                    <p>
+                        Si deseas presentar un reclamo,
+                        consulta, sugerencia o felicitación,
+                        utiliza el formulario OIRS.
+                    </p>
+
+                    <p class="encuesta-enlace-oirs">
+                        <a href="oirs.html">
+                            Ir al formulario OIRS →
+                        </a>
+                    </p>
+
+                </div>
+
+                <div class="encuesta-aviso">
+
+                    <strong>Prototipo académico</strong>
+
+                    Las respuestas se guardan únicamente
+                    en este navegador para pruebas.
+                    No se envían al Departamento de Salud Municipal
+                    ni constituyen una encuesta oficial.
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </section>
+
+    <!-- CONFIRMACIÓN -->
+    <section class="encuesta-seccion"
+             id="seccion-confirmacion-encuesta"
+             hidden>
+
+        <div class="contenedor">
+
+            <div class="encuesta-confirmacion"
+                 role="status"
+                 aria-live="polite">
+
+                <div class="encuesta-confirmacion-icono">
+                    ✓
+                </div>
+
+                <h2>¡Gracias por tu participación!</h2>
+
+                <p>
+                    Tu encuesta de prueba fue registrada
+                    correctamente en este navegador.
+                    Tu opinión contribuye a demostrar
+                    cómo el sistema propuesto puede apoyar
+                    la mejora continua de la atención.
+                </p>
+
+                <p class="encuesta-confirmacion-nota">
+                    No se han solicitado datos personales
+                    y no necesitas realizar ninguna otra acción.
+                </p>
+
+                <div class="encuesta-acciones">
+
+                    <button type="button"
+                            class="encuesta-boton"
+                            id="boton-otra-encuesta">
+                        Responder otra encuesta
+                    </button>
+
+                    <a href="participacion.html"
+                       class="encuesta-boton secundario">
+                        Volver a participación ciudadana
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+        <div class="footer-identidad">
+
+            <img src="../static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+
+        </div>
+
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+                <li>
+                    <a href="oirs.html">OIRS</a>
+                </li>
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+                <li>
+                    <a href="intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Información de contacto pendiente
+                de validación institucional.
+            </p>
+
+        </div>
+
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+                <span class="red-social" aria-label="Facebook">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+                    </svg>
+                </span>
+
+                <span class="red-social" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="3" y="3" width="18" height="18" rx="5"/>
+                        <circle cx="12" cy="12" r="4"/>
+                        <circle cx="17.5" cy="6.5" r="1"
+                                fill="currentColor"
+                                stroke="none"/>
+                    </svg>
+                </span>
+
+                <span class="red-social" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <rect x="2" y="5" width="20" height="14" rx="4"/>
+                        <path d="m10 9 5 3-5 3z"/>
+                    </svg>
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="contenedor footer-inferior">
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+    </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,942 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Participación ciudadana y canales de atención del Departamento de Salud Municipal de Padre Las Casas.">
+
+    <title>Participación ciudadana | Salud Municipal Padre Las Casas</title>
+
+    <!-- ESTILOS -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/participacion.css">
+
+    <!-- JAVASCRIPT GENERAL -->
+    <script src="../static/js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- ========================================================
+     DEFINICIONES DE ICONOS SVG
+     ======================================================== -->
+
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <!-- OIRS -->
+    <symbol id="icon-message" viewBox="0 0 24 24">
+        <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"/>
+        <path d="M8 10h8M8 13h5"/>
+    </symbol>
+
+    <!-- ENCUESTA -->
+    <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>
+    </symbol>
+
+    <!-- ESTABLECIMIENTOS -->
+    <symbol id="icon-building" viewBox="0 0 24 24">
+        <rect x="4" y="3" width="16" height="18" rx="2"/>
+        <path d="M9 21v-5h6v5M8 7h2M14 7h2M8 11h2M14 11h2"/>
+    </symbol>
+
+    <!-- CONSULTA -->
+    <symbol id="icon-consulta" viewBox="0 0 24 24">
+        <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"/>
+        <path d="M10 9a2.5 2.5 0 0 1 5 0c0 1.7-2.5 2-2.5 3.5"/>
+        <circle cx="12.5" cy="16" r=".7" fill="currentColor" stroke="none"/>
+    </symbol>
+
+    <!-- RECLAMO -->
+    <symbol id="icon-reclamo" viewBox="0 0 24 24">
+        <path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5 9 9 0 0 1-4-.9L3 21l1.9-5.5A8.5 8.5 0 1 1 21 11.5z"/>
+        <path d="M12.5 7v6"/>
+        <circle cx="12.5" cy="16" r=".7" fill="currentColor" stroke="none"/>
+    </symbol>
+
+    <!-- SUGERENCIA -->
+    <symbol id="icon-sugerencia" viewBox="0 0 24 24">
+        <path d="M9 18h6M10 21h4"/>
+        <path d="M8 15.5C6.7 14.3 6 12.8 6 11a6 6 0 1 1 12 0c0 1.8-.7 3.3-2 4.5-.7.7-1 1.4-1 2.5H9c0-1.1-.3-1.8-1-2.5z"/>
+        <path d="M12 2V1M4 5 3 4M20 5l1-1"/>
+    </symbol>
+
+    <!-- FELICITACIÓN -->
+    <symbol id="icon-felicitacion" viewBox="0 0 24 24">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8z"/>
+    </symbol>
+
+</svg>
+
+
+<!-- ========================================================
+     ENCABEZADO INSTITUCIONAL
+     ======================================================== -->
+
+<header class="encabezado">
+
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+
+        </a>
+
+        <a href="login.html" class="boton-funcionarios">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+
+            <span>Acceso funcionarios</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- ========================================================
+     NAVEGACIÓN PRINCIPAL
+     ======================================================== -->
+
+<nav class="navegacion" aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+
+        </button>
+
+        <ul class="menu" id="menu-principal">
+
+            <!-- INICIO -->
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+            <!-- INSTITUCIÓN -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+
+                    <li>
+                        <a href="institucion.html">
+                            Quiénes somos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <!-- ESTABLECIMIENTOS: ENLACE DIRECTO -->
+            <li class="menu-item">
+
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+
+            </li>
+
+            <!-- PRESTACIONES Y PROGRAMAS -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <!-- NOTICIAS -->
+            <li class="menu-item">
+
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+
+            </li>
+
+            <!-- PARTICIPACIÓN CIUDADANA -->
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="participacion.html"
+                           aria-current="page">
+                            Canales de participación
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+
+
+        <!-- BUSCADOR GENERAL DEL PORTAL -->
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="buscador-campo" for="campo-busqueda">
+
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input id="campo-busqueda"
+                       type="search"
+                       placeholder="Buscar en el sitio..."
+                       autocomplete="off"
+                       aria-label="Buscar en el sitio"
+                       aria-expanded="false"
+                       aria-controls="resultados-busqueda">
+
+            </label>
+
+            <div id="resultados-busqueda"
+                 class="resultados-busqueda"
+                 aria-live="polite"
+                 hidden>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- ========================================================
+     CONTENIDO PRINCIPAL
+     ======================================================== -->
+
+<main>
+
+
+    <!-- ====================================================
+         1. ENCABEZADO DE LA PÁGINA
+         ==================================================== -->
+
+    <section class="pagina-encabezado">
+
+        <div class="contenedor">
+
+            <div class="migas">
+
+                <a href="../index.html">Inicio</a>
+
+                <span>/</span>
+
+                <span>Participación ciudadana</span>
+
+            </div>
+
+            <span class="etiqueta">
+                Atención a la comunidad
+            </span>
+
+            <h1>Participación ciudadana</h1>
+
+            <p>
+                Tu opinión y experiencia son importantes para
+                mejorar los servicios de salud municipal.
+                Conoce los canales propuestos para comunicarte
+                y participar.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         2. CANALES DE PARTICIPACIÓN
+         ==================================================== -->
+
+    <section class="participacion-seccion">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Canales disponibles en el prototipo
+            </span>
+
+            <h2 class="participacion-titulo">
+                ¿Cómo puedes participar?
+            </h2>
+
+            <p class="participacion-introduccion">
+                El sistema propuesto busca facilitar la comunicación
+                entre la comunidad y el Departamento de Salud Municipal
+                mediante canales digitales de atención y retroalimentación.
+            </p>
+
+
+            <div class="participacion-grid">
+
+
+                <!-- TARJETA OIRS -->
+                <article class="participacion-tarjeta">
+
+                    <div class="participacion-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-message"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Oficina OIRS</h3>
+
+                    <p>
+                        Ingresa consultas, reclamos, sugerencias
+                        o felicitaciones relacionadas con la atención
+                        recibida en la red de salud municipal.
+                        No necesitas crear una cuenta.
+                    </p>
+
+                    <a href="oirs.html"
+                       class="participacion-boton">
+
+                        Ingresar solicitud OIRS
+
+                    </a>
+
+                </article>
+
+
+                <!-- TARJETA ENCUESTA -->
+                <article class="participacion-tarjeta">
+
+                    <div class="participacion-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-heart"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Encuesta de satisfacción</h3>
+
+                    <p>
+                        Comparte tu opinión sobre la atención
+                        y la información entregada por los servicios
+                        de salud. La encuesta propuesta es anónima
+                        y no requiere iniciar sesión.
+                    </p>
+
+                    <a href="encuesta.html"
+                       class="participacion-boton">
+
+                        Responder encuesta
+
+                    </a>
+
+                </article>
+
+
+                <!-- TARJETA ESTABLECIMIENTOS -->
+                <article class="participacion-tarjeta">
+
+                    <div class="participacion-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-building"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Atención en establecimientos</h3>
+
+                    <p>
+                        Consulta el directorio de establecimientos
+                        de salud para identificar el centro
+                        correspondiente y revisar su información
+                        de contacto disponible.
+                    </p>
+
+                    <a href="establecimientos.html"
+                       class="participacion-boton secundario">
+
+                        Ver establecimientos
+
+                    </a>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         3. PROCESO DE ATENCIÓN OIRS
+         ==================================================== -->
+
+    <section class="participacion-info">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Proceso de atención
+            </span>
+
+            <h2>
+                ¿Cómo funcionará una solicitud OIRS?
+            </h2>
+
+            <p>
+                El sistema propuesto permitirá registrar
+                solicitudes ciudadanas y facilitar su gestión
+                por parte de los funcionarios responsables.
+            </p>
+
+
+            <div class="participacion-pasos">
+
+
+                <!-- PASO 1 -->
+                <article class="participacion-paso">
+
+                    <div class="participacion-numero">
+                        1
+                    </div>
+
+                    <h3>Ingresa tu solicitud</h3>
+
+                    <p>
+                        Completa el formulario con tus datos
+                        de contacto, selecciona el establecimiento
+                        y describe tu consulta, reclamo,
+                        sugerencia o felicitación.
+                    </p>
+
+                </article>
+
+
+                <!-- PASO 2 -->
+                <article class="participacion-paso">
+
+                    <div class="participacion-numero">
+                        2
+                    </div>
+
+                    <h3>Recibe tu folio</h3>
+
+                    <p>
+                        Al finalizar el registro, el sistema
+                        mostrará un número de folio para
+                        identificar tu solicitud.
+                    </p>
+
+                </article>
+
+
+                <!-- PASO 3 -->
+                <article class="participacion-paso">
+
+                    <div class="participacion-numero">
+                        3
+                    </div>
+
+                    <h3>Gestión de la solicitud</h3>
+
+                    <p>
+                        Los funcionarios autorizados podrán
+                        clasificar, derivar, gestionar y responder
+                        las solicitudes desde sus respectivos
+                        paneles internos.
+                    </p>
+
+                </article>
+
+            </div>
+
+
+            <!-- AVISO DEL PROTOTIPO -->
+            <div class="participacion-aviso">
+
+                <strong>Importante:</strong>
+
+                el formulario OIRS que desarrollaremos es una
+                simulación académica. No enviará solicitudes reales
+                al Departamento de Salud Municipal.
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         4. TIPOS DE SOLICITUD
+         ==================================================== -->
+
+    <section class="participacion-tipos">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Orientación ciudadana
+            </span>
+
+            <h2>
+                ¿Qué tipo de solicitud puedes realizar?
+            </h2>
+
+            <p>
+                Selecciona la categoría que mejor represente
+                el motivo de tu comunicación.
+            </p>
+
+
+            <div class="tipos-grid">
+
+
+                <!-- CONSULTA -->
+                <article class="tipo-tarjeta tipo-consulta">
+
+                    <div class="tipo-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-consulta"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Consulta</h3>
+
+                    <p>
+                        Solicitud de información u orientación
+                        relacionada con la atención y los servicios
+                        de salud municipal.
+                    </p>
+
+                </article>
+
+
+                <!-- RECLAMO -->
+                <article class="tipo-tarjeta tipo-reclamo">
+
+                    <div class="tipo-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-reclamo"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Reclamo</h3>
+
+                    <p>
+                        Manifestación de disconformidad frente
+                        a una situación relacionada con la atención
+                        o el servicio recibido.
+                    </p>
+
+                </article>
+
+
+                <!-- SUGERENCIA -->
+                <article class="tipo-tarjeta tipo-sugerencia">
+
+                    <div class="tipo-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-sugerencia"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Sugerencia</h3>
+
+                    <p>
+                        Propuesta o recomendación que busca
+                        contribuir a mejorar la atención
+                        y el funcionamiento de los servicios.
+                    </p>
+
+                </article>
+
+
+                <!-- FELICITACIÓN -->
+                <article class="tipo-tarjeta tipo-felicitacion">
+
+                    <div class="tipo-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-felicitacion"/>
+                        </svg>
+
+                    </div>
+
+                    <h3>Felicitación</h3>
+
+                    <p>
+                        Reconocimiento a una atención,
+                        experiencia o acción positiva
+                        realizada por el personal de salud.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ====================================================
+         5. LLAMADO A LA PARTICIPACIÓN
+         ==================================================== -->
+
+    <section class="participacion-destacado">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Participa
+            </span>
+
+            <h2>
+                Tu opinión contribuye a mejorar la atención
+            </h2>
+
+            <p>
+                Elige el canal que mejor se adapte a lo que
+                necesitas. Puedes ingresar una solicitud
+                OIRS o responder la encuesta de satisfacción.
+            </p>
+
+            <div class="participacion-acciones">
+
+                <a href="oirs.html"
+                   class="participacion-boton">
+
+                    Ingresar solicitud OIRS
+
+                </a>
+
+                <a href="encuesta.html"
+                   class="participacion-boton secundario">
+
+                    Responder encuesta
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- ========================================================
+     FOOTER INSTITUCIONAL
+     ======================================================== -->
+
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+        <!-- IDENTIDAD -->
+        <div class="footer-identidad">
+
+            <img src="../static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+
+        </div>
+
+
+        <!-- ENLACES DE INTERÉS -->
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="oirs.html">
+                        OIRS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ACCESOS INSTITUCIONALES -->
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+
+                <li>
+                    <a href="intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CONTACTO -->
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Información de contacto pendiente
+                de validación institucional.
+            </p>
+
+        </div>
+
+
+        <!-- REDES SOCIALES -->
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+                <span class="red-social" aria-label="Facebook">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+
+                    </svg>
+
+                </span>
+
+                <span class="red-social" aria-label="Instagram">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                        <rect x="3" y="3"
+                              width="18" height="18" rx="5"/>
+
+                        <circle cx="12" cy="12" r="4"/>
+
+                        <circle cx="17.5" cy="6.5"
+                                r="1"
+                                fill="currentColor"
+                                stroke="none"/>
+
+                    </svg>
+
+                </span>
+
+                <span class="red-social" aria-label="YouTube">
+
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+
+                        <rect x="2" y="5"
+                              width="20" height="14" rx="4"/>
+
+                        <path d="m10 9 5 3-5 3z"/>
+
+                    </svg>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PIE INFERIOR -->
+    <div class="contenedor footer-inferior">
+
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,629 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gestor de Contenidos | Salud Municipal Padre Las Casas</title>
+
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link rel="stylesheet" href="../static/css/dashboard-contenidos.css">
+</head>
+
+<body>
+
+    <!-- ==================================================
+         ENCABEZADO INSTITUCIONAL
+    ================================================== -->
+
+    <header class="gc-topbar">
+
+        <img
+            src="../static/img/logo-salud-encabezado.png"
+            alt="Salud Municipal Padre Las Casas"
+        >
+
+        <div class="gc-usuario">
+
+            <div class="gc-usuario-info">
+
+                <strong id="nombre-gestor">
+                    Gestor de contenidos
+                </strong>
+
+                <span>
+                    Participación y Comunicaciones
+                </span>
+
+            </div>
+
+            <button
+                type="button"
+                class="gc-salir"
+                id="cerrar-sesion"
+            >
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </header>
+
+
+    <!-- ==================================================
+         ESTRUCTURA GENERAL
+    ================================================== -->
+
+    <div class="gc-layout">
+
+        <!-- MENÚ LATERAL -->
+
+        <aside class="gc-sidebar">
+
+            <p class="gc-sidebar-titulo">
+                Gestión del portal institucional
+            </p>
+
+            
+            <nav class="gc-menu" aria-label="Menú del gestor de contenidos">
+
+                <!-- PANEL PRINCIPAL -->
+                <button
+                    type="button"
+                    class="activo"
+                    data-seccion="inicio"
+                >
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="7" rx="1"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1"/>
+                    </svg>
+
+                    <span>Panel principal</span>
+                </button>
+
+
+                <!-- NOTICIAS -->
+                <button
+                    type="button"
+                    data-seccion="noticias"
+                >
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="16" rx="2"/>
+                        <rect x="7" y="8" width="5" height="5" rx="0.5"/>
+                        <path d="M15 8h3M15 11h3M7 16h11"/>
+                    </svg>
+
+                    <span>Noticias</span>
+                </button>
+
+
+                <!-- PRESTACIONES -->
+                <button
+                    type="button"
+                    data-seccion="prestaciones"
+                >
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="4" y="4" width="16" height="16" rx="3"/>
+                        <path d="M12 8v8M8 12h8"/>
+                    </svg>
+
+                    <span>Prestaciones</span>
+                </button>
+
+
+                <!-- PROGRAMAS -->
+                <button
+                    type="button"
+                    data-seccion="programas"
+                >
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="4" y="3" width="16" height="18" rx="2"/>
+                        <path d="M8 8h8M8 12h8M8 16h5"/>
+                        <path d="m14 16 2 2 3-4"/>
+                    </svg>
+
+                    <span>Programas</span>
+                </button>
+
+
+                <!-- ESTABLECIMIENTOS -->
+                <button
+                    type="button"
+                    data-seccion="establecimientos"
+                >
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="4" y="3" width="16" height="18" rx="2"/>
+                        <path d="M9 21v-5h6v5"/>
+                        <path d="M12 7v6M9 10h6"/>
+                    </svg>
+
+                    <span>Establecimientos</span>
+                </button>
+
+
+                <!-- INFORMACIÓN INSTITUCIONAL -->
+                <button
+                    type="button"
+                    data-seccion="institucion"
+                >
+                    <svg viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 11v6"/>
+                        <path d="M12 7h.01"/>
+                    </svg>
+
+                    <span>Información institucional</span>
+                </button>
+
+            </nav>
+
+
+        </aside>
+
+
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main class="gc-main">
+
+            <!-- ==================================================
+                 1. PANEL PRINCIPAL
+            ================================================== -->
+
+            <section id="seccion-inicio">
+
+                <div class="gc-titulo">
+
+                    <span class="gc-etiqueta">
+                        Participación y Comunicaciones
+                    </span>
+
+                    <h1>Panel principal</h1>
+
+                    <p>
+                        Administración y actualización de la
+                        información pública del portal de
+                        Salud Municipal de Padre Las Casas.
+                    </p>
+
+                </div>
+
+
+                <!-- INDICADORES PRINCIPALES -->
+
+                <div class="gc-indicadores">
+
+                    <!-- TOTAL -->
+
+                    <article class="gc-indicador gc-indicador-azul">
+
+                        <div class="gc-indicador-encabezado">
+
+                            <span>Total de contenidos</span>
+
+                            <div class="gc-indicador-icono">
+
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <rect x="4" y="3" width="16" height="18" rx="2"/>
+                                    <path d="M8 8h8M8 12h8M8 16h5"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-total">0</strong>
+
+                    </article>
+
+
+                    <!-- PUBLICADOS -->
+
+                    <article class="gc-indicador gc-indicador-verde">
+
+                        <div class="gc-indicador-encabezado">
+
+                            <span>Publicados</span>
+
+                            <div class="gc-indicador-icono">
+
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <circle cx="12" cy="12" r="9"/>
+                                    <path d="m8 12 3 3 5-6"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-publicados">0</strong>
+
+                    </article>
+
+
+                    <!-- BORRADORES -->
+
+                    <article class="gc-indicador gc-indicador-amarillo">
+
+                        <div class="gc-indicador-encabezado">
+
+                            <span>Borradores</span>
+
+                            <div class="gc-indicador-icono">
+
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <path d="M12 20h9"/>
+                                    <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L9 17l-4 1 1-4L16.5 3.5z"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-borradores">0</strong>
+
+                    </article>
+
+
+                    <!-- NOTICIAS PUBLICADAS -->
+
+                    <article class="gc-indicador gc-indicador-gris">
+
+                        <div class="gc-indicador-encabezado">
+
+                            <span>Noticias publicadas</span>
+
+                            <div class="gc-indicador-icono">
+
+                                <svg viewBox="0 0 24 24"
+                                     fill="none"
+                                     stroke="currentColor"
+                                     stroke-width="1.8"
+                                     stroke-linecap="round"
+                                     stroke-linejoin="round"
+                                     aria-hidden="true">
+                                    <rect x="3" y="4" width="18" height="16" rx="2"/>
+                                    <path d="M7 8h5v5H7z"/>
+                                    <path d="M15 8h3M15 11h3M7 16h11"/>
+                                </svg>
+
+                            </div>
+
+                        </div>
+
+                        <strong id="indicador-noticias">0</strong>
+
+                    </article>
+
+                </div>
+
+
+                <!-- ACCESOS DE ADMINISTRACIÓN -->
+
+                <div class="gc-card">
+
+                    <h2>Administrar contenidos</h2>
+
+                    <p>
+                        Selecciona una categoría para crear,
+                        editar, actualizar o publicar información
+                        del portal institucional.
+                    </p>
+
+                    <div class="gc-acciones">
+
+                        <button
+                            type="button"
+                            class="gc-boton"
+                            data-ir="noticias"
+                        >
+                            Gestionar noticias
+                        </button>
+
+                        <button
+                            type="button"
+                            class="gc-boton secundario"
+                            data-ir="prestaciones"
+                        >
+                            Gestionar prestaciones
+                        </button>
+
+                        <button
+                            type="button"
+                            class="gc-boton secundario"
+                            data-ir="programas"
+                        >
+                            Gestionar programas
+                        </button>
+
+                        <button
+                            type="button"
+                            class="gc-boton secundario"
+                            data-ir="establecimientos"
+                        >
+                            Gestionar establecimientos
+                        </button>
+
+                        <button
+                            type="button"
+                            class="gc-boton secundario"
+                            data-ir="institucion"
+                        >
+                            Información institucional
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ÚLTIMOS CONTENIDOS -->
+
+                <div class="gc-card">
+
+                    <h2>Últimos contenidos actualizados</h2>
+
+                    <p>
+                        Registro de las publicaciones y
+                        modificaciones más recientes.
+                    </p>
+
+                    <div class="gc-tabla-contenedor">
+
+                        <table class="gc-tabla">
+
+                            <thead>
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Categoría</th>
+                                    <th>Estado</th>
+                                    <th>Actualización</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="tabla-recientes"></tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 2. GESTIÓN DE NOTICIAS
+            ================================================== -->
+
+            <section id="seccion-noticias" hidden>
+
+                <div class="gc-titulo">
+
+                    <span class="gc-etiqueta">
+                        Publicaciones
+                    </span>
+
+                    <h1>Gestión de noticias</h1>
+
+                    <p>
+                        Crea, edita y publica noticias,
+                        actividades y comunicados informativos
+                        del Departamento de Salud Municipal.
+                    </p>
+
+                </div>
+
+                <!--
+                    El JavaScript genera aquí:
+                    - Formulario
+                    - Vista previa
+                    - Búsqueda y filtros
+                    - Tabla de publicaciones
+                    - Edición y publicación
+                    - Historial de modificaciones
+                -->
+
+                <div id="contenedor-noticias"></div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 3. GESTIÓN DE PRESTACIONES
+            ================================================== -->
+
+            <section id="seccion-prestaciones" hidden>
+
+                <div class="gc-titulo">
+
+                    <span class="gc-etiqueta">
+                        Información de salud
+                    </span>
+
+                    <h1>Gestión de prestaciones</h1>
+
+                    <p>
+                        Mantén actualizada la información
+                        sobre las prestaciones disponibles
+                        para la comunidad.
+                    </p>
+
+                </div>
+
+                <div id="contenedor-prestaciones"></div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 4. GESTIÓN DE PROGRAMAS
+            ================================================== -->
+
+            <section id="seccion-programas" hidden>
+
+                <div class="gc-titulo">
+
+                    <span class="gc-etiqueta">
+                        Programas de salud
+                    </span>
+
+                    <h1>Gestión de programas</h1>
+
+                    <p>
+                        Administra y actualiza la información
+                        pública de los programas de salud.
+                    </p>
+
+                </div>
+
+                <div id="contenedor-programas"></div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 5. GESTIÓN DE ESTABLECIMIENTOS
+            ================================================== -->
+
+            <section id="seccion-establecimientos" hidden>
+
+                <div class="gc-titulo">
+
+                    <span class="gc-etiqueta">
+                        Red de salud municipal
+                    </span>
+
+                    <h1>Gestión de establecimientos</h1>
+
+                    <p>
+                        Actualiza la información pública de
+                        los establecimientos de salud,
+                        incluyendo horarios, direcciones,
+                        contactos y prestaciones asociadas.
+                    </p>
+
+                </div>
+
+
+                <div class="gc-card">
+
+                    <h2>Información de establecimientos</h2>
+
+                    <p>
+                        Los cambios realizados en esta sección
+                        permitirán mantener actualizada la
+                        información disponible para la comunidad
+                        dentro del prototipo.
+                    </p>
+
+                    <!--
+                        El JavaScript generará aquí:
+
+                        - Selección del establecimiento.
+                        - Nombre público.
+                        - Descripción.
+                        - Dirección.
+                        - Horario de atención.
+                        - Teléfono de contacto.
+                        - Correo de contacto.
+                        - Prestaciones asociadas.
+                        - Formulario de actualización.
+                        - Vista previa.
+                        - Historial de modificaciones.
+
+                        No se crearán ni eliminarán
+                        establecimientos desde este perfil.
+                        Solo se administrará su información
+                        pública.
+                    -->
+
+                    <div id="contenedor-establecimientos"></div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ==================================================
+                 6. INFORMACIÓN INSTITUCIONAL
+            ================================================== -->
+
+            <section id="seccion-institucion" hidden>
+
+                <div class="gc-titulo">
+
+                    <span class="gc-etiqueta">
+                        Portal institucional
+                    </span>
+
+                    <h1>Información institucional</h1>
+
+                    <p>
+                        Actualiza los textos institucionales,
+                        la información general y los
+                        comunicados del portal.
+                    </p>
+
+                </div>
+
+                <div id="contenedor-institucion"></div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+    ================================================== -->
+
+    <script
+        src="../static/js/dashboard-contenidos.js"
+        defer
+    ></script>
+
+</body>
+
+</html>

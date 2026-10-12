@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Información de contacto y ubicación del Departamento de Salud Municipal de Padre Las Casas.">
+
+    <title>Contacto | Salud Municipal Padre Las Casas</title>
+
+    <!-- ESTILOS GENERALES -->
+    <link rel="stylesheet" href="../static/css/style.css">
+
+    <!-- ESTILOS EXCLUSIVOS DE CONTACTO -->
+    <link rel="stylesheet" href="../static/css/contacto.css">
+
+    <!-- FUNCIONALIDADES GENERALES -->
+    <script src="../static/js/script.js" defer></script>
+</head>
+
+<body>
+
+<!-- =====================================================
+     ICONOS SVG
+     ===================================================== -->
+
+<svg class="iconos-definiciones"
+     xmlns="http://www.w3.org/2000/svg"
+     aria-hidden="true">
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+        <circle cx="12" cy="7" r="4"/>
+        <path d="M4 21v-2a8 8 0 0 1 16 0v2H4z"/>
+    </symbol>
+
+    <symbol id="icon-search" viewBox="0 0 24 24">
+        <circle cx="10.8" cy="10.8" r="7"/>
+        <path d="m16 16 5 5"/>
+    </symbol>
+
+    <symbol id="icon-chevron" viewBox="0 0 24 24">
+        <path d="m6 9 6 6 6-6"/>
+    </symbol>
+
+    <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 6h16M4 12h16M4 18h16"/>
+    </symbol>
+
+    <symbol id="icon-location" viewBox="0 0 24 24">
+        <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+    </symbol>
+
+    <symbol id="icon-phone" viewBox="0 0 24 24">
+        <path d="M6 3h4l2 5-3 2a15 15 0 0 0 5 5l2-3 5 2v4a3 3 0 0 1-3 3A17 17 0 0 1 3 6a3 3 0 0 1 3-3z"/>
+    </symbol>
+
+    <symbol id="icon-mail" viewBox="0 0 24 24">
+        <rect x="3" y="5" width="18" height="14" rx="2"/>
+        <path d="m3 7 9 6 9-6"/>
+    </symbol>
+
+    <symbol id="icon-building" viewBox="0 0 24 24">
+        <path d="M3 21h18M5 21V7h6v14M13 21V3h6v18M7 10h2m-2 4h2m6-7h2m-2 4h2"/>
+    </symbol>
+
+    <symbol id="icon-message" viewBox="0 0 24 24">
+        <path d="M4 4h16v13H9l-5 4V4zM8 9h8M8 13h6"/>
+    </symbol>
+
+</svg>
+
+
+<!-- =====================================================
+     ENCABEZADO
+     ===================================================== -->
+
+<header class="encabezado">
+
+    <div class="contenedor encabezado-contenido">
+
+        <a href="../index.html"
+           class="identidad"
+           aria-label="Volver al inicio">
+
+            <img src="../static/img/logo-salud-encabezado.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="logo-institucional">
+
+        </a>
+
+        <a href="login.html" class="boton-funcionarios">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-user"/>
+            </svg>
+
+            <span>Acceso funcionarios</span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     NAVEGACIÓN PRINCIPAL
+     ===================================================== -->
+
+<nav class="navegacion" aria-label="Navegación principal">
+
+    <div class="contenedor navegacion-contenido">
+
+        <!-- MENÚ MÓVIL -->
+
+        <button class="boton-menu-movil"
+                id="boton-menu"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal">
+
+            <svg class="icono" aria-hidden="true">
+                <use href="#icon-menu"/>
+            </svg>
+
+            <span>Menú</span>
+
+        </button>
+
+
+        <ul class="menu" id="menu-principal">
+
+            <!-- INICIO -->
+
+            <li class="menu-item">
+                <a href="../index.html">Inicio</a>
+            </li>
+
+
+            <!-- INSTITUCIÓN -->
+
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-institucion">
+
+                    Institución
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-institucion">
+
+                    <li>
+                        <a href="institucion.html">
+                            Quiénes somos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contacto.html"
+                           aria-current="page">
+                            Contacto
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- ESTABLECIMIENTOS: ENLACE DIRECTO -->
+
+            <li class="menu-item">
+
+                <a href="establecimientos.html">
+                    Establecimientos
+                </a>
+
+            </li>
+
+
+            <!-- PRESTACIONES Y PROGRAMAS -->
+
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-prestaciones">
+
+                    Prestaciones y programas
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-prestaciones">
+
+                    <li>
+                        <a href="prestaciones.html">
+                            Prestaciones de salud
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="programas.html">
+                            Programas de salud
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+
+            <!-- NOTICIAS -->
+
+            <li class="menu-item">
+
+                <a href="noticias.html">
+                    Noticias y actividades
+                </a>
+
+            </li>
+
+
+            <!-- PARTICIPACIÓN CIUDADANA -->
+
+            <li class="menu-item tiene-submenu">
+
+                <button class="menu-desplegable"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="submenu-participacion">
+
+                    Participación ciudadana
+
+                    <svg class="icono icono-flecha" aria-hidden="true">
+                        <use href="#icon-chevron"/>
+                    </svg>
+
+                </button>
+
+                <ul class="submenu" id="submenu-participacion">
+
+                    <li>
+                        <a href="oirs.html">
+                            Ingresar solicitud OIRS
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="encuesta.html">
+                            Encuesta de satisfacción
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="participacion.html">
+                            Canales de participación
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+        </ul>
+
+
+        <!-- BUSCADOR DIRECTO EN LA NAVEGACIÓN -->
+
+        <div class="buscador-navegacion" id="buscador-sitio">
+
+            <label class="buscador-campo"
+                   for="campo-busqueda">
+
+                <svg class="icono" aria-hidden="true">
+                    <use href="#icon-search"/>
+                </svg>
+
+                <span class="sr-only">
+                    Buscar una sección del portal
+                </span>
+
+                <input id="campo-busqueda"
+                       type="search"
+                       placeholder="Buscar en el sitio..."
+                       autocomplete="off"
+                       aria-label="Buscar en el sitio"
+                       aria-expanded="false"
+                       aria-controls="resultados-busqueda">
+
+            </label>
+
+            <div id="resultados-busqueda"
+                 class="resultados-busqueda"
+                 aria-live="polite"
+                 hidden>
+            </div>
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     CONTENIDO PRINCIPAL
+     ===================================================== -->
+
+<main>
+
+
+    <!-- ==================================================
+         1. ENCABEZADO DE LA PÁGINA
+         ================================================== -->
+
+    <section class="pagina-encabezado">
+
+        <div class="contenedor">
+
+            <div class="migas"
+                 aria-label="Ruta de navegación">
+
+                <a href="../index.html">Inicio</a>
+                <span>/</span>
+                <span>Institución</span>
+                <span>/</span>
+                <span>Contacto</span>
+
+            </div>
+
+            <span class="etiqueta">
+                Información institucional
+            </span>
+
+            <h1>Contacto</h1>
+
+            <p>
+                Encuentra información de contacto,
+                dirección administrativa y canales
+                de atención del Departamento de Salud
+                Municipal de Padre Las Casas.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         2. CANALES DE COMUNICACIÓN
+         ================================================== -->
+
+    <section class="contacto-seccion">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Canales de comunicación
+            </span>
+
+            <h2 class="seccion-titulo">
+                Comunícate con nosotros
+            </h2>
+
+            <p class="contacto-introduccion">
+                Consulta los medios de contacto institucional.
+                Para ingresar reclamos, sugerencias,
+                felicitaciones o consultas formales,
+                utiliza el canal de atención ciudadana OIRS.
+            </p>
+
+
+            <div class="contacto-grid">
+
+
+                <!-- DIRECCIÓN ADMINISTRATIVA -->
+
+                <article class="contacto-tarjeta">
+
+                    <div class="contacto-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-location"/>
+                        </svg>
+
+                    </div>
+
+                    <h2>Dirección administrativa</h2>
+
+                    <p>
+                        Departamento de Salud Municipal
+                        de Padre Las Casas.
+                    </p>
+
+                    <p class="contacto-dato">
+                        Los Alacalufes N.º 376
+                    </p>
+
+                    <p>
+                        Padre Las Casas, Región de La Araucanía.
+                    </p>
+
+                    <p>
+                        Dirección tomada como referencia del
+                        sitio institucional. Su vigencia
+                        debe confirmarse.
+                    </p>
+
+                </article>
+
+
+                <!-- ATENCIÓN TELEFÓNICA -->
+
+                <article class="contacto-tarjeta">
+
+                    <div class="contacto-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-phone"/>
+                        </svg>
+
+                    </div>
+
+                    <h2>Atención telefónica</h2>
+
+                    <p>
+                        Canal para realizar consultas
+                        generales relacionadas con
+                        información institucional.
+                    </p>
+
+                    <span class="contacto-pendiente">
+                        Número oficial pendiente de confirmar
+                    </span>
+
+                </article>
+
+
+                <!-- CORREO INSTITUCIONAL -->
+
+                <article class="contacto-tarjeta">
+
+                    <div class="contacto-icono">
+
+                        <svg class="icono" aria-hidden="true">
+                            <use href="#icon-mail"/>
+                        </svg>
+
+                    </div>
+
+                    <h2>Correo institucional</h2>
+
+                    <p>
+                        Medio de comunicación para
+                        consultas administrativas
+                        e información general.
+                    </p>
+
+                    <span class="contacto-pendiente">
+                        Correo oficial pendiente de confirmar
+                    </span>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         3. UBICACIÓN INSTITUCIONAL
+         ================================================== -->
+
+    <section class="ubicacion-seccion">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Ubicación
+            </span>
+
+            <h2 class="seccion-titulo">
+                ¿Dónde nos encontramos?
+            </h2>
+
+
+            <div class="ubicacion-grid">
+
+
+                <!-- INFORMACIÓN DE UBICACIÓN -->
+
+                <div class="ubicacion-informacion">
+
+                    <h3>
+                        Departamento de Salud Municipal
+                    </h3>
+
+                    <p>
+                        Dependencias administrativas
+                        del Departamento de Salud
+                        Municipal de Padre Las Casas.
+                    </p>
+
+                    <p class="ubicacion-direccion">
+                        Los Alacalufes N.º 376
+                    </p>
+
+                    <p>
+                        Padre Las Casas,
+                        Región de La Araucanía, Chile.
+                    </p>
+
+                    <p>
+                        Para conocer las ubicaciones
+                        de los establecimientos de
+                        atención primaria, consulta
+                        el directorio de la red de salud.
+                    </p>
+
+                    <a href="establecimientos.html"
+                       class="boton boton-contorno">
+
+                        Ver establecimientos
+
+                    </a>
+
+                </div>
+
+
+                <!-- ESPACIO PARA MAPA FUTURO -->
+
+                <div class="ubicacion-visual">
+
+                    <svg class="icono" aria-hidden="true">
+                        <use href="#icon-location"/>
+                    </svg>
+
+                    <h3>Ubicación institucional</h3>
+
+                    <p>
+                        Referencia de la dirección
+                        administrativa del Departamento
+                        de Salud Municipal.
+                    </p>
+
+                    <p>
+                        La ubicación podrá complementarse
+                        con un mapa cuando se verifiquen
+                        los datos institucionales.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         4. CONTACTO DE ESTABLECIMIENTOS
+         ================================================== -->
+
+    <section class="establecimientos-contacto">
+
+        <div class="contenedor">
+
+            <span class="etiqueta">
+                Red municipal de salud
+            </span>
+
+            <h2 class="seccion-titulo">
+                Contacto de establecimientos
+            </h2>
+
+            <p>
+                Cada establecimiento de la red municipal
+                puede contar con sus propios canales
+                de atención, dirección, teléfono
+                y horarios de funcionamiento.
+                Consulta el directorio para encontrar
+                la información correspondiente.
+            </p>
+
+            <a href="establecimientos.html"
+               class="boton boton-azul">
+
+                Consultar directorio de establecimientos
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ==================================================
+         5. ACCESO A OIRS
+         ================================================== -->
+
+    <section class="contacto-oirs">
+
+        <div class="contenedor contacto-oirs-contenido">
+
+            <div class="contacto-oirs-texto">
+
+                <span class="etiqueta">
+                    Atención ciudadana
+                </span>
+
+                <h2>
+                    ¿Necesitas ingresar una solicitud?
+                </h2>
+
+                <p>
+                    Si deseas presentar un reclamo,
+                    sugerencia, felicitación o consulta
+                    formal, puedes utilizar el sistema
+                    de atención ciudadana OIRS.
+                </p>
+
+            </div>
+
+            <a href="oirs.html"
+               class="boton boton-azul">
+
+                Ingresar solicitud OIRS
+
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =====================================================
+     PIE DE PÁGINA
+     ===================================================== -->
+
+<footer class="footer">
+
+    <div class="contenedor footer-contenido">
+
+
+        <!-- LOGOTIPO -->
+
+        <div class="footer-identidad">
+
+            <img src="../static/img/logo-salud-footer.png"
+                 alt="Departamento de Salud Municipal de Padre Las Casas"
+                 class="footer-logo">
+
+        </div>
+
+
+        <!-- ENLACES DE INTERÉS -->
+
+        <div class="footer-columna">
+
+            <h3>Enlaces de interés</h3>
+
+            <ul>
+
+                <li>
+                    <a href="establecimientos.html">
+                        Establecimientos de salud
+                    </a>
+                </li>
+
+                <li>
+                    <a href="prestaciones.html">
+                        Prestaciones y programas
+                    </a>
+                </li>
+
+                <li>
+                    <a href="oirs.html">
+                        OIRS
+                    </a>
+                </li>
+
+                <li>
+                    <a href="encuesta.html">
+                        Encuesta de satisfacción
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- ACCESOS INSTITUCIONALES -->
+
+        <div class="footer-columna">
+
+            <h3>Accesos institucionales</h3>
+
+            <ul>
+
+                <li>
+                    <a href="contacto.html">
+                        Contacto institucional
+                    </a>
+                </li>
+
+                <li>
+                    <a href="intranet.html">
+                        Acceso a intranet existente
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Gestión de contenidos
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- CONTACTO -->
+
+        <div class="footer-columna">
+
+            <h3>Contacto</h3>
+
+            <div class="footer-contacto">
+
+                <svg class="icono"
+                     viewBox="0 0 24 24"
+                     aria-hidden="true">
+
+                    <path d="M12 22s8-7 8-13a8 8 0 1 0-16 0c0 6 8 13 8 13z"/>
+                    <circle cx="12" cy="9" r="2.5"/>
+
+                </svg>
+
+                <p>
+                    Departamento de Salud Municipal
+                    de Padre Las Casas
+                </p>
+
+            </div>
+
+            <p class="footer-nota">
+                Los Alacalufes N.º 376,
+                Padre Las Casas.
+            </p>
+
+        </div>
+
+
+        <!-- REDES SOCIALES -->
+
+        <div class="footer-columna footer-redes">
+
+            <h3>Síguenos</h3>
+
+            <div class="redes-sociales">
+
+
+                <!-- FACEBOOK -->
+
+                <span class="red-social"
+                      aria-label="Facebook"
+                      title="Facebook">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <path fill="currentColor"
+                              stroke="none"
+                              d="M13.5 22v-8.7h3l.5-3.5h-3.5V7.6c0-1 .3-1.7 1.8-1.7h1.9V2.8c-.3 0-1.5-.1-2.8-.1-2.9 0-4.9 1.8-4.9 5v2.1H6.2v3.5h3.3V22z"/>
+
+                    </svg>
+
+                </span>
+
+
+                <!-- INSTAGRAM -->
+
+                <span class="red-social"
+                      aria-label="Instagram"
+                      title="Instagram">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <rect x="3" y="3"
+                              width="18" height="18"
+                              rx="5" ry="5"/>
+
+                        <circle cx="12" cy="12" r="4"/>
+
+                        <circle cx="17.5" cy="6.5" r="1"
+                                fill="currentColor"
+                                stroke="none"/>
+
+                    </svg>
+
+                </span>
+
+
+                <!-- YOUTUBE -->
+
+                <span class="red-social"
+                      aria-label="YouTube"
+                      title="YouTube">
+
+                    <svg viewBox="0 0 24 24"
+                         aria-hidden="true">
+
+                        <rect x="2" y="5"
+                              width="20" height="14"
+                              rx="4"/>
+
+                        <path d="m10 9 5 3-5 3z"/>
+
+                    </svg>
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- INFORMACIÓN INFERIOR -->
+
+    <div class="contenedor footer-inferior">
+
+        <p>
+            © 2026 Departamento de Salud Municipal de Padre Las Casas.
+            Prototipo de interfaz para el proyecto integrado.
+            No corresponde a un sitio institucional en producción.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+</html>
